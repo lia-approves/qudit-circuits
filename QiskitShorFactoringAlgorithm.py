@@ -2,11 +2,12 @@
 Qiskit Shor Factoring Algorithm
 
 Simulates Shor's factoring algorithm on a classical machine using Qiskit.
-See for information from:
+See for information from:\n
 * https://qiskit.org/textbook/ch-algorithms/index.html
 * https://youtu.be/mAHC1dWKNYE
 
 Author: Alex Lim
+
 Date of Initial Creation: October 20, 2021
 
 """

@@ -6,6 +6,7 @@ See for information about quantum logic gates from:\n
 * https://en.wikipedia.org/wiki/Quantum_logic_gate
 
 Author: Alex Lim
+
 Date of Initial Creation: October 19, 2021
 
 """
@@ -14,7 +15,7 @@ import math
 
 import numpy as np
 
-from MiscFunctions import MiscFunctions as misc
+from MiscFunctions import MiscFunctions as Misc
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
@@ -330,7 +331,7 @@ class QuantumCircuitMatrix:
         :rtype: np.ndarray
         """
         numBits = QuantumCircuitMatrix.qubits_to_bits(numQubits)
-        quantum_Fourier_transform_matrix = misc.real_to_complex_matrix(
+        quantum_Fourier_transform_matrix = Misc.real_to_complex_matrix(
             np.zeros([numBits, numBits]))
         # Using basic wave formula:
         quantum_phase = np.e ** (2j * np.pi / numBits)
