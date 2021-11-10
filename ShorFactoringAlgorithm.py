@@ -96,19 +96,19 @@ class ShorFactoringAlgorithm:
                     applied_swap_gate(matrix_of_qubits, 1, 2)
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 2, 3)
-            if a in [(b-1)/2, (b-1)/2+1]:
+            if a in [(b - 1) / 2, (b - 1) / 2 + 1]:
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 2, 3)
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 1, 2)
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 0, 1)
-            if a == b-4:
+            if a == b - 4:
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 1, 3)
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 0, 2)
-            if a in [(b-1)/2, b-4, b-2]:
+            if a in [(b - 1) / 2, b - 4, b - 2]:
                 matrix_of_qubits = np.dot(matrix_of_qubits, np.kron(
                     qcm.Pauli_X_gate, np.identity(
                         int(matrix_of_qubits.shape[0] / qcm.Pauli_X_gate.shape[
@@ -144,7 +144,9 @@ class ShorFactoringAlgorithm:
 
     @staticmethod
     def qubitFactoringQiskit(num: int, limit: int = 1000,
-                             show_errors: bool = False):
+                             show_errors: bool = False,
+                             n_count: int = 8,
+                             drawCircuitDiagram: bool = False):
         """
         Applies Shor's factoring algorithm to qubits
 
@@ -154,62 +156,17 @@ class ShorFactoringAlgorithm:
             defaults to 1000 (the default for sys.getrecursionlimit())
         :param show_errors: Whether to show or ignore errors, defaults to False
         :type show_errors: bool
+        :param n_count: The number of counting qubits, defaults to 8
+        :type n_count: int
+        :param drawCircuitDiagram: Whether to draw the circuit diagram,
+            defaults to False
+        :type drawCircuitDiagram: bool
         :return: The factorization of num
         :rtype: list
         """
-        factorization = list()
-        while num % 2 == 0:
-            factorization.append(2)
-            num /= 2
-        for i in range(limit):
-            if num == 1:
-                factorization.append(int(num))
-                while 1 in factorization:
-                    factorization.remove(1)
-                return sorted(factorization)
-            guessFactor = num
-            try:
-                guessFactor = randint(3, int(num) - 1)
-            except ValueError as message:
-                if show_errors:
-                    print("ValueError: ", message)
-                continue
-            try:
-                if guessFactor != num:
-                    period = QkSFA.\
-                        QiskitShorFactoringAlgorithmGeneral(num, guessFactor)
-                    if period % 2 != 1:
-                        if (guessFactor ** (period / 2) + 1) % num != 0:
-                            factorization.append(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num))
-                            factorization.append(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num))
-                            num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num)
-                            num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num)
-                            if period == 2:
-                                factorization.append(FactorFuncs.gcd(
-                                    int(guessFactor), num))
-                                num /= FactorFuncs.gcd(
-                                    int(guessFactor), num)
-                                factorization.append(FactorFuncs.gcd(
-                                    int(guessFactor), num))
-                                num /= FactorFuncs.gcd(
-                                    int(guessFactor), num)
-                            factorization.append(int(num))
-                            while 1 in factorization:
-                                factorization.remove(1)
-                            return sorted(factorization)
-            except OverflowError as message:
-                if show_errors:
-                    print("Unable to find factor #"
-                          + str(len(factorization) + 1)
-                          + " because ", message)
-        factorization.append(int(num))
-        while 1 in factorization:
-            factorization.remove(1)
-        return sorted(factorization)
+        return ShorFactoringAlgorithm.ShorFactoringAlgorithmClassical(
+            num, limit, show_errors,
+            QkSFA.QiskitShorFactoringAlgorithmGeneral, n_count, drawCircuitDiagram)
 
     @staticmethod
     def qubitFactoringQuantum(num: int, limit: int = 1000,
@@ -223,6 +180,32 @@ class ShorFactoringAlgorithm:
             defaults to 1000 (the default for sys.getrecursionlimit())
         :param show_errors: Whether to show or ignore errors, defaults to False
         :type show_errors: bool
+        :return: The factorization of num
+        :rtype: list
+        """
+        return ShorFactoringAlgorithm.ShorFactoringAlgorithmClassical(
+            num, limit, show_errors,
+            ShorFactoringAlgorithm.qubitFactoringPeriodFinding)
+
+    @staticmethod
+    def ShorFactoringAlgorithmClassical(
+            num: int, limit: int = 1000, show_errors: bool = False,
+            func: type(FactorFuncs.period) = FactorFuncs.period, *argv):
+        """
+        Applies Shor's factoring algorithm using classical operations
+
+        :param num: A natural number
+        :type num: int
+        :param limit: The maximum number of attempts to find more factors,
+            defaults to 1000 (the default for sys.getrecursionlimit())
+        :param show_errors: Whether to show or ignore errors, defaults to False
+        :type show_errors: bool
+        :param func: The period finding function to use with parameters
+            (num, guessFactor),
+            defaults to a classical period finding function at
+            MiscFunctions.FactoringFunctions.period
+        :type func: function
+        :param argv: The addition arguments to pass to func
         :return: The factorization of num
         :rtype: list
         """
@@ -247,14 +230,19 @@ class ShorFactoringAlgorithm:
                 if guessFactor != num and guessFactor % num != 0:
                     period = 1
                     try:
-                        period = ShorFactoringAlgorithm.\
-                            qubitFactoringPeriodFinding(num, guessFactor)
+                        func_params = list()
+                        func_params.append(num)
+                        func_params.append(guessFactor)
+                        for args in argv:
+                            func_params.append(args)
+                        func_params = tuple(func_params)
+                        period = func(*func_params)
                     except ValueError as message:
                         if show_errors:
                             print("ValueError: ", message)
                         continue
                     if period % 2 != 1:
-                        if (guessFactor ** (period / 2) + 1) % num != 0 and\
+                        if (guessFactor ** (period / 2) + 1) % num != 0 and \
                                 (guessFactor ** (period / 2) - 1) % num != 0:
                             factorization.append(int(FactorFuncs.gcd(
                                 int(guessFactor ** (period / 2) + 1), num)))
@@ -271,81 +259,6 @@ class ShorFactoringAlgorithm:
                                     int(guessFactor), num)
                                 factorization.append(int(FactorFuncs.gcd(
                                     int(guessFactor), num)))
-                                num /= FactorFuncs.gcd(
-                                    int(guessFactor), num)
-                            factorization.append(int(num))
-                            while 1 in factorization:
-                                factorization.remove(1)
-                            return sorted(factorization)
-            except OverflowError as message:
-                if show_errors:
-                    print("Unable to find factor #"
-                          + str(len(factorization) + 1)
-                          + " because ", message)
-        factorization.append(int(num))
-        while 1 in factorization:
-            factorization.remove(1)
-        return sorted(factorization)
-
-    @staticmethod
-    def ShorFactoringAlgorithmClassical(num: int,
-                                        limit: int = 1000,
-                                        show_errors: bool = False):
-        """
-        Applies Shor's factoring algorithm using classical operations
-
-        :param num: A natural number
-        :type num: int
-        :param limit: The maximum number of attempts to find more factors,
-            defaults to 1000 (the default for sys.getrecursionlimit())
-        :param show_errors: Whether to show or ignore errors, defaults to False
-        :type show_errors: bool
-        :return: The factorization of num
-        :rtype: list
-        """
-        factorization = list()
-        while num % 2 == 0:
-            factorization.append(2)
-            num /= 2
-        for i in range(limit):
-            if num == 1:
-                factorization.append(int(num))
-                while 1 in factorization:
-                    factorization.remove(1)
-                return sorted(factorization)
-            try:
-                guessFactor = randint(3, int(num)-1)
-            except ValueError as message:
-                if show_errors:
-                    print("ValueError: ", message)
-                guessFactor = num
-                continue
-            try:
-                if guessFactor != num:
-                    try:
-                        period = FactorFuncs.period(num, guessFactor)
-                    except ValueError as message:
-                        if show_errors:
-                            print("ValueError: ", message)
-                        period = 1
-                        continue
-                    if period % 2 != 1:
-                        if (guessFactor ** (period / 2) + 1) % num != 0:
-                            factorization.append(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num))
-                            factorization.append(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num))
-                            num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num)
-                            num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num)
-                            if period == 2:
-                                factorization.append(FactorFuncs.gcd(
-                                    int(guessFactor), num))
-                                num /= FactorFuncs.gcd(
-                                    int(guessFactor), num)
-                                factorization.append(FactorFuncs.gcd(
-                                    int(guessFactor), num))
                                 num /= FactorFuncs.gcd(
                                     int(guessFactor), num)
                             factorization.append(int(num))
