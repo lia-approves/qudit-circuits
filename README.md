@@ -13,7 +13,33 @@ well as for giving me concrete goals for BitOQSim in Shor's factoring algorithm
 and computing discrete logarithms.
 <br />
 Thank you, Lia Yeh for giving me feedback on BitOQSim as well as giving me the
-opportunity to work on the qutrit research paper.
+opportunity to work on the qutrit research paper. 
+
+## BitOQSim Source
+
+* [Quantum circuit matrices](QuantumCircuitMatrix.py)
+
+* [Miscellaneous functions](MiscFunctions.py)
+
+## Completed Examples
+
+* [Grover's search algorithm in BitOQSim](GroverSearchAlgorithm.py)
+
+* [Shor's factoring algorithm in BitOQSim](ShorFactoringAlgorithm.py)
+
+* [Shor's factoring algorithm in Qiskit](QiskitShorFactoringAlgorithm.py)
+
+## WIP Examples
+
+* [Testing file](TestFile.py)
+
+* [Discrete logarithm problem in BitOQSim](ComputingDiscreteLogarithms.py)
+
+## License and Notice
+
+* [License](LICENSE)
+
+* [Notice](NOTICE)
 
 ## Abstract
 
@@ -26,18 +52,22 @@ that is less esoteric than other high-level quantum simulators.  In testing,
 BitOQSim has proven to be particularly useful in explaining how quantum gates
 function and how to build quantum circuits.
 
-## Disclaimer
+## Documentation
 
 BitOQSim is documented using Sphinx with reStructuredText as its markup
 language.
 
+## Disclaimer
+
 BitOQSim was developed in Python 3.9.7, and Python 3.9.x is recommended,
 although not required.
-
-Useful resources used are included as links when relevant; however, although it
-is recommended to look through the included resources, they are not required
-reading.
 
 BitOQSim is not an IBM product, and files that use Qiskit are explicitly
 labeled as such.  Equivalent Qiskit implementations are included in order to be
 used as points of comparison.
+
+## See Also
+
+Useful resources used are included as links when relevant; however, although it
+is recommended to look through the included resources, they are not required
+reading.
