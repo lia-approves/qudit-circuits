@@ -165,21 +165,24 @@ class FactoringFunctions:
         return FactoringFunctions.gcd_recursive(y, x % y)
 
     @staticmethod
-    def period(num: int, a: int, maxAllowedPeriod: int = 2**8):
+    def period(num: int, a: int, max_allowed_period: int = 2**8):
         """
         Calculates the period of (a**x) % num
 
-        :param num: A number to be used in (a**x) % num
+        :param num: A natural number
         :type num: int
-        :param a: A number to be used in (a**x) % num
-        :param maxAllowedPeriod: The maximum allowed period before assuming
+        :param a: A guess factor
+        :type a: int
+        :return: The period
+        :rtype: int
+        :param max_allowed_period: The maximum allowed period before assuming
         the period to be None, defaults to 2**8=256
         :return: The period of (a**x) % num, or 0 if period > maxAllowedPeriod
         :rtype: int
         """
         period_list = list()
         x = 1
-        while x <= maxAllowedPeriod:
+        while x <= max_allowed_period:
             if (a**x) % num in period_list:
                 return len(period_list)
             period_list.append((a**x) % num)
