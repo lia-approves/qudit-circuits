@@ -2,6 +2,20 @@ BitOQSim
 
 Author: Alex Lim
 
-This product includes software from (https://github.com/AlexLim-Pro/BitOQSim.git).
+This product includes software from:
+(https://github.com/AlexLim-Pro/BitOQSim.git)
 
-This product includes software developed by AlexLim-Pro (https://github.com/AlexLim-Pro).
+This product includes software developed by:
+AlexLim-Pro (https://github.com/AlexLim-Pro)
+
+Acknowledgements:
+Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
+encouraging me as well as for connecting me with experts in quantum computing
+as well as expects in numerous other fields.
+Thank you, Professor Yufei Ding and Professor Tim Sherwood for guiding me in
+beginning to create BitOQSim.
+Thank you, Professor Win van Dam for advising me through creating BitOQSim as
+well as for giving me concrete goals for BitOQSim in Shor's factoring algorithm
+and computing discrete logarithms.
+Thank you, Lia Yeh for giving me feedback on BitOQSim as well as giving me the
+opportunity to work on the qutrit research paper.
