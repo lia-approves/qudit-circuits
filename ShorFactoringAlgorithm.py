@@ -26,7 +26,7 @@ class ShorFactoringAlgorithm:
     @staticmethod
     def c_amod15(a, power):
         """
-        Controlled multiplication by a mod 15
+        Controlled multiplication by a mod 15\n
         * Note: For example purposes, unnecessary for program to run
 
         :param a: Some number co-prime with 15
