@@ -434,14 +434,13 @@ class QuantumCircuitMatrix:
             i += 1
 
     @staticmethod
-    def QuantumPeriodFinding(func, *argv: any, n_count: int = 8):
+    def QuantumPeriodFinding(func, *argv, n_count: int = 8):
         """
         Uses Shor's period finding-algorithm to compute the period of func
 
         :param func: A quantum function
         :type func: function
         :param argv: The arguments to pass to func
-        :type argv: any
         :param n_count: The number of counting qubits
         :type n_count: int
         :return: The period
