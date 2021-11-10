@@ -11,11 +11,11 @@ Date of Initial Creation: October 21, 2021
 
 from random import shuffle
 
+import numpy as np
+
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
 __maintainer__  = "Alex Lim"
-
-import numpy as np
 
 
 class bogosort:

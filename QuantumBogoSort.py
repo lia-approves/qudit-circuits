@@ -11,14 +11,12 @@ Date of Initial Creation: October 21, 2021
 """
 
 import numpy as np
-from numpy import dot as i
-from numpy import kron as d
-from numpy import ndarray as k
-from numpy import shape
+from numpy import dot as i, kron as d, ndarray as k
+
+from bogosort import bogosort
+from MiscFunctions import MiscFunctions as idk
 # from numpy import identity as eeee
 from QuantumCircuitMatrix import QuantumCircuitMatrix as e
-from MiscFunctions import MiscFunctions as idk
-from bogosort import bogosort
 
 __author__ = "Alex Lim"
 __credits__ = "Alex Lim"

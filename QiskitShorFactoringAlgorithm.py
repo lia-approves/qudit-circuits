@@ -11,12 +11,14 @@ Date of Initial Creation: October 20, 2021
 
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
-from qiskit import circuit, QuantumCircuit, Aer, transpile, assemble
-from qiskit.visualization import plot_histogram
-import pandas as pd
 from fractions import Fraction
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from qiskit import Aer, assemble, circuit, QuantumCircuit, transpile
+from qiskit.visualization import plot_histogram
+
 from MiscFunctions import FactoringFunctions
 
 __author__ = "Alex Lim"

@@ -9,6 +9,7 @@ Date of Initial Creation: October 19, 2021
 """
 
 import numpy as np
+
 from QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
 
 __author__      = "Alex Lim"
@@ -85,10 +86,4 @@ class GroverSearchAlgorithm:
         return qubit_1
 
 
-# GroverSearchAlgorithm.two_qubit_search(3)
-# qubit_1 = GroverSearchAlgorithm.qubit_search(15)
-# print()
-# print()
-# print("returned qubit_1:")
-# print(qubit_1)
-qcm.print_qubits(GroverSearchAlgorithm.qubit_search(3, 2))
+# qcm.print_qubits(GroverSearchAlgorithm.qubit_search(3, 2))

@@ -8,11 +8,13 @@ Date of Initial Creation: October 20, 2021
 
 """
 
-import numpy as np
-from QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
-from MiscFunctions import FactoringFunctions as FactoringFunctions
 from random import randint
+
+import numpy as np
+
 import QiskitShorFactoringAlgorithm as QkSFA
+from MiscFunctions import FactoringFunctions as FactoringFunctions
+from QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
 
 __author__ = "Alex Lim"
 __credits__ = "Alex Lim"

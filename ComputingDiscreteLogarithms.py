@@ -63,8 +63,6 @@ class ComputingDiscreteLogarithms:
             than maxPower
         :rtype: int
         """
-        # if FactoringFunctions.isPrimeQuick(13):
-        #     return 13
         for k in range(1, maxPower):
             if (generator ** k) % modulus == cipher:
                 if FactoringFunctions.isPrimeQuick(k):

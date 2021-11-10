@@ -9,6 +9,7 @@ Date of Initial Creation: October 19, 2021
 """
 
 import numpy as np
+
 from QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
 from ShorFactoringAlgorithm import ShorFactoringAlgorithm
 

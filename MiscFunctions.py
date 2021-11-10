@@ -8,9 +8,10 @@ Date of Initial Creation: October 21, 2021
 
 """
 
-import numpy as np
 from random import randint
 from warnings import catch_warnings, simplefilter
+
+import numpy as np
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
