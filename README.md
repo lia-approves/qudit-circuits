@@ -9,5 +9,8 @@ that is less esoteric than other high-level quantum simulators.  In testing,
 BitOQSim has proven to be particularly useful in explaining how quantum gates
 function and how to build quantum circuits.
 
+The code is documented using Sphinx with reStructuredText as its markup
+language.
+
 BitOQSim was developed in Python 3.9.7, and Python 3.9.x is recommended,
 although not required.
