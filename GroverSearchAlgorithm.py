@@ -4,6 +4,7 @@ Grover Search Algorithm
 Simulates Grover's search algorithm on a classical machine
 
 Author: Alex Lim
+
 Date of Initial Creation: October 19, 2021
 
 """

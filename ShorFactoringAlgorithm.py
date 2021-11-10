@@ -4,6 +4,7 @@ Shor Factoring Algorithm
 Simulates Shor's factoring algorithm on a classical machine
 
 Author: Alex Lim
+
 Date of Initial Creation: October 20, 2021
 
 """
