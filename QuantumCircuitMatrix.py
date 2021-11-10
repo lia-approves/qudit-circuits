@@ -3,6 +3,7 @@ Quantum Circuit Matrix
 
 Creates quantum circuits in the form of matrices.\n
 See for information about quantum logic gates from:\n
+* https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf
 * https://en.wikipedia.org/wiki/Quantum_logic_gate
 
 Author: Alex Lim
@@ -26,7 +27,8 @@ class QuantumCircuitMatrix:
     """
     Creates quantum circuits in the form of matrices.\n
     See for information about quantum logic gates from:\n
-    https://en.wikipedia.org/wiki/Quantum_logic_gate
+    * https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf
+    * https://en.wikipedia.org/wiki/Quantum_logic_gate
     """
     def __init__(self):
         """Initializes quantum gates for use in this class"""
@@ -194,13 +196,12 @@ class QuantumCircuitMatrix:
     @staticmethod
     def Hadamard_Gate():
         """
-        Represents a rotation of pi about the axis\n
-        .. math:: (\\hat{x}+\\hat{z})/\\sqrt{2}
-        at the Bloch sphere.\n
+        Represents a rotation of pi about the axis
+        :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
         Maps the basis states
-        (ie: creates a superposition if given a basis state):
-            .. math:: |0⟩ ⟼ (|0⟩+|1⟩)/\\sqrt{2}
-            .. math:: |1⟩ ⟼ (|0⟩-|1⟩)/\\sqrt{2}
+        (ie: creates a superposition if given a basis state):\n
+        :math:`|0⟩ ⟼ (|0⟩+|1⟩)/\\sqrt{2}`\n
+        :math:`|1⟩ ⟼ (|0⟩-|1⟩)/\\sqrt{2}`
 
         :return: The Hadamard gate for a single qubit
         :rtype: np.ndarray
@@ -213,13 +214,12 @@ class QuantumCircuitMatrix:
                               [1, -1]]) / np.sqrt(2)
     """
     Hadamard gate for a single qubit\n
-    Represents a rotation of pi about the axis\n
-    .. math:: (\\hat{x}+\\hat{z})/\\sqrt{2}
-    at the Bloch sphere.\n
+    Represents a rotation of pi about the axis
+    :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
     Maps the basis states
-    (ie: creates a superposition if given a basis state):
-        .. math:: |0⟩ ⟼ (|0⟩+|1⟩)/\\sqrt{2}
-        .. math:: |1⟩ ⟼ (|0⟩-|1⟩)/\\sqrt{2}
+    (ie: creates a superposition if given a basis state):\n
+    :math:`|0⟩ ⟼ (|0⟩+|1⟩)/\\sqrt{2}`\n
+    :math:`|1⟩ ⟼ (|0⟩-|1⟩)/\\sqrt{2}`
     """
 
     # Hadamard transformation for a single qubit (or the Hermitian)
@@ -453,7 +453,6 @@ class QuantumCircuitMatrix:
         for q in range(n_count):
             qc[q][q] += \
                 (func(argv))[q][q]
-            # (ShorFactoringAlgorithm.c_amodb(a, int(2 ** q), num))[q][q]
         qubit_matrix = \
             np.dot(np.kron(qc, np.identity(
                 int(QFT_dagger.shape[0] / qc.shape[0]))), QFT_dagger)
