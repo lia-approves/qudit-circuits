@@ -62,57 +62,22 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
             raise ValueError("'a' must be 2,7,8,11 or 13")
         U = QuantumCircuit(4)
         for iteration in range(power):
-            if a in [2,13]:
-                U.swap(0,1)
-                U.swap(1,2)
-                U.swap(2,3)
-            if a in [7,8]:
-                U.swap(2,3)
-                U.swap(1,2)
-                U.swap(0,1)
+            if a in [2, 13]:
+                U.swap(0, 1)
+                U.swap(1, 2)
+                U.swap(2, 3)
+            if a in [7, 8]:
+                U.swap(2, 3)
+                U.swap(1, 2)
+                U.swap(0, 1)
             if a == 11:
-                U.swap(1,3)
-                U.swap(0,2)
-            if a in [7,11,13]:
+                U.swap(1, 3)
+                U.swap(0, 2)
+            if a in [7, 11, 13]:
                 for q in range(4):
                     U.x(q)
         U = U.to_gate()
         U.name = "%i^%i mod 15" % (a, power)
-        c_U = U.control()
-        return c_U
-
-    def c_amod21(a, power):
-        """
-        Controlled multiplication by a mod 21\n
-        * Note: For example purposes, unnecessary for the program to run
-
-        :param a: Some number co-prime with 21
-        :type a: int
-        :param power: The number of times to repeat the controlled-U gate
-        :type power: int
-        :return: Controlled multiplication gate
-        :rtype: circuit.ControlledGate
-        """
-        if a not in [2, 10, 11, 17, 19]:
-            raise ValueError("'a' must be 2, 10, 11, 17, or 19")
-        U = QuantumCircuit(4)
-        for iteration in range(power):
-            if a in [2, 19]:
-                U.swap(0, 1)
-                U.swap(1, 2)
-                U.swap(2, 3)
-            if a in [10, 11]:
-                U.swap(2, 3)
-                U.swap(1, 2)
-                U.swap(0, 1)
-            if a == 17:
-                U.swap(1, 3)
-                U.swap(0, 2)
-            if a in [10, 17, 19]:
-                for q in range(4):
-                    U.x(q)
-        U = U.to_gate()
-        U.name = "%i^%i mod 21" % (a, power)
         c_U = U.control()
         return c_U
 
@@ -171,7 +136,6 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
             qc.h(j)
         qc.name = "QFT†"
         return qc
-
 
     # Create QuantumCircuit with n_count counting qubits
     # and 4 qubits for U to act on
