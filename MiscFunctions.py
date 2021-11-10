@@ -86,7 +86,7 @@ class MiscFunctions:
 
     @staticmethod
     def complex_to_real_matrix(complex_matrix: np.ndarray,
-                               show_warnings: bool=False):
+                               show_warnings: bool = False):
         """
         Converts a complex number matrix to a real number matrix.\n
         * Note: The ComplexWarning is filtered and will not show up by default.
@@ -94,7 +94,7 @@ class MiscFunctions:
         :param complex_matrix: A complex number matrix
         :type complex_matrix: np.ndarray
         :param show_warnings: Whether to show or ignore warnings,
-            defaults to false
+            defaults to False
         :type show_warnings: bool
         :raises ComplexWarning: Casting complex values to real discards the
             imaginary part
@@ -112,6 +112,14 @@ class MiscFunctions:
 
     @staticmethod
     def random_ndarray(*args: np.ndarray):
+        """
+        Randomly chooses a random ndarray from args
+
+        :param args: The ndarrays to randomly choose from
+        :type args: np.ndarray
+        :return: A random ndarray from args
+        :rtype: np.ndarray
+        """
         return args[randint(0, len(args)-1)]
 
 
@@ -129,13 +137,6 @@ class FactoringFunctions:
         :return: The greatest common divisor of x and y
         :rtype: int
         """
-        # if y == x:
-        #     return x
-        # if y > x:
-        #     return FactoringFunctions.gcd(y, x)
-        # if x % y == 0:
-        #     return y
-        # return FactoringFunctions.gcd(y, x % y)
         while x != y:
             if x > y:
                 x -= y
@@ -144,7 +145,27 @@ class FactoringFunctions:
         return x
 
     @staticmethod
-    def period(num: int, a: int, maxAllowedPeriod: int=2**8):
+    def gcd_recursive(x: int, y: int):
+        """
+        Euclid's algorithm for computing the greatest common divisor
+
+        :param x: A number with that has at least 1 factor in common with y
+        :type x: int
+        :param y: A number with that has at least 1 factor in common with x
+        :type y: int
+        :return: The greatest common divisor of x and y
+        :rtype: int
+        """
+        if y == x:
+            return x
+        if y > x:
+            return FactoringFunctions.gcd_recursive(y, x)
+        if x % y == 0:
+            return y
+        return FactoringFunctions.gcd_recursive(y, x % y)
+
+    @staticmethod
+    def period(num: int, a: int, maxAllowedPeriod: int = 2**8):
         """
         Calculates the period of (a**x) % num
 
