@@ -39,7 +39,7 @@ class ShorFactoringAlgorithm:
         """
         if a not in [2, 7, 8, 11, 13]:
             raise ValueError("'a' must be 2,7,8,11 or 13")
-        matrix_of_qubits = qcm.get_qubit_matrix(4, 0, 2, 4, 6)
+        matrix_of_qubits = qcm.get_zero_qubit_matrix(4)
         a = int(a)
         for iteration in range(power):
             if a in [2, 13]:
@@ -166,7 +166,8 @@ class ShorFactoringAlgorithm:
         """
         return ShorFactoringAlgorithm.ShorFactoringAlgorithmClassical(
             num, limit, show_errors,
-            QkSFA.QiskitShorFactoringAlgorithmGeneral, n_count, drawCircuitDiagram)
+            QkSFA.QiskitShorFactoringAlgorithmGeneral, n_count,
+            drawCircuitDiagram)
 
     @staticmethod
     def qubitFactoringQuantum(num: int, limit: int = 1000,
