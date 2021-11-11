@@ -291,6 +291,70 @@ class QuantumCircuitMatrix:
         return qubit_matrix
 
     @staticmethod
+    def get_qubit_vector(numQubits: int, *argv: int):
+        """
+        creates a column vector for qubits
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1, defaults to 0
+        :type argv: int
+        :return: The square matrix for qubits
+        :rtype: np.ndarray
+        """
+        numBits = QuantumCircuitMatrix.qubits_to_bits(numQubits)
+        qubit_matrix = np.zeros([1, numBits])
+        for args in argv:
+            qubit_matrix[0, args] = 1
+        if len(argv) == 0:
+            qubit_matrix[0, 0] = 1
+        return qubit_matrix.T
+
+    @staticmethod
+    def get_zero_qubit_matrix(numQubits: int, *argv: int):
+        """
+        creates a square matrix for qubits with each state set to 0 by default
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1
+        :type argv: int
+        :return: The square matrix for qubits
+        :rtype: np.ndarray
+        """
+        qubit_matrix = np.zeros([numQubits * 2, numQubits * 2])
+        for args in argv:
+            qubit_matrix[args, args] = 1
+        for i in range(numQubits):
+            if qubit_matrix[2 * i+1, 2 * i + 1] == 0:
+                qubit_matrix[2 * i, 2 * i] = 1
+        if len(argv) == 0:
+            qubit_matrix[0, 0] = 1
+        return qubit_matrix
+
+    @staticmethod
+    def get_zero_qubit_vector(numQubits: int, *argv: int):
+        """
+        creates a column vector for qubits with each state set to 0 by default
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1
+        :type argv: int
+        :return: The square matrix for qubits
+        :rtype: np.ndarray
+        """
+        qubit_matrix = np.zeros([1, numQubits * 2])
+        for args in argv:
+            qubit_matrix[0, args] = 1
+        for i in range(numQubits):
+            if qubit_matrix[0, 2 * i + 1] == 0:
+                qubit_matrix[0, 2 * i] = 1
+        if len(argv) == 0:
+            qubit_matrix[0, 0] = 1
+        return qubit_matrix.T
+
+    @staticmethod
     def quantum_not_gate_matrix(numQubits: int):
         """
         creates a quantum equivalent of the classical not gate
@@ -396,7 +460,36 @@ class QuantumCircuitMatrix:
                     swapped_qubit_matrix = np.dot(
                         swapped_qubit_matrix, swapping_gate_matrix)
         swapped_qubit_matrix = np.diag(swapped_qubit_matrix)
+
         return swapped_qubit_matrix
+
+    @staticmethod
+    def convert_matrix_to_vector(qubit_matrix: np.ndarray):
+        """
+        Converts a qubit matrix to a qubit vector
+
+        :param qubit_matrix:
+        :return:
+        """
+        if qubit_matrix.shape[1] == 1:
+            return qubit_matrix
+        qubit_vector = qubit_matrix.sum(axis=1)
+        return qubit_vector
+
+    @staticmethod
+    def convert_vector_to_matrix(qubit_vector: np.ndarray):
+        """
+        Converts a qubit vector to a qubit matrix
+
+        :param qubit_vector:
+        :return:
+        """
+        if qubit_vector.shape[0] == qubit_vector.shape[1]:
+            return qubit_vector
+        qubit_matrix = np.zeros([qubit_vector.shape[0], qubit_vector.shape[0]])
+        for q in range(qubit_vector.shape[0]):
+            qubit_matrix[q][q] += qubit_vector[q][0]
+        return qubit_matrix
 
     @staticmethod
     def print_qubits(*argv: np.ndarray):
