@@ -3,7 +3,7 @@
 ## Acknowledgements:
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
 encouraging me as well as for connecting me with experts in quantum computing
-as well as expects in numerous other fields.
+as well as experts in numerous other fields.
 <br />
 Thank you, Professor Yufei Ding and Professor Tim Sherwood for guiding me in
 beginning to create BitOQSim.
@@ -43,11 +43,10 @@ opportunity to work on the qutrit research paper.
 
 ## Requirements
 
-* [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git)
- was developed in
+* [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) was developed in
 [Python 3.9.7](https://www.python.org/downloads/release/python-397/), and 
-[Python 3.9.x](https://www.python.org/dev/peps/pep-0596/)
-is recommended, although not required.
+[Python 3.9.x](https://www.python.org/dev/peps/pep-0596/) is recommended,
+although not required.
 
 * [Required Python packages](requirement.txt)
 
@@ -57,9 +56,9 @@ is recommended, although not required.
 simulate quantum computers and quantum algorithms using classical computers.
 
 In order for the language to be more transparent and educationally useful,
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git)
- uses matrices in order to simulate qubits and quantum gates in a way
-that is less esoteric than other high-level quantum simulators.  In testing,
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) uses matrices in order
+to simulate qubits and quantum gates in a way that is less esoteric than other
+high-level quantum simulators.  In testing,
 [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) has proven to be
 particularly useful in explaining how quantum gates function and how to build
 quantum circuits when compared with high-level gate and circuit
@@ -76,7 +75,7 @@ as its markup language.
 
 [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is not an
 [IBM](https://www.ibm.com/us-en/) product, and code that uses
-[Qiskit](https://qiskit.org/) is explicitly labeled as such. Equivalent
+[Qiskit](https://qiskit.org/) is explicitly labeled as such.  Equivalent
 [Qiskit](https://qiskit.org/) implementations are included in order to be used
 as points of comparison.
 
