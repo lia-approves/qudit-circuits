@@ -13,7 +13,7 @@ well as for giving me concrete goals for BitOQSim in Shor's factoring algorithm
 and computing discrete logarithms.
 <br />
 Thank you, Lia Yeh for giving me feedback on BitOQSim as well as giving me the
-opportunity to work on the qutrit research paper. 
+opportunity to work on the qutrit research paper.
 
 ## BitOQSim Source
 
@@ -41,30 +41,44 @@ opportunity to work on the qutrit research paper.
 
 * [Notice](NOTICE)
 
+## Requirements
+
+* [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git)
+ was developed in
+[Python 3.9.7](https://www.python.org/downloads/release/python-397/), and 
+[Python 3.9.x](https://www.python.org/dev/peps/pep-0596/)
+is recommended, although not required.
+
+* [Required Python packages](requirement.txt)
+
 ## Abstract
 
-BitOQSim is designed as a way to simulate quantum computers and quantum
-algorithms using classical computers.
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is designed as a way to
+simulate quantum computers and quantum algorithms using classical computers.
 
 In order for the language to be more transparent and educationally useful,
-BitOQSim uses matrices in order to simulate qubits and quantum gates in a way
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git)
+ uses matrices in order to simulate qubits and quantum gates in a way
 that is less esoteric than other high-level quantum simulators.  In testing,
-BitOQSim has proven to be particularly useful in explaining how quantum gates
-function and how to build quantum circuits.
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) has proven to be
+particularly useful in explaining how quantum gates function and how to build
+quantum circuits when compared with high-level gate and circuit
+implementations.
 
 ## Documentation
 
-BitOQSim is documented using Sphinx with reStructuredText as its markup
-language.
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is documented using
+[Sphinx](https://www.sphinx-doc.org/en/master/) with
+[reStructuredText](https://docutils.sourceforge.io/rst.html)
+as its markup language.
 
 ## Disclaimer
 
-BitOQSim was developed in Python 3.9.7, and Python 3.9.x is recommended,
-although not required.
-
-BitOQSim is not an IBM product, and files that use Qiskit are explicitly
-labeled as such.  Equivalent Qiskit implementations are included in order to be
-used as points of comparison.
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is not an
+[IBM](https://www.ibm.com/us-en/) product, and code that uses
+[Qiskit](https://qiskit.org/) is explicitly labeled as such. Equivalent
+[Qiskit](https://qiskit.org/) implementations are included in order to be used
+as points of comparison.
 
 ## See Also
 
