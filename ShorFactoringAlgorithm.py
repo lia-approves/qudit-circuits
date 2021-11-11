@@ -275,6 +275,3 @@ class ShorFactoringAlgorithm:
         while 1 in factorization:
             factorization.remove(1)
         return sorted(factorization)
-
-
-print(ShorFactoringAlgorithm.qubitFactoringQuantum(2808))
