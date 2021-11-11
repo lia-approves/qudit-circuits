@@ -86,7 +86,7 @@ class ShorFactoringAlgorithm:
         if a not in [2, (b - 1) / 2, (b - 1) / 2 + 1, b - 4, b - 2]:
             raise ValueError("'a' must be 2, %i, %i, %i, or %i" %
                              (((b - 1) / 2), ((b - 1) / 2 + 1), b - 4, b - 2))
-        matrix_of_qubits = qcm.get_qubit_matrix(4, 0, 2, 4, 6)
+        matrix_of_qubits = qcm.get_zero_qubit_matrix(4)
         a = int(a)
         for iteration in range(power):
             if a in [2, b - 2]:
@@ -136,7 +136,7 @@ class ShorFactoringAlgorithm:
         qc = np.zeros([n_count, n_count])
         for q in range(n_count):
             qc[q][q] += \
-                (ShorFactoringAlgorithm.c_amodb(a, int(2 ** q), num))[q][q]
+                (ShorFactoringAlgorithm.c_amodb(a, int(2**q), num))[q][q]
         qubit_matrix = \
             np.dot(np.kron(qc, np.identity(
                 int(QFT_dagger.shape[0]/qc.shape[0]))), QFT_dagger)
@@ -243,16 +243,16 @@ class ShorFactoringAlgorithm:
                             print("ValueError: ", message)
                         continue
                     if period % 2 != 1:
-                        if (guessFactor ** (period / 2) + 1) % num != 0 and \
-                                (guessFactor ** (period / 2) - 1) % num != 0:
+                        if (guessFactor**(period / 2) + 1) % num != 0 and \
+                                (guessFactor**(period / 2) - 1) % num != 0:
                             factorization.append(int(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num)))
+                                int(guessFactor**(period / 2) + 1), num)))
                             factorization.append(int(FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num)))
+                                int(guessFactor**(period / 2) - 1), num)))
                             num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) + 1), num)
+                                int(guessFactor**(period / 2) + 1), num)
                             num /= FactorFuncs.gcd(
-                                int(guessFactor ** (period / 2) - 1), num)
+                                int(guessFactor**(period / 2) - 1), num)
                             if period == 2:
                                 factorization.append(int(FactorFuncs.gcd(
                                     int(guessFactor), num)))
@@ -275,3 +275,6 @@ class ShorFactoringAlgorithm:
         while 1 in factorization:
             factorization.remove(1)
         return sorted(factorization)
+
+
+print(ShorFactoringAlgorithm.qubitFactoringQuantum(2808))
