@@ -1,7 +1,7 @@
 """
 Shor Factoring Algorithm
 
-Simulates Shor's factoring algorithm on a classical machine.
+Simulates Shor's factoring algorithm on a classical machine.\n
 Shor's factoring algorithm finds the factors of a composite number.\n
 See for information about Shor's factoring algorithm from:\n
 * https://www.youtube.com/watch?v=lvTqbM5Dq4Q
@@ -27,7 +27,7 @@ __maintainer__ = "Alex Lim"
 
 class ShorFactoringAlgorithm:
     """
-    Simulates Shor's factoring algorithm on a classical machine.
+    Simulates Shor's factoring algorithm on a classical machine.\n
     Shor's factoring algorithm finds the factors of a composite number.\n
     See for information about Shor's factoring algorithm from:\n
     * https://www.youtube.com/watch?v=lvTqbM5Dq4Q
