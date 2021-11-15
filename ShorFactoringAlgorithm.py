@@ -205,7 +205,8 @@ class ShorFactoringAlgorithm:
     @staticmethod
     def ShorFactoringAlgorithmClassical(
             num: int, limit: int = 1000, show_errors: bool = False,
-            func: type(FactorFuncs.period) = FactorFuncs.period, *argv):
+            func: type(FactorFuncs.period) = FactorFuncs.period, *argv,
+            quick_compute: bool = False):
         """
         Applies Shor's factoring algorithm using classical operations
 
@@ -221,6 +222,9 @@ class ShorFactoringAlgorithm:
             MiscFunctions.FactoringFunctions.period
         :type func: function
         :param argv: The addition arguments to pass to func
+        :param quick_compute: Whether to compute less factors with faster
+            runtime, defaults to False
+        :type quick_compute: bool
         :return: The factorization of num
         :rtype: list
         """
@@ -287,10 +291,11 @@ class ShorFactoringAlgorithm:
                                     int(guessFactor), num)))
                                 num /= FactorFuncs.gcd(
                                     int(guessFactor), num)
-                            # factorization.append(int(num))
-                            # while 1 in factorization:
-                            #     factorization.remove(1)
-                            # return sorted(factorization)
+                            if quick_compute:
+                                factorization.append(int(num))
+                                while 1 in factorization:
+                                    factorization.remove(1)
+                                return sorted(factorization)
             except OverflowError as message:
                 if show_errors:
                     print("Unable to find factor #"
