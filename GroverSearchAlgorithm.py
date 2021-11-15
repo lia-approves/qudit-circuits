@@ -59,7 +59,7 @@ class GroverSearchAlgorithm:
 
     @staticmethod
     def qubit_search(qubit_0: np.ndarray,
-            *argv: int, numQubits: int = 0,
+                     *argv: int, numQubits: int = 0,
                      oracle: np.ndarray = qcm.CZ_gate):
         """
         Applies Grover's searching algorithm to any number of qubits
