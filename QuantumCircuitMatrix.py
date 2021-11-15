@@ -299,7 +299,7 @@ class QuantumCircuitMatrix:
         :type numQubits: int
         :param argv: The qubits to switch from 0 to 1, defaults to 0
         :type argv: int
-        :return: The square matrix for qubits
+        :return: The column vector for qubits
         :rtype: np.ndarray
         """
         numBits = QuantumCircuitMatrix.qubits_to_bits(numQubits)
@@ -341,7 +341,7 @@ class QuantumCircuitMatrix:
         :type numQubits: int
         :param argv: The qubits to switch from 0 to 1
         :type argv: int
-        :return: The square matrix for qubits
+        :return: The column vector for qubits
         :rtype: np.ndarray
         """
         qubit_matrix = np.zeros([1, numQubits * 2])
@@ -350,6 +350,26 @@ class QuantumCircuitMatrix:
         for i in range(numQubits):
             if qubit_matrix[0, 2 * i + 1] == 0:
                 qubit_matrix[0, 2 * i] = 1
+        if len(argv) == 0:
+            qubit_matrix[0, 0] = 1
+        return qubit_matrix.T
+
+    @staticmethod
+    def get_zero_ket_qubit_vector(numQubits: int, *argv: int):
+        """
+        creates a column vector ket representation for qubits with each state
+        set to 0 by default
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1
+        :type argv: int
+        :return: The column vector for qubits
+        :rtype: np.ndarray
+        """
+        qubit_matrix = np.zeros([1, numQubits * 2])
+        for args in argv:
+            qubit_matrix[0, args] = 1
         if len(argv) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix.T
@@ -460,8 +480,36 @@ class QuantumCircuitMatrix:
                     swapped_qubit_matrix = np.dot(
                         swapped_qubit_matrix, swapping_gate_matrix)
         swapped_qubit_matrix = np.diag(swapped_qubit_matrix)
-
         return swapped_qubit_matrix
+
+    @staticmethod
+    def reverse_quantum_not_gate_matrix(numQubits: int):
+        """
+        creates a quantum equivalent of the classical not gate
+        for any number of qubits
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :return: Pauli-X gate if numQubits=1,
+            CNOT gate if numQubits=2,
+            Toffoli gate if numQubits>2
+        :rtype: np.ndarray
+        """
+        if numQubits == 0:
+            return np.array([])
+        if numQubits == 1:
+            return QuantumCircuitMatrix.Pauli_X_gate
+        if numQubits == 2:
+            return np.kron(np.diag([0, 1]), np.identity(2)) + \
+                   np.kron(np.diag([1, 0]), QuantumCircuitMatrix.Pauli_X_gate)
+        q_not_gate_matrix = \
+            np.kron(
+                np.diag([0, 1]),
+                QuantumCircuitMatrix.identityGate(numQubits - 1)) + \
+            np.kron(
+                np.diag([1, 0]),
+                QuantumCircuitMatrix.quantum_not_gate_matrix(numQubits - 1))
+        return q_not_gate_matrix
 
     @staticmethod
     def convert_matrix_to_vector(qubit_matrix: np.ndarray):
@@ -474,7 +522,8 @@ class QuantumCircuitMatrix:
         if qubit_matrix.shape[1] == 1:
             return qubit_matrix
         qubit_vector = qubit_matrix.sum(axis=1)
-        return qubit_vector
+        qubit_vector = np.array([qubit_vector])
+        return qubit_vector.T
 
     @staticmethod
     def convert_vector_to_matrix(qubit_vector: np.ndarray):
