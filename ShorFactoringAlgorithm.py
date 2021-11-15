@@ -228,8 +228,19 @@ class ShorFactoringAlgorithm:
         while num % 2 == 0:
             factorization.append(2)
             num /= 2
+        while num % 5 == 0:
+            factorization.append(5)
+            num /= 5
         for i in range(limit):
             if num == 1:
+                factorization.append(int(num))
+                while 1 in factorization:
+                    factorization.remove(1)
+                return sorted(factorization)
+            if int(np.sqrt(num))**2 == num:
+                factorization.append(int(np.sqrt(num)))
+                factorization.append(int(np.sqrt(num)))
+                num /= int(np.sqrt(num))**2
                 factorization.append(int(num))
                 while 1 in factorization:
                     factorization.remove(1)
@@ -276,10 +287,10 @@ class ShorFactoringAlgorithm:
                                     int(guessFactor), num)))
                                 num /= FactorFuncs.gcd(
                                     int(guessFactor), num)
-                            factorization.append(int(num))
-                            while 1 in factorization:
-                                factorization.remove(1)
-                            return sorted(factorization)
+                            # factorization.append(int(num))
+                            # while 1 in factorization:
+                            #     factorization.remove(1)
+                            # return sorted(factorization)
             except OverflowError as message:
                 if show_errors:
                     print("Unable to find factor #"

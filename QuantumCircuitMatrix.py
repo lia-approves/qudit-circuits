@@ -375,6 +375,42 @@ class QuantumCircuitMatrix:
         return qubit_matrix.T
 
     @staticmethod
+    def get_Hadamard_matrix(numQubits: int, *argv: int):
+        """
+        creates a square matrix for qubits in a |+⟩ state
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1, must be in
+            range(numQubits)
+        :type argv: int
+        :return: The square matrix for qubits
+        :rtype: np.ndarray
+        """
+        qubit_matrix = np.zeros([numQubits*2, numQubits*2])
+        for i in range(numQubits*2):
+            qubit_matrix[i][i] += 1
+        for args in argv:
+            qubit_matrix[args * 2 + 1, args * 2 + 1] *= -1
+        return qubit_matrix / np.sqrt(2)
+
+    @staticmethod
+    def get_Hadamard_vector(numQubits: int, *argv: int):
+        """
+        creates a column vector for qubits in a |+⟩ state
+
+        :param numQubits: The number of entangled qubits
+        :type numQubits: int
+        :param argv: The qubits to switch from 0 to 1, must be in
+            range(numQubits)
+        :type argv: int
+        :return: The column vector for qubits
+        :rtype: np.ndarray
+        """
+        return QuantumCircuitMatrix.convert_matrix_to_vector(
+            QuantumCircuitMatrix.get_Hadamard_matrix(numQubits, *argv))
+
+    @staticmethod
     def quantum_not_gate_matrix(numQubits: int):
         """
         creates a quantum equivalent of the classical not gate
@@ -455,6 +491,7 @@ class QuantumCircuitMatrix:
         :return: A swapped qubit matrix
         :rtype: np.ndarray
         """
+        qubits = QuantumCircuitMatrix.convert_vector_to_matrix(qubits)
         swapped_qubit_matrix = np.zeros([qubits.shape[0]])
         for bits in range(qubits.shape[0]):
             swapped_qubit_matrix[bits] += qubits[bits][bits]
@@ -598,3 +635,9 @@ class QuantumCircuitMatrix:
             np.dot(np.kron(qc, np.identity(
                 int(QFT_dagger.shape[0] / qc.shape[0]))), QFT_dagger)
         return int(qubit_matrix.sum(0).sum(0).real / 4)
+
+
+# temp = QuantumCircuitMatrix.get_Hadamard_vector(2)
+# temp[2][0] += 100
+# print(temp)
+# print(temp.sum(0).sum(0))
