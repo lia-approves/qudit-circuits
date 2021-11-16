@@ -128,7 +128,9 @@ class FactoringFunctions:
     @staticmethod
     def gcd(x: int, y: int):
         """
-        Euclid's algorithm for computing the greatest common divisor
+        Euclid's algorithm for computing the greatest common divisor\n
+        See for information about Euclid's algorithm from:\n
+        * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
         :param x: A number with that has at least 1 factor in common with y
         :type x: int
@@ -147,7 +149,9 @@ class FactoringFunctions:
     @staticmethod
     def gcd_recursive(x: int, y: int):
         """
-        Euclid's algorithm for computing the greatest common divisor
+        Euclid's algorithm for computing the greatest common divisor\n
+        See for information about Euclid's algorithm from:\n
+        * https://en.wikipedia.org/wiki/Euclidean_algorithm
 
         :param x: A number with that has at least 1 factor in common with y
         :type x: int
