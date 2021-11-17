@@ -57,19 +57,6 @@ class MiscFunctions:
             i += 1
 
     @staticmethod
-    def varName(variable):
-        """
-        Gets the name of the variable
-
-        :param variable: Any variable
-        :return: The name of the variable
-        :rtype: str
-        """
-        for variableName, variableContents in globals().items():
-            if id(variable) == id(variableContents):
-                return variableName
-
-    @staticmethod
     def real_to_complex_matrix(real_matrix: np.ndarray):
         """
         Converts a real number matrix to a complex number matrix
@@ -129,8 +116,13 @@ class FactoringFunctions:
     def gcd(x: int, y: int):
         """
         Euclid's algorithm for computing the greatest common divisor\n
-        See for information about Euclid's algorithm from:\n
-        * https://en.wikipedia.org/wiki/Euclidean_algorithm
+        Further reading about Euclid's algorithm:\n
+        .. _Khan Academy: https://www.khanacademy.org/computing/
+            computer-science/cryptography/modarithmetic/a/
+            the-euclidean-algorithm
+        .. _Wikipedia: https://en.wikipedia.org/wiki/Euclidean_algorithm
+        * `Khan Academy`_
+        * `Wikipedia`_
 
         :param x: A number with that has at least 1 factor in common with y
         :type x: int
@@ -150,8 +142,13 @@ class FactoringFunctions:
     def gcd_recursive(x: int, y: int):
         """
         Euclid's algorithm for computing the greatest common divisor\n
-        See for information about Euclid's algorithm from:\n
-        * https://en.wikipedia.org/wiki/Euclidean_algorithm
+        Further reading about Euclid's algorithm:\n
+        .. _Khan Academy: https://www.khanacademy.org/computing/
+            computer-science/cryptography/modarithmetic/a/
+            the-euclidean-algorithm
+        .. _Wikipedia: https://en.wikipedia.org/wiki/Euclidean_algorithm
+        * `Khan Academy`_
+        * `Wikipedia`_
 
         :param x: A number with that has at least 1 factor in common with y
         :type x: int
@@ -167,6 +164,27 @@ class FactoringFunctions:
         if x % y == 0:
             return y
         return FactoringFunctions.gcd_recursive(y, x % y)
+
+    @staticmethod
+    def isqrt(num, debug: bool = False):
+        """
+        Newton's method for finding the integer square root of a number\n
+        Further reading about Newton's method:\n
+        .. _Wolfram MathWorld: https://mathworld.wolfram.com/NewtonsMethod.html
+        * `Wolfram MathWorld`_
+
+        :param num: The number to take the square root of
+        :type num: int
+        :return: The integer approximation of the square root of num
+        :rtype: int
+        """
+        num_upper_bound = num
+        num_lower_bound = (num_upper_bound + 1) // 2
+        while num_lower_bound < num_upper_bound:
+            num_upper_bound = num_lower_bound
+            num_lower_bound += num // num_upper_bound
+            num_lower_bound //= 2
+        return num_upper_bound
 
     @staticmethod
     def period(num: int, a: int, max_allowed_period: int = 2**8):
