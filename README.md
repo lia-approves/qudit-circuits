@@ -3,7 +3,7 @@
 ## Contents
 
 - [Acknowledgements](#Acknowledgements)
-- [BitOQSim Source](#BitOQSim Source)
+- [BitOQSim Source](#BitOQSim-Source)
 
 ## Acknowledgements:
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
@@ -20,7 +20,7 @@ and computing discrete logarithms.
 Thank you, Lia Yeh for giving me feedback on BitOQSim as well as giving me the
 opportunity to work on the qutrit research paper.
 
-## BitOQSim Source
+## BitOQSim Source:
 
 * [Quantum circuit matrices](QuantumCircuitMatrix.py)
 
