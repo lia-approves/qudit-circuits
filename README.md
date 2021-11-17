@@ -3,9 +3,18 @@
 ## Contents
 
 - [Acknowledgements](#Acknowledgements)
+- [Abstract](#Abstract)
+- [Background Information](#Background-Information)
 - [BitOQSim Source](#BitOQSim-Source)
+- [Completed Examples](#Completed-Examples)
+- [WIP Examples](#WIP-Examples)
+- [License and Notice](#License-and-Notice)
+- [Requirements](#Requirements)
+- [Documentation](#Documentation)
+- [Disclaimer](#Disclaimer)
+- [Further Reading](#Further-Reading)
 
-## Acknowledgements:
+## Acknowledgements
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
 encouraging me as well as for connecting me with experts in quantum computing
 as well as experts in numerous other fields.
@@ -19,6 +28,27 @@ and computing discrete logarithms.
 <br />
 Thank you, Lia Yeh for giving me feedback on BitOQSim as well as giving me the
 opportunity to work on the qutrit research paper.
+
+## Abstract
+
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is designed as a way to
+simulate quantum computers and quantum algorithms using classical computers.
+
+In order for the language to be more transparent and educationally useful,
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) uses matrices in order
+to simulate qubits and quantum gates in a way that is less esoteric than other
+high-level quantum simulators.  In testing,
+[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) has proven to be
+particularly useful in explaining how quantum gates function and how to build
+quantum circuits when compared with high-level gate and circuit
+implementations.
+
+## Background Information
+
+Qubits may be represented as square matrices, column vectors, row vectors,
+or a linear combination thereof.
+
+* [Quantum computing basic background information](BACKGROUND.md)
 
 ## BitOQSim Source
 
@@ -55,20 +85,6 @@ although not required.
 
 * [Required Python packages](requirement.txt)
 
-## Abstract
-
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is designed as a way to
-simulate quantum computers and quantum algorithms using classical computers.
-
-In order for the language to be more transparent and educationally useful,
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) uses matrices in order
-to simulate qubits and quantum gates in a way that is less esoteric than other
-high-level quantum simulators.  In testing,
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) has proven to be
-particularly useful in explaining how quantum gates function and how to build
-quantum circuits when compared with high-level gate and circuit
-implementations.
-
 ## Documentation
 
 [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is documented using
@@ -84,13 +100,21 @@ as its markup language.
 [Qiskit](https://qiskit.org/) implementations are included in order to be used
 as points of comparison.
 
-## Background Information
-
-Qubits may be represented as square matrices, column vectors, row vectors,
-or a linear combination thereof.
-
-* [Quantum computing basic background information](BACKGROUND.md)
-
 ## Further Reading
 
 Useful additional resources used are included as links when relevant.
+
+## Contribute
+
+Feel free to [open an issue](https://github.com/ccs-1l-f21/BitOQSim/issues/new)
+if you'd like to give me feedback or ask for features.
+
+If you'd like to contribute, feel free to fork this repository and open a pull
+request.
+
+## Credits
+
+Alex Lim
+
+[![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AlexLim-Pro)
+[![GitHub Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](alex@virtueware.com)
