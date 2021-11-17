@@ -1,10 +1,12 @@
 """
 Qiskit Shor Factoring Algorithm
 
-Simulates Shor's factoring algorithm on a classical machine using Qiskit.
-See for information from:\n
-* https://qiskit.org/textbook/ch-algorithms/index.html
-* https://youtu.be/mAHC1dWKNYE
+Simulates Shor's factoring algorithm on a classical machine using Qiskit.\n
+This code is a modified version built using the following resources:\n
+.. _Qiskit lectures: https://www.youtube.com/watch?v=mAHC1dWKNYE
+.. _Qiskit textbook: https://qiskit.org/textbook/ch-algorithms/index.html
+* `Qiskit lectures`_
+* `Qiskit textbook`_
 
 Author: Alex Lim
 
@@ -30,7 +32,8 @@ __maintainer__ = "Alex Lim"
 def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
                                         a: int = 7,
                                         n_count: int = 8,
-                                        drawCircuitDiagram: bool = False):
+                                        drawCircuitDiagram: bool = False,
+                                        pauseForCircuitDiagram: bool = False):
     """
     Uses Shor's factoring algorithm to compute the period
 
@@ -43,6 +46,9 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
     :param drawCircuitDiagram: Whether to draw the circuit diagram, defaults to
         False
     :type drawCircuitDiagram: bool
+    :param pauseForCircuitDiagram: Whether to halt the program for the circuit
+        diagram, defaults to False
+    :type pauseForCircuitDiagram: bool
     :return: The period, or 1 if an error occurs
     :rtype: int
     """
@@ -141,11 +147,11 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
     # and 4 qubits for U to act on
     qc = QuantumCircuit(n_count + 4, n_count)
 
-    # Initialize counting qubits in state |+>
+    # Initialize counting qubits in state |+⟩
     for q in range(n_count):
         qc.h(q)
 
-    # Initialize auxiliary register in state |1>
+    # Initialize auxiliary register in state |1⟩
     qc.x(3 + n_count)
     try:
         # Do controlled-U operations
@@ -192,9 +198,9 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
     if drawCircuitDiagram:
         qc.draw(output='mpl', filename='my_circuit.png')
         plt.show()
-
-        # # Temporarily halt program for diagram
-        # k = input("press close to exit")
+        if pauseForCircuitDiagram:
+            # Temporarily halts program for the circuit diagram
+            k = input("press anything to exit")
 
     guessList = list()
     for phase in measured_phases:
