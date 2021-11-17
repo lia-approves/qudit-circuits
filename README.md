@@ -1,5 +1,10 @@
 # BitOQSim
 
+## Contents
+
+- [Acknowledgements](#Acknowledgements)
+- [BitOQSim Source](#BitOQSim Source)
+
 ## Acknowledgements:
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
 encouraging me as well as for connecting me with experts in quantum computing
@@ -79,8 +84,13 @@ as its markup language.
 [Qiskit](https://qiskit.org/) implementations are included in order to be used
 as points of comparison.
 
-## See Also
+## Background Information
 
-Useful resources used are included as links when relevant; however, although it
-is recommended to look through the included resources, they are not required
-reading.
+Qubits may be represented as square matrices, column vectors, row vectors,
+or a linear combination thereof.
+
+* [Quantum computing basic background information](BACKGROUND.md)
+
+## Further Reading
+
+Useful additional resources used are included as links when relevant.
