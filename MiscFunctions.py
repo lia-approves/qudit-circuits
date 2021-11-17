@@ -166,7 +166,7 @@ class FactoringFunctions:
         return FactoringFunctions.gcd_recursive(y, x % y)
 
     @staticmethod
-    def isqrt(num, debug: bool = False):
+    def isqrt(num):
         """
         Newton's method for finding the integer square root of a number\n
         Further reading about Newton's method:\n
