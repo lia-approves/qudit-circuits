@@ -13,7 +13,7 @@
 - [Documentation](#Documentation)
 - [Disclaimer](#Disclaimer)
 - [Further Reading](#Further-Reading)
-- [Contribue](#Contribute)
+- [Contribute](#Contribute)
 - [Credits](#Credits)
 
 ## Acknowledgements
@@ -51,6 +51,8 @@ Qubits may be represented as square matrices, column vectors, row vectors,
 or a linear combination thereof.
 
 * [Quantum computing basic background information](BACKGROUND.md)
+
+* [CWI Thesis On Quantum Computation Theory](https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf)
 
 ## BitOQSim Source
 
@@ -119,4 +121,4 @@ request.
 Alex Lim
 
 [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AlexLim-Pro)
-[![GitHub Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](alex@virtueware.com)
+![alex@virtueware.com](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)
