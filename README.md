@@ -16,6 +16,8 @@
 - [Contribute](#Contribute)
 - [Credits](#Credits)
 
+***
+
 ## Acknowledgements
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
 encouraging me as well as for connecting me with experts in quantum computing
