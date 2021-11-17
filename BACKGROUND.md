@@ -13,4 +13,4 @@ Equivalently, qubits can be represented using vectors.
 
 **Example**
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}|A⟩=(⟨A|)^T=\begin{pmatrix}A_1\\A_2\\.\\.\\.\\A_n\end{pmatrix}">
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}|A\rangle=(\langle A|)^T=\begin{pmatrix}A_1\\A_2\\.\\.\\.\\A_n\end{pmatrix}">
