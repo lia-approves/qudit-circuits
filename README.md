@@ -13,6 +13,8 @@
 - [Documentation](#Documentation)
 - [Disclaimer](#Disclaimer)
 - [Further Reading](#Further-Reading)
+- [Contribue](#Contribute)
+- [Credits](#Credits)
 
 ## Acknowledgements
 Thank you, Professor Phillip Conrad and Professor Richert Wang for advising and
