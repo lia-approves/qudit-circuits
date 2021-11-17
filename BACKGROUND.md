@@ -92,7 +92,9 @@ which is the matrix generalization of the vector
 <details>
     <summary>Example bras</summary>
 
-<img src="https://latex.codecogs.com/png.latex?\dpi{300} \bg_black \tiny\newline\langle A|\otimes\langle B|\otimes\langle C|=(\langle A|\otimes\langle B|)\otimes\langle C|=\langle AB|\otimes\langle C|=\langle ABC|\newline\langle A|\otimes\langle B|\otimes\langle C|=\langle A|\otimes(\langle B|\otimes\langle C|)=\langle A|\otimes\langle BC|=\langle ABC|">
+![Kronecker product example](https://latex.codecogs.com/png.latex?\dpi{300}%20\bg_black%20\tiny\newline\langle%20A|\otimes\langle%20B|\otimes\langle%20C|=(\langle%20A|\otimes\langle%20B|)\otimes\langle%20C|=\langle%20AB|\otimes\langle%20C|=\langle%20ABC|\newline\langle%20A|\otimes\langle%20B|\otimes\langle%20C|=\langle%20A|\otimes(\langle%20B|\otimes\langle%20C|)=\langle%20A|\otimes\langle%20BC|=\langle%20ABC|)
+
+[comment]: <> (<img src="https://latex.codecogs.com/png.latex?\dpi{300} \bg_black \tiny\newline\langle A|\otimes\langle B|\otimes\langle C|=&#40;\langle A|\otimes\langle B|&#41;\otimes\langle C|=\langle AB|\otimes\langle C|=\langle ABC|\newline\langle A|\otimes\langle B|\otimes\langle C|=\langle A|\otimes&#40;\langle B|\otimes\langle C|&#41;=\langle A|\otimes\langle BC|=\langle ABC|">)
 
 ⊕ is the
 [Kronecker product](https://mathworld.wolfram.com/KroneckerProduct.html)
@@ -154,3 +156,26 @@ which is the matrix generalization of the vector
 <img src="https://latex.codecogs.com/png.latex?\dpi{300} \bg_black \tiny \langle111|=\langle1|\otimes\langle1|\otimes\langle1|=\langle11|\otimes\langle1|=\begin{pmatrix}0&0&0&1\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&0&0&0&0&0&0&1\end{pmatrix}">
 
 </details>
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
