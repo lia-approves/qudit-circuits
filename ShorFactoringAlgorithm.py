@@ -6,8 +6,18 @@ Shor's factoring algorithm finds the factors of a composite number in
 polynomial time O(log(:math:`N`)). For reference, using the classical Dixon's
 factoring method, the optimal complexity is O(exp(
 :math:`2\\sqrt{2}\\sqrt{log(n)log(log(n))}`)).\n
-See for information about Shor's factoring algorithm from:\n
-* https://www.youtube.com/watch?v=lvTqbM5Dq4Q
+Further reading about Shor's factoring algorithm:\n
+.. _Chemistry LibreTexts: https://chem.libretexts.org/Bookshelves/Physical_and_
+    Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_
+    Theoretical_Chemistry)/Quantum_Tutorials_(Rioux)/Quantum_Teleportation/
+    381%3A_Factoring_Using_Shor's_Quantum_Algorithm
+.. _minutephysics: https://www.youtube.com/watch?v=lvTqbM5Dq4Q
+.. _Qiskit Lectures: https://www.youtube.com/watch?v=mAHC1dWKNYE
+.. _Wikipedia: https://en.wikipedia.org/wiki/Shor%27s_algorithm
+* `Chemistry LibreTexts`_
+* `minutephysics`_
+* `Qiskit Lectures`_
+* `Wikipedia`_
 
 Author: Alex Lim
 
@@ -35,8 +45,18 @@ class ShorFactoringAlgorithm:
     polynomial time O(log(:math:`N`)). For reference, using the classical
     Dixon's factoring method, the optimal complexity is O(exp(
     :math:`2\\sqrt{2}\\sqrt{log(n)log(log(n))}`)).\n
-    See for information about Shor's factoring algorithm from:\n
-    * https://www.youtube.com/watch?v=lvTqbM5Dq4Q
+    Further reading about Shor's factoring algorithm:\n
+    .. _Chemistry LibreTexts: https://chem.libretexts.org/Bookshelves/Physical_
+        and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_
+        and_Theoretical_Chemistry)/Quantum_Tutorials_(Rioux)/Quantum_
+        Teleportation/381%3A_Factoring_Using_Shor's_Quantum_Algorithm
+    .. _minutephysics: https://www.youtube.com/watch?v=lvTqbM5Dq4Q
+    .. _Qiskit Lectures: https://www.youtube.com/watch?v=mAHC1dWKNYE
+    .. _Wikipedia: https://en.wikipedia.org/wiki/Shor%27s_algorithm
+    * `Chemistry LibreTexts`_
+    * `minutephysics`_
+    * `Qiskit Lectures`_
+    * `Wikipedia`_
     """
     @staticmethod
     def c_amod15(a, power):
@@ -52,7 +72,7 @@ class ShorFactoringAlgorithm:
         :rtype: np.ndarray
         """
         if a not in [2, 7, 8, 11, 13]:
-            raise ValueError("'a' must be 2,7,8,11 or 13")
+            raise ValueError("'a' must be 2, 7, 8, 11 or 13")
         matrix_of_qubits = qcm.get_zero_qubit_matrix(4)
         a = int(a)
         for iteration in range(power):
@@ -162,7 +182,14 @@ class ShorFactoringAlgorithm:
                              n_count: int = 8,
                              drawCircuitDiagram: bool = False):
         """
-        Applies Shor's factoring algorithm to qubits
+        Simulates Shor's factoring algorithm on a classical machine using
+        Qiskit.\n
+        This code is a modified version built using the following resources:\n
+        .. _Qiskit textbook: https://qiskit.org/textbook/ch-algorithms/index.
+            html
+        .. _Qiskit lectures: https://www.youtube.com/watch?v=mAHC1dWKNYE
+        * `Qiskit textbook`_
+        * `Qiskit lectures`_
 
         :param num: A natural number
         :type num: int
@@ -241,7 +268,7 @@ class ShorFactoringAlgorithm:
                 while 1 in factorization:
                     factorization.remove(1)
                 return sorted(factorization)
-            if int(np.sqrt(num))**2 == num:
+            if FactorFuncs.isqrt(num)**2 == num:
                 factorization.append(int(np.sqrt(num)))
                 factorization.append(int(np.sqrt(num)))
                 num /= int(np.sqrt(num))**2
