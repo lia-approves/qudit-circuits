@@ -110,10 +110,10 @@ class ShorFactoringAlgorithm:
 
         :param a: Some number co-prime with b
         :type a: int
-        :param b: The modulus
-        :type b: int
         :param power: The number of times to repeat the controlled-U gate
         :type power: int
+        :param b: The modulus
+        :type b: int
         :return: Controlled multiplication gate
         :rtype: np.ndarray
         """
