@@ -2,9 +2,12 @@
 Quantum Circuit Matrix
 
 Creates quantum circuits in the form of matrices.\n
-See for information about quantum logic gates from:\n
-* https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf
-* https://en.wikipedia.org/wiki/Quantum_logic_gate
+Further reading about quantum logic gates:\n
+.. _CWI Thesis On Quantum Computation Theory: https://www.illc.uva.nl/Research/
+    Publications/Dissertations/DS-2002-04.text.pdf
+.. _Wikipedia: https://en.wikipedia.org/wiki/Quantum_logic_gate
+* `CWI Thesis On Quantum Computation Theory`_
+* `Wikipedia`_
 
 Author: Alex Lim
 
@@ -26,9 +29,12 @@ __maintainer__  = "Alex Lim"
 class QuantumCircuitMatrix:
     """
     Creates quantum circuits in the form of matrices.\n
-    See for information about quantum logic gates from:\n
-    * https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf
-    * https://en.wikipedia.org/wiki/Quantum_logic_gate
+    Further reading about quantum logic gates:\n
+    .. _CWI Thesis On Quantum Computation Theory: https://www.illc.uva.nl/
+        Research/Publications/Dissertations/DS-2002-04.text.pdf
+    .. _Wikipedia: https://en.wikipedia.org/wiki/Quantum_logic_gate
+    * `CWI Thesis On Quantum Computation Theory`_
+    * `Wikipedia`_
     """
     def __init__(self):
         """Initializes quantum gates for use in this class"""
@@ -58,7 +64,7 @@ class QuantumCircuitMatrix:
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
         to a rotation around the x, y, and z axes of the Bloch sphere
-        by pi radians.
+        by :math:`\pi` radians.
 
         :return: Pauli-X gate for a single qubit (equivalent to the NOT gate
             for classical computers with respect to the standard basis |0⟩,
@@ -75,7 +81,7 @@ class QuantumCircuitMatrix:
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
         to a rotation around the x, y, and z axes of the Bloch sphere
-        by pi radians.
+        by :math:`\pi` radians.
 
         :return: Pauli-Y gate for a single qubit
         :rtype: np.ndarray
@@ -90,7 +96,7 @@ class QuantumCircuitMatrix:
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
         to a rotation around the x, y, and z axes of the Bloch sphere
-        by pi radians.
+        by :math:`\pi` radians.
 
         :return: Pauli-Z gate for a single qubit
         :rtype: np.ndarray
@@ -146,7 +152,7 @@ class QuantumCircuitMatrix:
     and act on a single qubit.\n
     The Pauli X, Y, and Z equate, respectively,
     to a rotation around the x, y, and z axes of the Bloch sphere
-    by pi radians.
+    by :math:`\pi` radians.
     """
 
     # Pauli-Y gate for a single qubit
@@ -158,7 +164,7 @@ class QuantumCircuitMatrix:
     and act on a single qubit.\n
     The Pauli X, Y, and Z equate, respectively,
     to a rotation around the x, y, and z axes of the Bloch sphere
-    by pi radians.
+    by :math:`\pi` radians.
     """
 
     # Pauli-Z gate for a single qubit
@@ -170,7 +176,7 @@ class QuantumCircuitMatrix:
     and act on a single qubit.\n
     The Pauli X, Y, and Z equate, respectively,
     to a rotation around the x, y, and z axes of the Bloch sphere
-    by pi radians.
+    by :math:`\pi` radians.
     """
 
     # CNOT gate (or controlled Pauli-X gate)
@@ -196,7 +202,7 @@ class QuantumCircuitMatrix:
     @staticmethod
     def Hadamard_Gate():
         """
-        Represents a rotation of pi about the axis
+        Represents a rotation of :math:`\pi` about the axis
         :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
         Maps the basis states
         (ie: creates a superposition if given a basis state):\n
@@ -214,7 +220,7 @@ class QuantumCircuitMatrix:
                               [1, -1]]) / np.sqrt(2)
     """
     Hadamard gate for a single qubit\n
-    Represents a rotation of pi about the axis
+    Represents a rotation of :math:`\pi` about the axis
     :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
     Maps the basis states
     (ie: creates a superposition if given a basis state):\n
@@ -635,9 +641,3 @@ class QuantumCircuitMatrix:
             np.dot(np.kron(qc, np.identity(
                 int(QFT_dagger.shape[0] / qc.shape[0]))), QFT_dagger)
         return int(qubit_matrix.sum(0).sum(0).real / 4)
-
-
-# temp = QuantumCircuitMatrix.get_Hadamard_vector(2)
-# temp[2][0] += 100
-# print(temp)
-# print(temp.sum(0).sum(0))
