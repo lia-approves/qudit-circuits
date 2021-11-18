@@ -56,7 +56,7 @@ which is the matrix generalization of the vector
 <br />
 
 [comment]: <> (10 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle10|=\langle0|\otimes\langle1|=\begin{pmatrix}0&1\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&1&0\end{pmatrix})
+![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle10|=\langle1|\otimes\langle0|=\begin{pmatrix}0&1\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&1&0\end{pmatrix})
 <br />
 
 [comment]: <> (11 bra)
@@ -118,7 +118,7 @@ which is the matrix generalization of the vector
 <br />
 
 [comment]: <> (10 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|10\rangle=|0\rangle\otimes|1\rangle=\begin{pmatrix}0\\\1\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\1\\\0\end{pmatrix})
+![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|10\rangle=|1\rangle\otimes|0\rangle=\begin{pmatrix}0\\\1\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\1\\\0\end{pmatrix})
 <br />
 
 [comment]: <> (11 ket)
