@@ -73,7 +73,7 @@ class ShorFactoringAlgorithm:
         """
         if a not in [2, 7, 8, 11, 13]:
             raise ValueError("'a' must be 2, 7, 8, 11 or 13")
-        matrix_of_qubits = qcm.get_zero_qubit_matrix(4)
+        matrix_of_qubits = qcm.get_qubit_matrix(4)
         a = int(a)
         for iteration in range(power):
             if a in [2, 13]:
@@ -96,11 +96,10 @@ class ShorFactoringAlgorithm:
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 0, 2)
             if a in [7, 11, 13]:
-                matrix_of_qubits = np.dot(matrix_of_qubits, np.kron(
+                matrix_of_qubits = np.dot(np.kron(
                     qcm.Pauli_X_gate, np.identity(
-                        int(matrix_of_qubits.shape[0]/qcm.Pauli_X_gate.shape[0]
-                            ))
-                ))
+                        int(matrix_of_qubits.shape[0] / qcm.Pauli_X_gate.shape[
+                            0]))), matrix_of_qubits)
         return matrix_of_qubits
 
     @staticmethod
@@ -120,7 +119,7 @@ class ShorFactoringAlgorithm:
         if a not in [2, (b - 1) / 2, (b - 1) / 2 + 1, b - 4, b - 2]:
             raise ValueError("'a' must be 2, %i, %i, %i, or %i" %
                              (((b - 1) / 2), ((b - 1) / 2 + 1), b - 4, b - 2))
-        matrix_of_qubits = qcm.get_zero_qubit_matrix(4)
+        matrix_of_qubits = qcm.get_qubit_matrix(4)
         a = int(a)
         for iteration in range(power):
             if a in [2, b - 2]:
@@ -143,10 +142,10 @@ class ShorFactoringAlgorithm:
                 matrix_of_qubits = qcm.\
                     applied_swap_gate(matrix_of_qubits, 0, 2)
             if a in [(b - 1) / 2, b - 4, b - 2]:
-                matrix_of_qubits = np.dot(matrix_of_qubits, np.kron(
+                matrix_of_qubits = np.dot(np.kron(
                     qcm.Pauli_X_gate, np.identity(
                         int(matrix_of_qubits.shape[0] / qcm.Pauli_X_gate.shape[
-                            0]))))
+                            0]))), matrix_of_qubits)
         return matrix_of_qubits
 
     @staticmethod
@@ -232,7 +231,7 @@ class ShorFactoringAlgorithm:
     @staticmethod
     def ShorFactoringAlgorithmClassical(
             num: int, limit: int = 1000, show_errors: bool = False,
-            func: type(FactorFuncs.period) = FactorFuncs.period, *argv,
+            func: type(FactorFuncs.period) = FactorFuncs.period, *args,
             quick_compute: bool = False):
         """
         Applies Shor's factoring algorithm using classical operations
@@ -248,7 +247,7 @@ class ShorFactoringAlgorithm:
             defaults to a classical period finding function at
             MiscFunctions.FactoringFunctions.period
         :type func: function
-        :param argv: The addition arguments to pass to func
+        :param args: The addition arguments to pass to func
         :param quick_compute: Whether to compute less factors with faster
             runtime, defaults to False
         :type quick_compute: bool
@@ -290,8 +289,8 @@ class ShorFactoringAlgorithm:
                         func_params = list()
                         func_params.append(num)
                         func_params.append(guessFactor)
-                        for args in argv:
-                            func_params.append(args)
+                        for argv in args:
+                            func_params.append(argv)
                         func_params = tuple(func_params)
                         period = func(*func_params)
                     except ValueError as message:
