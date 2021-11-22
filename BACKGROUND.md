@@ -15,11 +15,21 @@ Equivalently, qubits can be represented using vectors.
 
 **Bra Notation**
 
-![bra notation](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle%20A|=(|A\rangle)^\dagger=\begin{pmatrix}A_1&A_2&\cdots&A_n\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle%20A\right|=\left(\left|A\right\rangle\right)^\dagger=\begin{pmatrix}A_1%26A_2%26\cdots%26A_n\end{pmatrix}">
+
+</div>
+
 
 **Ket Notation**
 
-![ket notation](https://latex.codecogs.com/gif.latex?%5Cdpi%7B300%7D%5Cbg_black%5Ctiny%7CA%5Crangle%3D%28%5Clangle%7BA%7D%7C%29%5E%5Cdagger%3D%5Cbegin%7Bpmatrix%7DA_1%5C%5CA_2%5C%5C%5Cvdots%5C%5CA_n%5Cend%7Bpmatrix%7D)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|A\right\rangle=\left(\left\langle{A}\right|\right)^\dagger=\begin{pmatrix}A_1\\A_2\\%0A\vdots\\A_n\end{pmatrix}">
+
+</div>
+
 
 † is the
 [Hermitian conjugate (or the conjugate transpose)](https://mathworld.wolfram.com/ConjugateTranspose.html)
@@ -37,123 +47,276 @@ which is the matrix generalization of the vector
 <details>
     <summary>Example bras</summary>
 
-![Kronecker product example](https://latex.codecogs.com/png.latex?\dpi{300}%20\bg_black%20\tiny\newline\langle%20A|\otimes\langle%20B|\otimes\langle%20C|=(\langle%20A|\otimes\langle%20B|)\otimes\langle%20C|=\langle%20AB|\otimes\langle%20C|=\langle%20ABC|\newline\langle%20A|\otimes\langle%20B|\otimes\langle%20C|=\langle%20A|\otimes(\langle%20B|\otimes\langle%20C|)=\langle%20A|\otimes\langle%20BC|=\langle%20ABC|)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\newline\left\langle%20A\right|\otimes\left\langle%20B\right|\otimes\left\langle%20C\right|=(\left\langle%20A\right|\otimes\left\langle%20B\right|)\otimes\left\langle%20C\right|=\left\langle%20AB\right|\otimes\left\langle%20C\right|=\left\langle%20ABC\right|\newline\left\langle%20A\right|\otimes\left\langle%20B\right|\otimes\left\langle%20C\right|=\left\langle%20A\right|\otimes(\left\langle%20B\right|\otimes\left\langle%20C\right|)=\left\langle%20A\right|\otimes\left\langle%20BC\right|=\left\langle%20ABC\right|">
+
+</div>
+
 
 [comment]: <> (0 bra)
-![0 bra](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle0|=\begin{pmatrix}1&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle0\right|=\begin{pmatrix}1%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (1 bra)
-![1 bra](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle1|=\begin{pmatrix}0&1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle1\right|=\begin{pmatrix}0%261\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (00 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle00|=\langle0|\otimes\langle0|=\begin{pmatrix}1&0\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}1&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle00\right|=\left\langle0\right|\otimes\left\langle0\right|=\begin{pmatrix}1%260\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}1%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (01 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle01|=\langle0|\otimes\langle1|=\begin{pmatrix}1&0\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&1&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle01\right|=\left\langle0\right|\otimes\left\langle1\right|=\begin{pmatrix}1%260\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%261%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (10 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle10|=\langle1|\otimes\langle0|=\begin{pmatrix}0&1\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&1&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle10\right|=\left\langle1\right|\otimes\left\langle0\right|=\begin{pmatrix}0%261\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}0%260%261%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (11 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle11|=\langle1|\otimes\langle1|=\begin{pmatrix}0&1\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&0&0&1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle11\right|=\left\langle1\right|\otimes\left\langle1\right|=\begin{pmatrix}0%261\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%260%260%261\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (000 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle000|=\langle0|\otimes\langle0|\otimes\langle0|=\langle00|\otimes\langle0|=\begin{pmatrix}1&0&0&0\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}1&0&0&0&0&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle000\right|=\left\langle0\right|\otimes\left\langle0\right|\otimes\left\langle0\right|=\left\langle00\right|\otimes\left\langle0\right|=\begin{pmatrix}1%260%260%260\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}1%260%260%260%260%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (001 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle001|=\langle0|\otimes\langle0|\otimes\langle1|=\langle00|\otimes\langle1|=\begin{pmatrix}1&0&0&0\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&1&0&0&0&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle001\right|=\left\langle0\right|\otimes\left\langle0\right|\otimes\left\langle1\right|=\left\langle00\right|\otimes\left\langle1\right|=\begin{pmatrix}1%260%260%260\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%261%260%260%260%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (010 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle010|=\langle0|\otimes\langle1|\otimes\langle0|=\langle01|\otimes\langle0|=\begin{pmatrix}0&1&0&0\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&1&0&0&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle010\right|=\left\langle0\right|\otimes\left\langle1\right|\otimes\left\langle0\right|=\left\langle01\right|\otimes\left\langle0\right|=\begin{pmatrix}0%261%260%260\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}0%260%261%260%260%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (011 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle011|=|0\rangle\otimes\langle1|\otimes\langle1|=\langle01|\otimes\langle1|=\begin{pmatrix}0&1&0&0\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&0&0&1&0&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle011\right|=\left|0\right\rangle\otimes\left\langle1\right|\otimes\left\langle1\right|=\left\langle01\right|\otimes\left\langle1\right|=\begin{pmatrix}0%261%260%260\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%260%260%261%260%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (100 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle100|=\langle1|\otimes\langle0|\otimes\langle0|=\langle10|\otimes\langle0|=\begin{pmatrix}0&0&1&0\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&0&0&1&0&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle100\right|=\left\langle1\right|\otimes\left\langle0\right|\otimes\left\langle0\right|=\left\langle10\right|\otimes\left\langle0\right|=\begin{pmatrix}0%260%261%260\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}0%260%260%260%261%260%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (101 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle101|=\langle1|\otimes\langle0|\otimes\langle1|=\langle10|\otimes\langle1|=\begin{pmatrix}0&0&1&0\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&0&0&0&0&1&0&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle101\right|=\left\langle1\right|\otimes\left\langle0\right|\otimes\left\langle1\right|=\left\langle10\right|\otimes\left\langle1\right|=\begin{pmatrix}0%260%261%260\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%260%260%260%260%261%260%260\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (110 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle110|=\langle1|\otimes\langle1|\otimes\langle0|=\langle11|\otimes\langle0|=\begin{pmatrix}0&0&0&1\end{pmatrix}\otimes\begin{pmatrix}1&0\end{pmatrix}=\begin{pmatrix}0&0&0&0&0&0&1&0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle110\right|=\left\langle1\right|\otimes\left\langle1\right|\otimes\left\langle0\right|=\left\langle11\right|\otimes\left\langle0\right|=\begin{pmatrix}0%260%260%261\end{pmatrix}\otimes\begin{pmatrix}1%260\end{pmatrix}=\begin{pmatrix}0%260%260%260%260%260%261%260\end{pmatrix}">
+
+</div>
+
+<br />
 
 [comment]: <> (111 bra)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny\langle111|=\langle1|\otimes\langle1|\otimes\langle1|=\langle11|\otimes\langle1|=\begin{pmatrix}0&0&0&1\end{pmatrix}\otimes\begin{pmatrix}0&1\end{pmatrix}=\begin{pmatrix}0&0&0&0&0&0&0&1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle111\right|=\left\langle1\right|\otimes\left\langle1\right|\otimes\left\langle1\right|=\left\langle11\right|\otimes\left\langle1\right|=\begin{pmatrix}0%260%260%261\end{pmatrix}\otimes\begin{pmatrix}0%261\end{pmatrix}=\begin{pmatrix}0%260%260%260%260%260%260%261\end{pmatrix}">
+
+</div>
 
 </details>
+
+<br />
 
 [comment]: <> (Example kets)
 <details>
     <summary>Example kets</summary>
 
-![ABC kets](https://latex.codecogs.com/png.fffjjlatex?\dpi{300}\bg_black\tiny\newline|A\rangle\otimes|B\rangle\otimes|C\rangle=(|A\rangle\otimes|B\rangle)\otimes|C\rangle=|AB\rangle\otimes|C\rangle=|ABC\rangle\newline|A\rangle\otimes|B\rangle\otimes|C\rangle=|A\rangle\otimes(|B\rangle\otimes|C\rangle)=|A\rangle\otimes|BC\rangle=|ABC\rangle)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\newline\left|A\right\rangle\otimes\left|B\right\rangle\otimes\left|C\right\rangle=(\left|A\right\rangle\otimes\left|B\right\rangle)\otimes\left|C\right\rangle=\left|AB\right\rangle\otimes\left|C\right\rangle=\left|ABC\right\rangle\newline\left|A\right\rangle\otimes\left|B\right\rangle\otimes\left|C\right\rangle=\left|A\right\rangle\otimes(\left|B\right\rangle\otimes\left|C\right\rangle)=\left|A\right\rangle\otimes\left|BC\right\rangle=\left|ABC\right\rangle">
+
+</div>
+
+<br />
 
 [comment]: <> (0 ket)
-![0 ket](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|0\rangle=\begin{pmatrix}1\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|0\right\rangle=\begin{pmatrix}1\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (1 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|1\rangle=\begin{pmatrix}0\\\1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|1\right\rangle=\begin{pmatrix}0\\%0A1\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (00 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|00\rangle=|0\rangle\otimes|0\rangle=\begin{pmatrix}1\\\0\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}1\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|00\right\rangle=\left|0\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}1\\%0A0\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}1\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (01 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|01\rangle=|0\rangle\otimes|1\rangle=\begin{pmatrix}1\\\0\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\1\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|01\right\rangle=\left|0\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}1\\%0A0\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A1\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (10 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|10\rangle=|1\rangle\otimes|0\rangle=\begin{pmatrix}0\\\1\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\1\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|10\right\rangle=\left|1\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}0\\%0A1\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A1\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (11 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|11\rangle=|1\rangle\otimes|1\rangle=\begin{pmatrix}0\\\1\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|11\right\rangle=\left|1\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}0\\%0A1\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A1\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (000 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|000\rangle=|0\rangle\otimes|0\rangle\otimes|0\rangle=|00\rangle\otimes|0\rangle=\begin{pmatrix}1\\\0\\\0\\\0\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}1\\\0\\\0\\\0\\\0\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|000\right\rangle=\left|0\right\rangle\otimes\left|0\right\rangle\otimes\left|0\right\rangle=\left|00\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}1\\%0A0\\%0A0\\%0A0\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}1\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (001 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|001\rangle=|0\rangle\otimes|0\rangle\otimes|1\rangle=|00\rangle\otimes|1\rangle=\begin{pmatrix}1\\\0\\\0\\\0\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\1\\\0\\\0\\\0\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|001\right\rangle=\left|0\right\rangle\otimes\left|0\right\rangle\otimes\left|1\right\rangle=\left|00\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}1\\%0A0\\%0A0\\%0A0\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A1\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (010 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|010\rangle=|0\rangle\otimes|1\rangle\otimes|0\rangle=|01\rangle\otimes|0\rangle=\begin{pmatrix}0\\\1\\\0\\\0\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\1\\\0\\\0\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|010\right\rangle=\left|0\right\rangle\otimes\left|1\right\rangle\otimes\left|0\right\rangle=\left|01\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}0\\%0A1\\%0A0\\%0A0\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A1\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (011 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|011\rangle=|0\rangle\otimes|1\rangle\otimes|1\rangle=|01\rangle\otimes|1\rangle=\begin{pmatrix}0\\\1\\\0\\\0\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\1\\\0\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|011\right\rangle=\left|0\right\rangle\otimes\left|1\right\rangle\otimes\left|1\right\rangle=\left|01\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}0\\%0A1\\%0A0\\%0A0\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A1\\%0A0\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (100 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|100\rangle=|1\rangle\otimes|0\rangle\otimes|0\rangle=|10\rangle\otimes|0\rangle=\begin{pmatrix}0\\\0\\\1\\\0\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\0\\\1\\\0\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|100\right\rangle=\left|1\right\rangle\otimes\left|0\right\rangle\otimes\left|0\right\rangle=\left|10\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}0\\%0A0\\%0A1\\%0A0\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A0\\%0A1\\%0A0\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (101 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|101\rangle=|1\rangle\otimes|0\rangle\otimes|1\rangle=|10\rangle\otimes|1\rangle=\begin{pmatrix}0\\\0\\\1\\\0\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\0\\\0\\\1\\\0\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|101\right\rangle=\left|1\right\rangle\otimes\left|0\right\rangle\otimes\left|1\right\rangle=\left|10\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}0\\%0A0\\%0A1\\%0A0\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A1\\%0A0\\%0A0\end{pmatrix}">
+
+</div>
+
 <br />
 
 [comment]: <> (110 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|110\rangle=|1\rangle\otimes|1\rangle\otimes|0\rangle=|11\rangle\otimes|0\rangle=\begin{pmatrix}0\\\0\\\0\\\1\end{pmatrix}\otimes\begin{pmatrix}1\\\0\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\0\\\0\\\0\\\1\\\0\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|110\right\rangle=\left|1\right\rangle\otimes\left|1\right\rangle\otimes\left|0\right\rangle=\left|11\right\rangle\otimes\left|0\right\rangle=\begin{pmatrix}0\\%0A0\\%0A0\\%0A1\end{pmatrix}\otimes\begin{pmatrix}1\\%0A0\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A1\\%0A0\end{pmatrix}">
+
+</div>
+
 
 [comment]: <> (111 ket)
-![000000](https://latex.codecogs.com/png.latex?\dpi{300}\bg_black\tiny|111\rangle=|1\rangle\otimes|1\rangle\otimes|1\rangle=|11\rangle\otimes|1\rangle=\begin{pmatrix}0\\\0\\\0\\\1\end{pmatrix}\otimes\begin{pmatrix}0\\\1\end{pmatrix}=\begin{pmatrix}0\\\0\\\0\\\0\\\0\\\0\\\0\\\1\end{pmatrix})
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|111\right\rangle=\left|1\right\rangle\otimes\left|1\right\rangle\otimes\left|1\right\rangle=\left|11\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}0\\%0A0\\%0A0\\%0A1\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A1\end{pmatrix}">
+
+</div>
+
 
 </details>
 
