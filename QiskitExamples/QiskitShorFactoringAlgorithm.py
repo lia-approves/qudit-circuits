@@ -22,7 +22,7 @@ import pandas as pd
 from qiskit import Aer, assemble, circuit, QuantumCircuit, transpile
 from qiskit.visualization import plot_histogram
 
-from MiscFunctions import FactoringFunctions
+from src.MiscFunctions import FactoringFunctions
 
 __author__ = "Alex Lim"
 __credits__ = "Alex Lim"
@@ -196,7 +196,7 @@ def QiskitShorFactoringAlgorithmGeneral(num: int = 15,
     print(df)
 
     if drawCircuitDiagram:
-        qc.draw(output='mpl', filename='my_circuit.png')
+        qc.draw(output='mpl', filename='../my_circuit.png')
         plt.show()
         if pauseForCircuitDiagram:
             # Temporarily halts program for the circuit diagram

@@ -29,9 +29,8 @@ from random import randint
 
 import numpy as np
 
-import QiskitShorFactoringAlgorithm as QkSFA
-from MiscFunctions import FactoringFunctions as FactorFuncs
-from QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
+from src.MiscFunctions import FactoringFunctions as FactorFuncs
+from src.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
 
 __author__ = "Alex Lim"
 __credits__ = "Alex Lim"
@@ -204,6 +203,7 @@ class ShorFactoringAlgorithm:
         :return: The factorization of num
         :rtype: list
         """
+        from QiskitExamples import QiskitShorFactoringAlgorithm as QkSFA
         return ShorFactoringAlgorithm.ShorFactoringAlgorithmClassical(
             num, limit, show_errors,
             QkSFA.QiskitShorFactoringAlgorithmGeneral, n_count,

@@ -58,23 +58,32 @@ or a linear combination thereof.
 
 ## BitOQSim Source
 
-* [Quantum circuit matrices](QuantumCircuitMatrix.py)
+* [Source](src)
 
-* [Miscellaneous functions](MiscFunctions.py)
+* [Quantum circuit matrices](src/QuantumCircuitMatrix.py)
+
+* [Miscellaneous functions](src/MiscFunctions.py)
 
 ## Completed Examples
 
-* [Grover's search algorithm in BitOQSim](GroverSearchAlgorithm.py)
+* [Completed Examples](CompletedExamples)
 
-* [Shor's factoring algorithm in BitOQSim](ShorFactoringAlgorithm.py)
+* [Grover's search algorithm in BitOQSim](CompletedExamples/GroverSearchAlgorithm.py)
 
-* [Shor's factoring algorithm in Qiskit](QiskitShorFactoringAlgorithm.py)
+* [Shor's factoring algorithm in BitOQSim](CompletedExamples/ShorFactoringAlgorithm.py)
 
-## WIP Examples
+* [Discrete logarithm problem in BitOQSim](CompletedExamples/ComputingDiscreteLogarithms.py)
+
+## Qiskit Examples
+
+* [Qiskit Examples](QiskitExamples)
+
+* [Shor's factoring algorithm in Qiskit](QiskitExamples/QiskitShorFactoringAlgorithm.py)
+
+## WIP
 
 * [Testing file](TestFile.py)
 
-* [Discrete logarithm problem in BitOQSim](ComputingDiscreteLogarithms.py)
 
 ## License and Notice
 
