@@ -21,6 +21,7 @@ Equivalently, qubits can be represented using vectors.
 
 </div>
 
+<br />
 
 **Ket Notation**
 
@@ -47,14 +48,18 @@ which is the matrix generalization of the vector
 <details>
     <summary>Example bras</summary>
 
+<br />
+
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
 <img src="https://render.githubusercontent.com/render/math?math=\color{white}\newline\left\langle%20A\right|\otimes\left\langle%20B\right|\otimes\left\langle%20C\right|=(\left\langle%20A\right|\otimes\left\langle%20B\right|)\otimes\left\langle%20C\right|=\left\langle%20AB\right|\otimes\left\langle%20C\right|=\left\langle%20ABC\right|\newline\left\langle%20A\right|\otimes\left\langle%20B\right|\otimes\left\langle%20C\right|=\left\langle%20A\right|\otimes(\left\langle%20B\right|\otimes\left\langle%20C\right|)=\left\langle%20A\right|\otimes\left\langle%20BC\right|=\left\langle%20ABC\right|">
 
 </div>
 
+<br />
 
 [comment]: <> (0 bra)
+
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
 <img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle0\right|=\begin{pmatrix}1%260\end{pmatrix}">
@@ -183,6 +188,9 @@ which is the matrix generalization of the vector
 <br />
 
 [comment]: <> (Example kets)
+
+<br />
+
 <details>
     <summary>Example kets</summary>
 
