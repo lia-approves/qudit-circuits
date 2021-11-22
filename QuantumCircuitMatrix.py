@@ -48,6 +48,113 @@ class QuantumCircuitMatrix:
         self.H1_gate = None
         self.swap_gate = None
 
+    @staticmethod
+    def get_bra(*args: int or np.ndarray or str or bytes,
+                qubit_string: str = "",
+                show_errors: bool = False):
+        """
+        Gets the specified bra
+
+        :param args: An individual bra
+        :type args: int or np.ndarray or str or bytes
+        :param qubit_string: A string of qubit bras
+        :type qubit_string: str
+        :param show_errors: Whether to show or ignore errors, defaults to False
+        :type show_errors: bool
+        :return: The combined bra, defaults to ⟨0|
+        :rtype: np.ndarray
+        """
+        zero_bra = np.array([[1, 0]])  # ⟨0|
+        one_bra = np.array([[0, 1]])   # ⟨1|
+        bra = 1
+        if len(args) != 0:
+            for argv in args[::-1]:
+                if isinstance(argv, np.ndarray):
+                    bra = np.kron(argv, bra)
+                elif not isinstance(argv, int):
+                    try:
+                        argv = int(argv)
+                    except TypeError as message:
+                        if show_errors:
+                            print("TypeError: ", message)
+                        continue
+                if isinstance(argv, int):
+                    if argv == 0:
+                        bra = np.kron(zero_bra, bra)
+                    elif argv == 1:
+                        bra = np.kron(one_bra, bra)
+                    else:
+                        num_qubits = 1
+                        while QuantumCircuitMatrix.\
+                                qubits_to_bits(num_qubits) < argv:
+                            num_qubits += 1
+                        bra = np.kron(QuantumCircuitMatrix.
+                                      get_qubit_vector(num_qubits, argv), bra)
+        if len(qubit_string) != 0:
+            qubits = list(int(q) for q in qubit_string)
+            braTEMP = QuantumCircuitMatrix.get_bra(*tuple(qubits))
+            if bra == 1:
+                bra = braTEMP
+            else:
+                bra = np.kron(braTEMP, bra)
+        if bra == 1:
+            return zero_bra
+        return bra
+
+    @staticmethod
+    def get_ket(*args: int or np.ndarray or str or bytes,
+                qubit_string: str = "",
+                show_errors: bool = False):
+        """
+        Gets the specified ket
+
+        :param args: An individual ket
+        :type args: int or np.ndarray or str or bytes
+        :param qubit_string: A string of qubit kets
+        :type qubit_string: str
+        :param show_errors: Whether to show or ignore errors, defaults to False
+        :type show_errors: bool
+        :return: The combined ket, defaults to |0⟩
+        :rtype: np.ndarray
+        """
+        zero_ket = np.array([[1, 0]])  # |0⟩
+        one_ket = np.array([[0, 1]])   # |1⟩
+        ket = 1
+        if len(args) != 0:
+            for argv in args[::-1]:
+                if isinstance(argv, np.ndarray):
+                    ket = np.kron(argv, ket)
+                elif not isinstance(argv, int):
+                    try:
+                        argv = int(argv)
+                    except TypeError as message:
+                        if show_errors:
+                            print("TypeError: ", message)
+                        continue
+                if isinstance(argv, int):
+                    if argv == 0:
+                        ket = np.kron(zero_ket, ket)
+                    elif argv == 1:
+                        ket = np.kron(one_ket, ket)
+                    else:
+                        num_qubits = 1
+                        while QuantumCircuitMatrix. \
+                                qubits_to_bits(num_qubits) < argv:
+                            num_qubits += 1
+                        ket = np.kron(QuantumCircuitMatrix.
+                                      get_qubit_vector(num_qubits, argv),
+                                      ket)
+        if len(qubit_string) != 0:
+            qubits = list(int(q) for q in qubit_string)
+            ketTEMP = QuantumCircuitMatrix.get_ket(*tuple(qubits))
+            if ket == 1:
+                ket = ketTEMP
+            else:
+                ket = np.kron(ketTEMP, ket)
+        if ket == 1:
+            return zero_ket
+        return ket
+
     ### Identity gates ###
     """The identity gate is the identity matrix"""
     # Identity gate for a single qubit
@@ -277,144 +384,144 @@ class QuantumCircuitMatrix:
         return np.identity(numBits)
 
     @staticmethod
-    def get_qubit_matrix(numQubits: int, *argv: int):
+    def get_qubit_matrix(numQubits: int, *args: int):
         """
         creates a square matrix for qubits
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1, defaults to 0
-        :type argv: int
+        :param args: The qubits to switch from 0 to 1, defaults to 0
+        :type args: int
         :return: The square matrix for qubits
         :rtype: np.ndarray
         """
         numBits = QuantumCircuitMatrix.qubits_to_bits(numQubits)
         qubit_matrix = np.zeros([numBits, numBits])
-        for args in argv:
-            qubit_matrix[args, args] = 1
-        if len(argv) == 0:
+        for argv in args:
+            qubit_matrix[argv, argv] = 1
+        if len(args) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix
 
     @staticmethod
-    def get_qubit_vector(numQubits: int, *argv: int):
+    def get_qubit_vector(numQubits: int, *args: int):
         """
         creates a column vector for qubits
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1, defaults to 0
-        :type argv: int
+        :param args: The qubits to switch from 0 to 1, defaults to 0
+        :type args: int
         :return: The column vector for qubits
         :rtype: np.ndarray
         """
         numBits = QuantumCircuitMatrix.qubits_to_bits(numQubits)
         qubit_matrix = np.zeros([1, numBits])
-        for args in argv:
-            qubit_matrix[0, args] = 1
-        if len(argv) == 0:
+        for argv in args:
+            qubit_matrix[0, argv] = 1
+        if len(args) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix.T
 
     @staticmethod
-    def get_zero_qubit_matrix(numQubits: int, *argv: int):
+    def get_zero_qubit_matrix(numQubits: int, *args: int):
         """
         creates a square matrix for qubits with each state set to 0 by default
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1
-        :type argv: int
+        :param args: The qubits to switch from 0 to 1
+        :type args: int
         :return: The square matrix for qubits
         :rtype: np.ndarray
         """
         qubit_matrix = np.zeros([numQubits * 2, numQubits * 2])
-        for args in argv:
-            qubit_matrix[args, args] = 1
+        for argv in args:
+            qubit_matrix[argv, argv] = 1
         for i in range(numQubits):
             if qubit_matrix[2 * i+1, 2 * i + 1] == 0:
                 qubit_matrix[2 * i, 2 * i] = 1
-        if len(argv) == 0:
+        if len(args) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix
 
     @staticmethod
-    def get_zero_qubit_vector(numQubits: int, *argv: int):
+    def get_zero_qubit_vector(numQubits: int, *args: int):
         """
         creates a column vector for qubits with each state set to 0 by default
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1
-        :type argv: int
+        :param args: The qubits to switch from 0 to 1
+        :type args: int
         :return: The column vector for qubits
         :rtype: np.ndarray
         """
         qubit_matrix = np.zeros([1, numQubits * 2])
-        for args in argv:
-            qubit_matrix[0, args] = 1
+        for argv in args:
+            qubit_matrix[0, argv] = 1
         for i in range(numQubits):
             if qubit_matrix[0, 2 * i + 1] == 0:
                 qubit_matrix[0, 2 * i] = 1
-        if len(argv) == 0:
+        if len(args) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix.T
 
     @staticmethod
-    def get_zero_ket_qubit_vector(numQubits: int, *argv: int):
+    def get_zero_ket_qubit_vector(numQubits: int, *args: int):
         """
         creates a column vector ket representation for qubits with each state
         set to 0 by default
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1
-        :type argv: int
+        :param args: The qubits to switch from 0 to 1
+        :type args: int
         :return: The column vector for qubits
         :rtype: np.ndarray
         """
         qubit_matrix = np.zeros([1, numQubits * 2])
-        for args in argv:
-            qubit_matrix[0, args] = 1
-        if len(argv) == 0:
+        for argv in args:
+            qubit_matrix[0, argv] = 1
+        if len(args) == 0:
             qubit_matrix[0, 0] = 1
         return qubit_matrix.T
 
     @staticmethod
-    def get_Hadamard_matrix(numQubits: int, *argv: int):
+    def get_Hadamard_matrix(numQubits: int, *args: int):
         """
         creates a square matrix for qubits in a |+⟩ state
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1, must be in
+        :param args: The qubits to switch from 0 to 1, must be in
             range(numQubits)
-        :type argv: int
+        :type args: int
         :return: The square matrix for qubits
         :rtype: np.ndarray
         """
         qubit_matrix = np.zeros([numQubits*2, numQubits*2])
         for i in range(numQubits*2):
             qubit_matrix[i][i] += 1
-        for args in argv:
-            qubit_matrix[args * 2 + 1, args * 2 + 1] *= -1
+        for argv in args:
+            qubit_matrix[argv * 2 + 1, argv * 2 + 1] *= -1
         return qubit_matrix / np.sqrt(2)
 
     @staticmethod
-    def get_Hadamard_vector(numQubits: int, *argv: int):
+    def get_Hadamard_vector(numQubits: int, *args: int):
         """
         creates a column vector for qubits in a |+⟩ state
 
         :param numQubits: The number of entangled qubits
         :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1, must be in
+        :param args: The qubits to switch from 0 to 1, must be in
             range(numQubits)
-        :type argv: int
+        :type args: int
         :return: The column vector for qubits
         :rtype: np.ndarray
         """
         return QuantumCircuitMatrix.convert_matrix_to_vector(
-            QuantumCircuitMatrix.get_Hadamard_matrix(numQubits, *argv))
+            QuantumCircuitMatrix.get_Hadamard_matrix(numQubits, *args))
 
     @staticmethod
     def quantum_not_gate_matrix(numQubits: int):
@@ -484,24 +591,28 @@ class QuantumCircuitMatrix:
         return inv(matrix)
 
     @staticmethod
-    def applied_swap_gate(qubits: np.ndarray, *argv: int):
+    def applied_swap_gate(qubits: np.ndarray, *args: int):
         """
         Applies the swap gate to qubits
 
         :param qubits: A matrix of qubits
         :type qubits: np.ndarray
-        :param argv: Specified qubits to apply swap gate to, must be a multiple
+        :param args: Specified qubits to apply swap gate to, must be a multiple
             of 2 because swap gate will apply to every pair of two, must not
             have the same number more than once
-        :type argv: int
+        :type args: int
         :return: A swapped qubit matrix
         :rtype: np.ndarray
         """
-        qubits = QuantumCircuitMatrix.convert_vector_to_matrix(qubits)
-        swapped_qubit_matrix = np.zeros([qubits.shape[0]])
-        for bits in range(qubits.shape[0]):
-            swapped_qubit_matrix[bits] += qubits[bits][bits]
-        if len(argv) == 0:
+        vector_start = False
+        if qubits.shape[1] == 1:
+            vector_start = True
+            swapped_qubit_matrix = qubits
+        else:
+            swapped_qubit_matrix = np.zeros([qubits.shape[0]])
+            for bits in range(qubits.shape[0]):
+                swapped_qubit_matrix[bits] += qubits[bits][bits]
+        if len(args) == 0:
             swapped_qubit_matrix = np.dot(
                 swapped_qubit_matrix,
                 np.kron(
@@ -511,9 +622,9 @@ class QuantumCircuitMatrix:
                 ))
         else:
             swapping_gate_matrix = np.identity(qubits.shape[0])
-            for args in range(int(len(argv)/2)):
-                qubit_0 = argv[args]
-                qubit_1 = argv[args+1]
+            for argv in range(int(len(args)/2)):
+                qubit_0 = args[argv]
+                qubit_1 = args[argv+1]
                 if swapping_gate_matrix[qubit_0*2+1][qubit_0*2+1] != 0 and \
                         swapping_gate_matrix[qubit_1*2][qubit_1*2] != 0:
                     swapping_gate_matrix[qubit_0*2+1][qubit_0*2+1] -= 1
@@ -522,6 +633,8 @@ class QuantumCircuitMatrix:
                     swapping_gate_matrix[qubit_1*2][qubit_0*2+1] += 1
                     swapped_qubit_matrix = np.dot(
                         swapped_qubit_matrix, swapping_gate_matrix)
+        if vector_start:
+            return swapped_qubit_matrix
         swapped_qubit_matrix = np.diag(swapped_qubit_matrix)
         return swapped_qubit_matrix
 
@@ -584,48 +697,48 @@ class QuantumCircuitMatrix:
         return qubit_matrix
 
     @staticmethod
-    def print_qubits(*argv: np.ndarray):
+    def print_qubits(*args: np.ndarray):
         """
         Prints the dimensions and matrices of qubits
 
-        :param argv: The qubits to print in order (starting at 0)
-        :type argv: np.ndarray
+        :param args: The qubits to print in order (starting at 0)
+        :type args: np.ndarray
         """
         np.set_printoptions(linewidth=np.inf)
         i = 0
-        for args in argv:
-            print("qubit " + str(i) + " dimensions: " + str(args.shape))
+        for argv in args:
+            print("qubit " + str(i) + " dimensions: " + str(argv.shape))
             print("qubit " + str(i) + ":")
-            print(args)
+            print(argv)
             print()
             i += 1
 
     @staticmethod
-    def print_truncated_qubits(numDecimals: int, *argv: np.ndarray):
+    def print_truncated_qubits(numDecimals: int, *args: np.ndarray):
         """
         Prints the dimensions and truncated matrices of qubits
 
         :param numDecimals: The number of decimals to truncate to
-        :param argv: The qubits to print in order (starting at 0)
-        :type argv: np.ndarray
+        :param args: The qubits to print in order (starting at 0)
+        :type args: np.ndarray
         """
         np.set_printoptions(linewidth=np.inf)
         i = 0
-        for args in argv:
-            print("qubit " + str(i) + " dimensions: " + str(args.shape))
+        for argv in args:
+            print("qubit " + str(i) + " dimensions: " + str(argv.shape))
             print("qubit " + str(i) + ":")
-            print(np.round(args, numDecimals))
+            print(np.round(argv, numDecimals))
             print()
             i += 1
 
     @staticmethod
-    def QuantumPeriodFinding(func, *argv, n_count: int = 8):
+    def QuantumPeriodFinding(func, *args, n_count: int = 8):
         """
         Uses Shor's period finding-algorithm to compute the period of func
 
         :param func: A quantum function
         :type func: function
-        :param argv: The arguments to pass to func
+        :param args: The arguments to pass to func
         :param n_count: The number of counting qubits
         :type n_count: int
         :return: The period
@@ -636,7 +749,7 @@ class QuantumCircuitMatrix:
         qc = np.zeros([n_count, n_count])
         for q in range(n_count):
             qc[q][q] += \
-                (func(argv))[q][q]
+                (func(args))[q][q]
         qubit_matrix = \
             np.dot(np.kron(qc, np.identity(
                 int(QFT_dagger.shape[0] / qc.shape[0]))), QFT_dagger)
