@@ -7,7 +7,7 @@
 - [Background Information](#Background-Information)
 - [BitOQSim Source](#BitOQSim-Source)
 - [Completed Examples](#Completed-Examples)
-- [WIP Examples](#WIP-Examples)
+- [WIP](#WIP)
 - [License and Notice](#License-and-Notice)
 - [Requirements](#Requirements)
 - [Documentation](#Documentation)
@@ -68,6 +68,8 @@ or a linear combination thereof.
 
 * [Completed Examples](CompletedExamples)
 
+* [Testing file](TestFile.py)
+
 * [Grover's search algorithm in BitOQSim](CompletedExamples/GroverSearchAlgorithm.py)
 
 * [Shor's factoring algorithm in BitOQSim](CompletedExamples/ShorFactoringAlgorithm.py)
@@ -82,8 +84,7 @@ or a linear combination thereof.
 
 ## WIP
 
-* [Testing file](TestFile.py)
-
+* [Work in Progress](WIP)
 
 ## License and Notice
 
