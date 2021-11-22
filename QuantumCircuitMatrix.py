@@ -117,8 +117,10 @@ class QuantumCircuitMatrix:
         :return: The combined ket, defaults to |0⟩
         :rtype: np.ndarray
         """
-        zero_ket = np.array([[1, 0]])  # |0⟩
-        one_ket = np.array([[0, 1]])   # |1⟩
+        zero_ket = np.array([[1],
+                             [0]])  # |0⟩
+        one_ket = np.array([[0],
+                            [1]])   # |1⟩
         ket = 1
         if len(args) != 0:
             for argv in args[::-1]:
