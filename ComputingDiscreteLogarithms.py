@@ -100,7 +100,7 @@ class ComputingDiscreteLogarithms:
         raise ValueError("Unable to compute the prime power")
 
     @staticmethod
-    def sqm(a:int, b: int, modulus: int):
+    def sqm(a: int, b: int, modulus: int):
         """
         Squares and multiplies then applies modulus
 
@@ -128,6 +128,8 @@ class ComputingDiscreteLogarithms:
         """
         Calculates the subgroup congruence
 
+        :param generator: The generator of a group G
+        :type generator: int
         :param prime_factor: A prime factor of group_order
         :type prime_factor: int
         :param modulus: The original modulus
@@ -155,7 +157,7 @@ class ComputingDiscreteLogarithms:
 
     @staticmethod
     def BruteForceDiscreteLog(generator: int, modulus: int, cipher: int,
-                              maxPower: int = 1000):
+                              max_power: int = 1000):
         """
         Computes the power of the generator using brute force
 
@@ -165,20 +167,20 @@ class ComputingDiscreteLogarithms:
         :type modulus: int
         :param cipher: The cipher
         :type cipher: int
-        :param maxPower: The max power of a group G
-        :type maxPower: int
+        :param max_power: The max power of a group G
+        :type max_power: int
         :return: The power the generator is raised to, or 0 if greater than
             maxPower
         :rtype: int
         """
-        for k in range(maxPower):
+        for k in range(max_power):
             if (generator ** k) % modulus == cipher:
                 return k
         return 0
 
     @staticmethod
     def DiscreteLogQuantum(generator: int, modulus: int, cipher: int,
-                           group_order: int = None, maxPower: int = 1000):
+                           group_order: int = None, max_power: int = 1000):
         """
         Computes the prime power of the generator using quantum subroutines
 
@@ -190,8 +192,8 @@ class ComputingDiscreteLogarithms:
         :type cipher: int
         :param group_order: The order of cylic group G
         :type group_order: int
-        :param maxPower: The max power of a group G
-        :type maxPower: int
+        :param max_power: The max power of a group G
+        :type max_power: int
         :return: The prime power the generator is raised to, or 0 if greater
             than maxPower
         :rtype: int
@@ -200,13 +202,12 @@ class ComputingDiscreteLogarithms:
             group_order = ComputingDiscreteLogarithms.group_order(generator,
                                                                   modulus)
         prime_factorization = ShorFA.qubitFactoringQuantum(group_order,
-                                                           limit=maxPower)
-        remainders = list(ComputingDiscreteLogarithms.\
-            subgrp_cong(generator, prime_factor, modulus, cipher, group_order)
+                                                           limit=max_power)
+        remainders = list(ComputingDiscreteLogarithms.subgrp_cong(
+            generator, prime_factor, modulus, cipher, group_order)
                           for prime_factor in prime_factorization)
         while 2 in prime_factorization:
             remainders.pop(prime_factorization.index(2))
             prime_factorization.pop(prime_factorization.index(2))
         return FactorFuncs.Chinese_remainder_theorem(remainders,
                                                      prime_factorization)
-
