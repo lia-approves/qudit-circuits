@@ -19,7 +19,7 @@ import math
 
 import numpy as np
 
-from MiscFunctions import MiscFunctions as Misc
+from src.MiscFunctions import MiscFunctions as Misc
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
