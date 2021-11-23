@@ -4,12 +4,17 @@
 
 - [Qubit Notation](#Qubit-Notation)
 
+- [Bloch Sphere](#Bloch-Sphere)
+
+- [Quantum Logic Gate Notation](#Quantum-Logic-Gate-Notation)
+
 ***
 
 ## Qubit Notation
 
 Qubits can be represented using
-[bra-ket notation](https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Quantum_Mechanics/03._The_Tools_of_Quantum_Mechanics/Bra-Ket_Notation).
+[bra-ket notation](https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Quantum_Mechanics/03._The_Tools_of_Quantum_Mechanics/Bra-Ket_Notation)
+(or Dirac notation)
 
 Equivalently, qubits can be represented using vectors.
 
@@ -328,6 +333,169 @@ which is the matrix generalization of the vector
 
 </details>
 
+<br />
+
+## Bloch Sphere
+<div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg">
+</div>
+
+The [Bloch sphere](https://mathworld.wolfram.com/BlochSphere.html)
+is the unit sphere shown above with the qubit |Ψ⟩=a|0⟩+b|1⟩ represented as the
+point (0, Φ).
+
+The [Bloch sphere](https://en.wikipedia.org/wiki/Bloch_sphere)
+is a geometrical representation of the pure state space of a qubit.
+
+## Quantum Logic Gate Notation
+
+Further reading about quantum logic gates:
+
+- [CWI Thesis On Quantum Computation Theory](https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf)
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Quantum_logic_gate)
+
+<div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Quantum_Logic_Gates.png">
+</div>
+
+<br/>
+
+<details>
+    <summary>Identity Gate</summary>
+
+The identity gate is a gate that leaves the quantum state unchanged.
+
+The identity gate can be represented in matrix form as the
+[identity matrix](https://mathworld.wolfram.com/IdentityMatrix.html).
+
+</details>
+
+<br/>
+
+<details>
+    <summary>Pauli Gates</summary>
+
+The [Pauli gates (X, Y, Z)](https://en.wikipedia.org/wiki/Quantum_logic_gate#Pauli_gates_(X,Y,Z))
+are the three Pauli matrices and act on a single qubit.
+
+The Pauli X, Y, and Z equate, respectively, to a rotation around the
+x, y, and z axes of the
+[Bloch sphere](#Bloch-Sphere)
+by π radians.
+
+<details>
+    <summary>Pauli X Gate</summary>
+
+The
+[Pauli X gate](https://www.quantum-inspire.com/kbase/pauli-x/)
+is a single-qubit rotation through π radians around the x-axis of the
+[Bloch sphere](#Bloch-Sphere).
+
+The
+[Pauli X gate](https://en.wikipedia.org/wiki/Quantum_logic_gate#Pauli_gates_(X,Y,Z))
+(sometimes called a bit-flip) is equivalent to the
+[NOT gate](https://en.wikipedia.org/wiki/Inverter_(logic_gate))
+for classical computers with respect to the standard basis |0⟩, |1⟩.
+
+</details>
+
+<details>
+    <summary>Pauli Y Gate</summary>
+
+The
+[Pauli Y gate](https://www.quantum-inspire.com/kbase/pauli-y/)
+is a single-qubit rotation through π radians around the y-axis of the
+[Bloch sphere](#Bloch-Sphere).
+
+The
+[Pauli Y gate](https://en.wikipedia.org/wiki/Quantum_logic_gate#Pauli_gates_(X,Y,Z))
+maps |0⟩ to i|1⟩ and |1⟩ to -i|0⟩.
+
+</details>
+
+<details>
+    <summary>Pauli Z Gate</summary>
+
+The
+[Pauli Z gate](https://www.quantum-inspire.com/kbase/pauli-z/)
+is a single-qubit rotation through π radians around the z-axis of the
+[Bloch sphere](#Bloch-Sphere).
+
+The
+[Pauli Z gate](https://en.wikipedia.org/wiki/Quantum_logic_gate#Pauli_gates_(X,Y,Z))
+(sometimes called the phase-flip) maps |0⟩ to |0⟩ and |1⟩ to -|1⟩.
+
+</details>
+
+</details>
+
+<br/>
+
+<details>
+    <summary>CNOT Gate</summary>
+
+The
+[CNOT gate](https://www.quantum-inspire.com/kbase/cnot/)
+is a two-qubit operation with the first qubit referred to as the control qubit
+and the second qubit referred to as the target qubit. The CNOT gate performs a
+Pauli-X gate on the target qubit when the control qubit is in state |1⟩.
+
+The
+[CNOT gate (or controlled Pauli-X gate)](https://en.wikipedia.org/wiki/Quantum_logic_gate#Controlled_gates)
+maps the basis states |a,b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
+
+</details>
+
+<br/>
+
+<details>
+    <summary>Hadamard Gate</summary>
+
+The Hadamard gate represents a rotation of π about the axis
+
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\frac{\hat{x}%20%2B\hat{z}}{\sqrt{2}}">
+
+</div>
+
+at the Bloch sphere.
+
+The [Hadamard gate](https://en.wikipedia.org/wiki/Quantum_logic_gate#Hadamard_gate)
+maps the basis states (ie: creates a superposition if given a basis state):
+
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|0\right\rangle ⟼ \frac{\left|0\right\rangle%20%2B\left|1\right\rangle}{\sqrt{2}}">
+
+</div>
+
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|1\right\rangle ⟼ \frac{\left|0\right\rangle-\left|1\right\rangle}{\sqrt{2}}">
+
+</div>
+
+</details>
+
+<br/>
+
+<details>
+    <summary>H1 Gate</summary>
+
+The H1 gate is the Hadamard transofmration for a single qubit (or the Hermitian).
+
+</details>
+
+<br/>
+
+<details>
+    <summary>Swap Gate</summary>
+
+The [swap gate](https://www.quantum-inspire.com/kbase/swap/) swaps two qubits with respect to the basis |00⟩, |01⟩, |10⟩, |11⟩
+
+</details>
 
 
 
