@@ -24,7 +24,8 @@ Date of Initial Creation: November 1, 2021
 
 """
 
-from ShorFactoringAlgorithm import ShorFactoringAlgorithm as ShorFA
+from CompletedExamples.ShorFactoringAlgorithm\
+    import ShorFactoringAlgorithm as ShorFA
 from src.MiscFunctions import FactoringFunctions as FactorFuncs
 
 __author__ = "Alex Lim"
