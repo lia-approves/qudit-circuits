@@ -450,13 +450,13 @@ maps the basis states (ie: creates a superposition if given a basis state):
 
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|0\right\rangle ⟼ \frac{\left|0\right\rangle%20%2B\left|1\right\rangle}{\sqrt{2}}">
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|0\right\rangle\longmapsto\frac{\left|0\right\rangle%20%2B\left|1\right\rangle}{\sqrt{2}}">
 
 </div>
 
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|1\right\rangle ⟼ \frac{\left|0\right\rangle-\left|1\right\rangle}{\sqrt{2}}">
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|1\right\rangle\longmapsto\frac{\left|0\right\rangle-\left|1\right\rangle}{\sqrt{2}}">
 
 </div>
 
