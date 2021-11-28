@@ -433,23 +433,6 @@ The
 <br/>
 
 <details>
-    <summary>CNOT Gate</summary>
-
-The
-[CNOT gate](https://www.quantum-inspire.com/kbase/cnot/)
-is a two-qubit operation with the first qubit referred to as the control qubit
-and the second qubit referred to as the target qubit. The CNOT gate performs a
-Pauli-X gate on the target qubit when the control qubit is in state |1⟩.
-
-The
-[CNOT gate (or controlled Pauli-X gate)](https://en.wikipedia.org/wiki/Quantum_logic_gate#Controlled_gates)
-maps the basis states |a,b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
-
-</details>
-
-<br/>
-
-<details>
     <summary>Hadamard Gate</summary>
 
 The Hadamard gate represents a rotation of π about the axis
@@ -484,7 +467,66 @@ maps the basis states (ie: creates a superposition if given a basis state):
 <details>
     <summary>H1 Gate</summary>
 
-The H1 gate is the Hadamard transofmration for a single qubit (or the Hermitian).
+The H1 gate is the Hadamard transformation for a single qubit (or the Hermitian).
+
+</details>
+
+<br/>
+
+<details>
+    <summary>Controlled Gates</summary>
+
+[Controlled gates](https://en.wikipedia.org/wiki/Quantum_logic_gate#Controlled_gates)
+use control qubits and target qubits.
+
+Control qubits act as a control for an operation applied to the target qubits.
+
+Controlled gates usually start **C-** such as the two-qubit the controlled NOT gate which is also known as the CNOT gate.
+
+Controlled gates can be extended to more than two qubits by having more control qubits as well as by having more target qubits.
+
+For example, the three-qubit Toffoli gate (or the CCNOT gate) has two control qubits and one target qubit.
+
+</details>
+
+<br/>
+
+<details>
+    <summary>CNOT Gate (CX Gate)</summary>
+
+The
+[CNOT gate (or CX gate)](https://www.quantum-inspire.com/kbase/cnot/)
+is a two-qubit operation with the first qubit referred to as the control qubit
+and the second qubit referred to as the target qubit. The CNOT gate performs a
+Pauli-X gate on the target qubit when the control qubit is in state |1⟩.
+
+The
+[CNOT gate (or controlled Pauli-X gate)](https://en.wikipedia.org/wiki/Quantum_logic_gate#Controlled_gates)
+maps the basis states |a, b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
+
+</details>
+
+<br/>
+
+<details>
+    <summary>CY Gate</summary>
+
+The CY gate (or controlled Pauli-Y gate) is a two-qubit operation with the
+first qubit referred to as the control qubit and the second qubit referred to
+as the target qubit. The CY gate performs a Pauli-Y gate on the target qubit
+when the control qubit is in state |1⟩.
+
+</details>
+
+<br/>
+
+<details>
+    <summary>CZ Gate</summary>
+
+The CZ gate (or controlled Pauli-Z gate) is a two-qubit operation with the
+first qubit referred to as the control qubit  and the second qubit referred to
+as the target qubit. The CZ gate performs a Pauli-Z gate on the target qubit
+when the control qubit is in state |1⟩.
 
 </details>
 
@@ -495,7 +537,38 @@ The H1 gate is the Hadamard transofmration for a single qubit (or the Hermitian)
 
 The [swap gate](https://www.quantum-inspire.com/kbase/swap/) swaps two qubits with respect to the basis |00⟩, |01⟩, |10⟩, |11⟩
 
+The swap gate addresses the following problem:
+
+Given two integers **a** and **b**, swap their values without using temporary variables.
+
+Using Python, this can be accomplished with the following code
+(where ^ is the XOR operator in Python):
+
+```
+a ^= b
+b ^= a
+a ^= b
+```
+
+Feel free to try the above Python code for yourself on
+[replit](https://replit.com/@AlexLim-Pro/IntegerSwap#main.py).
+
 </details>
+
+<br/>
+
+<details>
+    <summary>Toffoli Gate (CCNOT Gate)</summary>
+
+The
+[Toffoli gate (or the CCNOT gate) (or the CCX gate)](https://www.quantum-inspire.com/kbase/toffoli/)
+is a three-qubit operation with the first two qubits referred to as the control
+qubits and the third qubit referred to as the target qubit. The Toffoli gate
+performs a Pauli-X gate if and only if both control qubits are in state |1⟩.
+
+</details>
+
+<br/>
 
 
 
