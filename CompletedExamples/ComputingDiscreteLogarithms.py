@@ -3,11 +3,11 @@ Computing Discrete Logarithms
 
 Computes the discrete logarithm\n
 * The Discrete Logarithm Problem:
-        Let :math:`g` be a generator of the group :math:`\\mathbb{G}` of prime
-        order q.\n
+        Let :math:`g` be a generator of the group :math:`G`.\n
         Let :math:`c` be the cipher.\n
-        Given :math:`c=g^k\\in \\mathbb{G}`.\n
-        Find the value of :math:`k`.
+        Let :math:`p` be the prime modulus.\n
+        Given :math:`c=g^{k}` mod :math:`p\\in G`.\n
+        Find the value of :math:`k`.\n
 Further reading:\n
 .. _Estimating Gauss Sums and Calculating Discrete Logarithms:
     https://sites.cs.ucsb.edu/~vandam/gausssumdlog.pdf
@@ -37,12 +37,12 @@ class ComputingDiscreteLogarithms:
     """
     Computes the discrete logarithm.\n
     * The Discrete Logarithm Problem:
-        Let :math:`g` be a generator of the group :math:`\\mathbb{G}` of prime
-        order q.\n
+        Let :math:`g` be a generator of the group :math:`G`.\n
         Let :math:`c` be the cipher.\n
-        Given :math:`c=g^k\\in \\mathbb{G}`.\n
+        Let :math:`p` be the prime modulus.\n
+        Given :math:`c=g^{k}` mod :math:`p\\in G`.\n
         Find the value of :math:`k`.
-        Further reading:\n
+    Further reading:\n
     .. _Estimating Gauss Sums and Calculating Discrete Logarithms:
         https://sites.cs.ucsb.edu/~vandam/gausssumdlog.pdf
     .. _Khan Academy: https://www.khanacademy.org/computing/computer-science/
