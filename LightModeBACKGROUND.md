@@ -376,9 +376,9 @@ Further reading about quantum logic gates:
 
 - [Wikipedia](https://en.wikipedia.org/wiki/Quantum_logic_gate)
 
-<div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Quantum_Logic_Gates.png">
-</div>
+![White_Quantum_Logic_Gates](Images/Black_Quantum_Logic_Gates.png)
+
+[Original image](https://upload.wikimedia.org/wikipedia/commons/e/e0/Quantum_Logic_Gates.png)
 
 <br/>
 
