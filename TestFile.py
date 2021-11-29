@@ -122,7 +122,7 @@ def GroverSearchAlgorithmTests():
                               inputs, outputs)
 
 
-def GroverSearchSudokuSolver():
+def GroverSearchSudokuSolverTests():
     """Applies Sudoku tests for Grover Search Algorithm"""
     from CompletedExamples.GroverSearchAlgorithm import \
         GroverSudokuSolver as GroverSS
