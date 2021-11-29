@@ -3,9 +3,9 @@ Shor Factoring Algorithm
 
 Simulates Shor's factoring algorithm on a classical machine.\n
 Shor's factoring algorithm finds the factors of a composite number in
-polynomial time O(log(:math:`N`)). For reference, using the classical Dixon's
-factoring method, the optimal complexity is O(exp(
-:math:`2\\sqrt{2}\\sqrt{log(n)log(log(n))}`)).\n
+polynomial time :math:`O(\\log(N))`. For reference, using the classical Dixon's
+factoring method, the optimal complexity is
+:math:`O(\\exp(2\\sqrt{2}\\sqrt{\\log(N)\\log(\\log(N))}))`.\n
 Further reading about Shor's factoring algorithm:\n
 .. _Chemistry LibreTexts: https://chem.libretexts.org/Bookshelves/Physical_and_
     Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_
@@ -41,9 +41,9 @@ class ShorFactoringAlgorithm:
     """
     Simulates Shor's factoring algorithm on a classical machine.\n
     Shor's factoring algorithm finds the factors of a composite number in
-    polynomial time O(log(:math:`N`)). For reference, using the classical
-    Dixon's factoring method, the optimal complexity is O(exp(
-    :math:`2\\sqrt{2}\\sqrt{log(n)log(log(n))}`)).\n
+    polynomial time :math:`O(\\log(N))`. For reference, using the classical
+    Dixon's factoring method, the optimal complexity is
+    :math:`O(\\exp(2\\sqrt{2}\\sqrt{\\log(N)\\log(\\log(N))}))`.\n
     Further reading about Shor's factoring algorithm:\n
     .. _Chemistry LibreTexts: https://chem.libretexts.org/Bookshelves/Physical_
         and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_
