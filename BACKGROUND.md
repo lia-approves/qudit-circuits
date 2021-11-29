@@ -2,6 +2,8 @@
 
 ## Contents
 
+- [Important Disclaimer](#Important-Disclaimer)
+
 - [Qubit Notation](#Qubit-Notation)
 
 - [Bloch Sphere](#Bloch-Sphere)
@@ -11,6 +13,21 @@
 - [Quantum Algorithms](#Quantum-Algorithms)
 
 ***
+
+## Important Disclaimer
+
+Images (including LaTex) will be visible regardless of color settings on most
+IDEs such as PyCharm and Visual Studio Code regardless of the theme color
+setting (ie: dark mode, high contrast, light mode, etc.). However, light mode
+users may have issues viewing images if HTML div displaying is disabled
+(which is the case on GitHub's Markdown viewer).
+
+This version is designed to be compatible with dark mode, high contrast, and
+most themes other than light mode.
+
+- [Light Mode](LightModeBACKGROUND.md)
+
+<br/>
 
 ## Qubit Notation
 
@@ -324,7 +341,6 @@ which is the matrix generalization of the vector
 
 </div>
 
-
 [comment]: <> (111 ket)
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
@@ -332,17 +348,19 @@ which is the matrix generalization of the vector
 
 </div>
 
-
 </details>
 
 <br />
 
 ## Bloch Sphere
-<div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg">
+
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+![BlochSphereWhite](Images/BlochSphereWhite.png)
+
 </div>
 
-![](Images/BlochSphereWhite.jpg)
+[Original image](https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg)
 
 The [Bloch sphere](https://mathworld.wolfram.com/BlochSphere.html)
 is the unit sphere shown above with the qubit |Ψ⟩=a|0⟩+b|1⟩ represented as the
