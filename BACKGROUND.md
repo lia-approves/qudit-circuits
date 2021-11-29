@@ -10,6 +10,8 @@
 
 - [Quantum Logic Gate Notation](#Quantum-Logic-Gate-Notation)
 
+- [Quantum Fourier Transform](#Quantum-Fourier-Transform)
+
 - [Quantum Algorithms](#Quantum-Algorithms)
 
 ***
@@ -621,6 +623,26 @@ performs a [Pauli-X gate](#pauli-x-gate) if and only if both control qubits
 are in state |1⟩.
 
 </details>
+
+<br/>
+
+## Quantum Fourier Transform
+
+The
+[quantum Fourier transform](https://qiskit.org/textbook/ch-algorithms/quantum-fourier-transform.html)
+is the quantum equivalent of the classical
+[discrete Fourier transform](https://mathworld.wolfram.com/DiscreteFourierTransform.html)
+when taken over the amplitudes of a wave function.
+
+Much like the classical discrete Fourier transform, the quantum Fourier
+transform can be used to find periodicity using qubits.
+
+The quantum Fourier transform is especially useful in period finding quantum
+algorithms such as those used in
+[Shor's factoring algorithm](#[Shor's Factoring Algorithm](CompletedExamples/ShorFactoringAlgorithm.py))
+and
+the
+[Pohlig-Hellman algorithm discrete logarithm computation](#[Computing Discrete Logarithms](CompletedExamples/ComputingDiscreteLogarithms.py)).
 
 <br/>
 
