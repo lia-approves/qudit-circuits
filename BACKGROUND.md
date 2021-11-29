@@ -688,12 +688,12 @@ Shor's factoring algorithm can be used to break
 [RSA encryption](https://en.wikipedia.org/wiki/RSA_(cryptosystem)).
 
 In short, in order to factor a number **N**, after guessing a number **g**
-that shares factors with **N**, Shor's factoring algorithm finds the period
-**p** of the cyclic group
+that may or may not share factors with **N**, Shor's factoring algorithm finds the period
+**p** of the cyclic group **G**
 
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{white}p=g^{2^{x}}\mod%20N">
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}G=g^{x}\mod%20N">
 
 </div>
 

@@ -688,11 +688,11 @@ Shor's factoring algorithm can be used to break
 
 In short, in order to factor a number **N**, after guessing a number **g**
 that shares factors with **N**, Shor's factoring algorithm finds the period
-**p** of the cyclic group
+**p** of the cyclic group **G**
 
 <div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
 
-<img src="https://render.githubusercontent.com/render/math?math=\color{black}p=g^{2^{x}}\mod%20N">
+<img src="https://render.githubusercontent.com/render/math?math=\color{black}G=g^{x}\mod%20N">
 
 </div>
 
