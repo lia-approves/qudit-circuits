@@ -12,17 +12,87 @@ Date of Initial Creation: October 19, 2021
 import numpy as np
 
 from src.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
-from CompletedExamples.ShorFactoringAlgorithm import ShorFactoringAlgorithm
+
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
 __maintainer__  = "Alex Lim"
 
 
+def print_tests(test_name: str, func, *args):
+    """
+    Prints the information from the tests
+
+    :param test_name: The name of the test
+    :type test_name: str
+    :param func: The function to run tests for
+    :type func: function
+    :param args: The input for each tests
+    """
+    print(str(test_name) + ":")
+    i = 1
+    for argv in args:
+        print("Test " + str(i) + ":")
+        print("Input:\n" + str(argv))
+        print("Output:\n" + str(func(argv)))
+        print()
+        i += 1
+
+
+def check_tests_predetermined(test_name: str, func,
+                              input_list: list, output_list: list):
+    """
+    Checks each test with already known correct output
+
+    :param test_name: The name of the test
+    :type test_name: str
+    :param func: The function to run tests for
+    :type func: function
+    :param input_list: The input for each test
+    :type input_list: list
+    :param output_list: The known correct output for each test
+    :type output_list: list
+    """
+    print(str(test_name) + ":")
+    i = 1
+    for inputs, outputs in zip(input_list, output_list):
+        output = func(inputs)
+        try:
+            result = "Passed" if output == outputs else "Failed"
+        except ValueError:
+            result = "Passed" if np.allclose(output, outputs) else "Failed"
+        print("Test " + str(i) + ": " + result)
+        print("Input:\n" + str(inputs))
+        print("Output:\n" + str(output))
+        if result == "Failed":
+            print("Expected Output:\n" + str(outputs))
+        print()
+        i += 1
+
+
+def check_tests_dynamic(test_name: str, test_func, working_func, *args):
+    """
+    Checks each test with the output from a function known to always work
+
+    :param test_name: The name of the test
+    :type test_name: str
+    :param test_func: The function to run tests for
+    :type test_func: function
+    :param working_func: The function to check the output of test_func
+    :type working_func: function
+    :param args: The input for each tests
+    """
+    input_list = list(args)
+    output_list = list()
+    for argv in args:
+        output_list.append(working_func(argv))
+    check_tests_predetermined(test_name, test_func, input_list, output_list)
+
+
 class QuantumCircuitMatrixTests:
-    """Applies tests for QuantumCircuitMatrix"""
+    """Applies tests for Quantum Circuit Matrix"""
     @staticmethod
-    def quantum_not_gate_matrix(numQubits: int):
+    def quantum_not_gate_matrix(numQubits: int = 3):
         """
         creates a quantum equivalent of the classical not gate
         for any number of qubits
@@ -33,82 +103,73 @@ class QuantumCircuitMatrixTests:
         print(qcm.quantum_not_gate_matrix(numQubits))
 
 
-class GroverSearchAlgorithmTests:
-    """Applies tests for GroverSearchAlgorithm"""
-    @staticmethod
-    def two_qubit_search(*argv: int):
-        """
-        Applies Grover's search algorithm to two qubits
-
-        :param argv: The qubits to switch from 0 to 1, defaults to 0
-        :type argv: int
-        :return: A matrix of the given value's location in a matrix
-        :rtype: np.ndarray
-        """
-        numBits = qcm.qubits_to_bits(2)
-        qubit_0 = np.zeros([numBits, numBits])
-        if len(argv) == 0:
-            qubit_0 += qcm.get_qubit_matrix(2)
-        for args in argv:
-            qubit_0 += qcm.get_qubit_matrix(2, args)
-        qubit_0 = np.dot(qubit_0, qcm.H1_gate)
-        qubit_1 = qcm.H1_gate
-        qcm.print_qubits(qubit_0, qubit_1)
-        qubit_0 = np.dot(qcm.CZ_gate, qubit_0)
-        qubit_1 = np.dot(qubit_0, qubit_1)
-        qcm.print_qubits(qubit_0, qubit_1)
-        qubit_0 = np.dot(
-            np.kron(qcm.Pauli_Z_gate, qcm.identity_2d_matrix),
-            qubit_0)
-        qubit_1 = np.dot(
-            np.kron(qcm.Pauli_Z_gate, qcm.identity_2d_matrix),
-            qubit_1)
-        qcm.print_qubits(qubit_0, qubit_1)
-        return qubit_1
-
-    @staticmethod
-    def qubit_search(numQubits: int = 2, *argv: int):
-        """
-        Applies Grover's searching algorithm to any number of qubits
-
-        :param numQubits: The number of qubits, defaults to 2
-        :type numQubits: int
-        :param argv: The qubits to switch from 0 to 1, defaults to 0
-        :type argv: int
-        :return: A matrix of the given value's location in a matrix
-        :rtype: np.ndarray
-        """
-        numBits = qcm.qubits_to_bits(numQubits)
-        qubit_0 = np.zeros([numBits, numBits])
-        if len(argv) == 0:
-            qubit_0 += qcm.get_qubit_matrix(numQubits)
-        for args in argv:
-            qubit_0 += qcm.get_qubit_matrix(numQubits, args)
-        qubit_0 = np.dot(
-            qubit_0, np.kron(qcm.Hadamard_gate,
-                             np.identity(int((qubit_0.shape[0]) / 2))))
-        qubit_1 = np.kron(qcm.Hadamard_gate,
-                          np.identity(int((qubit_0.shape[0]) / 2)))
-        qcm.print_qubits(qubit_0, qubit_1)
-        qubit_0 = np.dot(
-            np.kron(qcm.CZ_gate, np.identity(int((qubit_0.shape[0]) / 4))),
-            qubit_0)
-        qubit_1 = np.dot(qubit_0, qubit_1)
-        qcm.print_qubits(qubit_0, qubit_1)
-        qubit_0 = np.dot(
-            np.kron(qcm.Pauli_Z_gate,
-                    np.identity(int((qubit_0.shape[0]) / 2))),
-            qubit_0)
-        qubit_1 = np.dot(
-            np.kron(qcm.Pauli_Z_gate,
-                    np.identity(int((qubit_0.shape[0]) / 2))),
-            qubit_1)
-        qcm.print_qubits(qubit_0, qubit_1)
-        return qubit_1
+def GroverSearchAlgorithmTests():
+    """Applies tests for Grover Search Algorithm"""
+    from CompletedExamples.GroverSearchAlgorithm import\
+        GroverSearchAlgorithm as GroverSA
+    inputs = list()
+    inputs.append(np.diag([0, 0, 0, 0]))
+    inputs.append(np.diag([0, 1, 0, 0]))
+    inputs.append(np.diag([0, 0, 1, 0]))
+    inputs.append(np.diag([0, 0, 0, 1]))
+    outputs = list()
+    outputs.append(np.diag([0, 0, 0, 0]))
+    outputs.append(np.diag([0, 1, 0, 0]))
+    outputs.append(np.diag([0, 0, -1, 0]))
+    outputs.append(np.diag([0, 0, 0, 1]))
+    check_tests_predetermined("Grover's Search Algorithm",
+                              GroverSA.qubit_search,
+                              inputs, outputs)
 
 
-class ShorFactoringAlgorithmTests:
-    """Applies tests for ShorFactoringAlgorithm"""
-    @staticmethod
-    def qubitFactoringQuantum(num):
-        ShorFactoringAlgorithm.qubitFactoringQuantum(num)
+def GroverSearchSudokuSolver():
+    """Applies Sudoku tests for Grover Search Algorithm"""
+    from CompletedExamples.GroverSearchAlgorithm import \
+        GroverSudokuSolver as GroverSS
+    inputs = list()
+    inputs.append(np.array([[1, 0],
+                            [0, 1]]))
+    inputs.append(np.array([[1, 0],
+                            [0, 0]]))
+    inputs.append(np.array([[0, 1],
+                            [0, 0]]))
+    inputs.append(np.array([[0, 0],
+                            [1, 0]]))
+    inputs.append(np.array([[0, 0],
+                            [0, 1]]))
+    inputs.append(np.array([[0, 1],
+                            [1, 0]]))
+    outputs = list()
+    outputs.append(True)
+    outputs.append(False)
+    outputs.append(False)
+    outputs.append(False)
+    outputs.append(False)
+    outputs.append(True)
+    check_tests_predetermined("Grover's Search Algorithm",
+                              GroverSS.two_x_two_Sudoku_solver,
+                              inputs, outputs)
+
+
+def ShorFactoringAlgorithmTests():
+    """Applies tests for Shor Factoring Algorithm"""
+    from CompletedExamples.ShorFactoringAlgorithm \
+        import ShorFactoringAlgorithm as ShorFA
+    inputs = list()
+    inputs.append(15)
+    inputs.append(21)
+    inputs.append(27)
+    inputs.append(42)
+    inputs.append(117)
+    inputs.append(144)
+    outputs = list()
+    outputs.append([3, 5])
+    outputs.append([3, 7])
+    outputs.append([3, 3, 3])
+    outputs.append([2, 3, 7])
+    outputs.append([3, 3, 13])
+    outputs.append([2, 2, 2, 2, 3, 3])
+    outputs.append([3, 41])
+    check_tests_predetermined("Shor Factoring Algorithm",
+                              ShorFA.qubitFactoringQuantum,
+                              inputs, outputs)
