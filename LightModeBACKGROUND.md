@@ -688,7 +688,9 @@ Shor's factoring algorithm can be used to break
 
 In short, in order to factor a number **N**, after guessing a number **g**
 that shares factors with **N**, Shor's factoring algorithm finds the period
-**p** of the cyclic group **G**
+**p** of the
+[cyclic group](https://mathworld.wolfram.com/CyclicGroup.html)
+**G**
 
 <div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
 
