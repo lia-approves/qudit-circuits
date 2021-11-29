@@ -338,9 +338,9 @@ which is the matrix generalization of the vector
 <br />
 
 ## Bloch Sphere
-<span style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
+<div style="background-color:white; text-align:center; vertical-align: middle; padding:10px">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg">
-</span>
+</div>
 
 The [Bloch sphere](https://mathworld.wolfram.com/BlochSphere.html)
 is the unit sphere shown above with the qubit |Ψ⟩=a|0⟩+b|1⟩ represented as the
