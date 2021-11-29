@@ -87,7 +87,7 @@ class ComputingDiscreteLogarithms:
         :type generator: int
         :param cipher: The cipher
         :type cipher: int
-        :param group_order: The order of cylic group G
+        :param group_order: The order of cyclic group G
         :type group_order: int
         :raises ValueError: Unable to compute the prime power
         :return: The prime power of the generator
@@ -139,7 +139,7 @@ class ComputingDiscreteLogarithms:
         :type modulus: int
         :param cipher: A cipher
         :type cipher: int
-        :param group_order: The order of cylic group G
+        :param group_order: The order of cyclic group G
         :type group_order: int
         :raises ValueError: Unable to compute subgroup congruence
         :return: The subgroup congruence
@@ -193,7 +193,7 @@ class ComputingDiscreteLogarithms:
         :type modulus: int
         :param cipher: A cipher
         :type cipher: int
-        :param group_order: The order of cylic group G
+        :param group_order: The order of cyclic group G
         :type group_order: int
         :param max_power: The max power of a group G
         :type max_power: int
