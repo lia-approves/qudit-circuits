@@ -12,6 +12,8 @@
 
 ***
 
+<div style="background-color:rgb(0, 0, 256); color:red">test</div>
+
 ## Qubit Notation
 
 Qubits can be represented using
@@ -338,7 +340,7 @@ which is the matrix generalization of the vector
 <br />
 
 ## Bloch Sphere
-<div style="background-color:white; text-align:center; vertical-align: middle; padding:10px">
+<div style="background-color:rgb(256, 256, 256); text-align:center; vertical-align: middle; padding:10px">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bloch_sphere.svg">
 </div>
 
