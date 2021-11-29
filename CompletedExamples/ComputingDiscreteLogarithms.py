@@ -3,7 +3,8 @@ Computing Discrete Logarithms
 
 Computes the discrete logarithm\n
 * The Discrete Logarithm Problem:
-        Let :math:`g` be a generator of the group :math:`G`.\n
+        Let :math:`g` be a generator of the group :math:`G` of order :math:`n`.
+        \n
         Let :math:`c` be the cipher.\n
         Let :math:`p` be the prime modulus.\n
         Given :math:`c=g^{k}` mod :math:`p\\in G`.\n
@@ -37,7 +38,8 @@ class ComputingDiscreteLogarithms:
     """
     Computes the discrete logarithm.\n
     * The Discrete Logarithm Problem:
-        Let :math:`g` be a generator of the group :math:`G`.\n
+        Let :math:`g` be a generator of the group :math:`G` of order :math:`n`.
+        \n
         Let :math:`c` be the cipher.\n
         Let :math:`p` be the prime modulus.\n
         Given :math:`c=g^{k}` mod :math:`p\\in G`.\n
