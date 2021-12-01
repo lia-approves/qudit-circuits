@@ -18,7 +18,7 @@
 
 ## Important Disclaimer
 
-Images (including LaTex) will be visible regardless of color settings on most
+Images (including LaTeX) will be visible regardless of color settings on most
 IDEs such as PyCharm and Visual Studio Code regardless of the theme color
 setting (ie: dark mode, high contrast, light mode, etc.). However, users that
 are not using light mode may have issues viewing images if HTML div displaying
