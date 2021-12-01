@@ -639,10 +639,10 @@ transform can be used to find periodicity using qubits.
 
 The quantum Fourier transform is especially useful in period finding quantum
 algorithms such as those used in
-[Shor's factoring algorithm](#[Shor's-Factoring-Algorithm](CompletedExamples/ShorFactoringAlgorithm.py))
+[Shor's factoring algorithm](#shors-factoring-algorithmcompletedexamplesshorfactoringalgorithmpy)
 and
 the
-[Pohlig-Hellman algorithm discrete logarithm computation](#[Computing-Discrete-Logarithms](CompletedExamples/ComputingDiscreteLogarithms.py)).
+[Pohlig-Hellman algorithm discrete logarithm computation](#computing-discrete-logarithmscompletedexamplescomputingdiscretelogarithmspy).
 
 <br/>
 
