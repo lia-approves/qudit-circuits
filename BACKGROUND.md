@@ -14,6 +14,8 @@
 
 - [Quantum Algorithms](#Quantum-Algorithms)
 
+- [Pohlig-Hellman algorithm discrete logarithm computation](#computing-discrete-logarithmscompletedexamplescomputingdiscretelogarithmspy).
+
 ***
 
 ## Important Disclaimer
