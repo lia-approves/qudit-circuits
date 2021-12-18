@@ -35,14 +35,14 @@ opportunity to work on the qutrit research paper.
 
 ## Abstract
 
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is designed as a way to
+[BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) is designed as a way to
 simulate quantum computers and quantum algorithms using classical computers.
 
 In order for the language to be more transparent and educationally useful,
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) uses matrices in order
+[BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) uses matrices in order
 to simulate qubits and quantum gates in a way that is less esoteric than other
 high-level quantum simulators.  In testing,
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) has proven to be
+[BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) has proven to be
 particularly useful in explaining how quantum gates function and how to build
 quantum circuits when compared with high-level gate and circuit
 implementations.
@@ -96,7 +96,7 @@ or a linear combination thereof.
 
 ## Requirements
 
-* [BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) was developed in
+* [BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) was developed in
 [Python 3.9.7](https://www.python.org/downloads/release/python-397/), and 
 [Python 3.9.x](https://www.python.org/dev/peps/pep-0596/) is recommended,
 although not required.
@@ -105,14 +105,14 @@ although not required.
 
 ## Documentation
 
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is documented using
+[BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) is documented using
 [Sphinx](https://www.sphinx-doc.org/en/master/) with
 [reStructuredText](https://docutils.sourceforge.io/rst.html)
 as its markup language.
 
 ## Disclaimer
 
-[BitOQSim](https://github.com/ccs-1l-f21/BitOQSim.git) is not an
+[BitOQSim](https://github.com/AlexLim-Pro/BitOQSim.git) is not an
 [IBM](https://www.ibm.com/us-en/) product, and code that uses
 [Qiskit](https://qiskit.org/) is explicitly labeled as such.  Equivalent
 [Qiskit](https://qiskit.org/) implementations are included in order to be used
@@ -124,7 +124,7 @@ Useful additional resources used are included as links when relevant.
 
 ## Contribute
 
-Feel free to [open an issue](https://github.com/ccs-1l-f21/BitOQSim/issues/new)
+Feel free to [open an issue](https://github.com/AlexLim-Pro/BitOQSim/issues/new)
 if you'd like to give me feedback or ask for features.
 
 If you'd like to contribute, feel free to fork this repository and open a pull
@@ -136,4 +136,4 @@ Alex Lim
 
 [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AlexLim-Pro)
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alex@virtueware.com)
-[![YouTube Badge](https://img.shields.io/badge/<handle>-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCky0mdk2W1a1gBzre_CYowQ)
+[![YouTube Badge](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCky0mdk2W1a1gBzre_CYowQ)
