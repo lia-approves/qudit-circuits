@@ -38,8 +38,8 @@ class QuantumCircuitMatrix:
     """
     def __init__(self):
         """Initializes quantum gates for use in this class"""
-        self.identity_2d_matrix = None
-        self.identity_3d_matrix = None
+        self.one_qubit_identity_gate = None
+        self.two_qubit_identity_gate = None
         self.Pauli_X_gate = None
         self.Pauli_Y_gate = None
         self.Pauli_Z_gate = None
@@ -66,11 +66,16 @@ class QuantumCircuitMatrix:
         """
         zero_bra = np.array([[1, 0]])  # ⟨0|
         one_bra = np.array([[0, 1]])   # ⟨1|
+        plus_bra = zero_bra / np.sqrt(2) + one_bra / np.sqrt(2)   # ⟨+|
+        minus_bra = zero_bra / np.sqrt(2) - one_bra / np.sqrt(2)  # ⟨-|
         bra = 1
         if len(args) != 0:
             for argv in args[::-1]:
                 if isinstance(argv, np.ndarray):
                     bra = np.kron(argv, bra)
+                elif isinstance(argv, str):
+                    braTEMP = QuantumCircuitMatrix.get_bra(qubit_string=argv)
+                    bra = np.kron(braTEMP, bra)
                 elif not isinstance(argv, int):
                     try:
                         argv = int(argv)
@@ -91,13 +96,26 @@ class QuantumCircuitMatrix:
                         bra = np.kron(QuantumCircuitMatrix.
                                       get_qubit_vector(num_qubits, argv), bra)
         if len(qubit_string) != 0:
-            qubits = list(int(q) for q in qubit_string)
-            braTEMP = QuantumCircuitMatrix.get_bra(*tuple(qubits))
-            if bra == 1:
+            braTEMP = 1
+            for q in qubit_string:
+                if q == "0":
+                    q_bra = zero_bra
+                elif q == "1":
+                    q_bra = one_bra
+                elif q == "+":
+                    q_bra = plus_bra
+                elif q == "-":
+                    q_bra = minus_bra
+                else:
+                    raise ValueError("get_bra does not support \"%s\". "
+                                     "Please try get_qubit_vector "
+                                     "or directly use numpy ndarrays." % q)
+                braTEMP = np.kron(q_bra, braTEMP)
+            if not isinstance(bra, np.ndarray) and bra == 1:
                 bra = braTEMP
             else:
                 bra = np.kron(braTEMP, bra)
-        if bra == 1:
+        if not isinstance(bra, np.ndarray) and bra == 1:
             return zero_bra
         return bra
 
@@ -121,11 +139,16 @@ class QuantumCircuitMatrix:
                              [0]])  # |0⟩
         one_ket = np.array([[0],
                             [1]])   # |1⟩
+        plus_ket = zero_ket / np.sqrt(2) + one_ket / np.sqrt(2)   # |+⟩
+        minus_ket = zero_ket / np.sqrt(2) - one_ket / np.sqrt(2)  # |-⟩
         ket = 1
         if len(args) != 0:
             for argv in args[::-1]:
                 if isinstance(argv, np.ndarray):
                     ket = np.kron(argv, ket)
+                elif isinstance(argv, str):
+                    ketTEMP = QuantumCircuitMatrix.get_ket(qubit_string=argv)
+                    ket = np.kron(ketTEMP, ket)
                 elif not isinstance(argv, int):
                     try:
                         argv = int(argv)
@@ -144,31 +167,77 @@ class QuantumCircuitMatrix:
                                 qubits_to_bits(num_qubits) < argv:
                             num_qubits += 1
                         ket = np.kron(QuantumCircuitMatrix.
-                                      get_qubit_vector(num_qubits, argv),
-                                      ket)
+                                      get_qubit_vector(num_qubits, argv), ket)
         if len(qubit_string) != 0:
-            qubits = list(int(q) for q in qubit_string)
-            ketTEMP = QuantumCircuitMatrix.get_ket(*tuple(qubits))
-            if ket == 1:
+            ketTEMP = 1
+            for q in qubit_string:
+                if q == "0":
+                    q_ket = zero_ket
+                elif q == "1":
+                    q_ket = one_ket
+                elif q == "+":
+                    q_ket = plus_ket
+                elif q == "-":
+                    q_ket = minus_ket
+                else:
+                    raise ValueError("get_ket does not support \"%s\". "
+                                     "Please try get_qubit_vector "
+                                     "or directly use numpy ndarrays." % q)
+                ketTEMP = np.kron(q_ket, ketTEMP)
+            if isinstance(ket, int) and ket == 1:
                 ket = ketTEMP
             else:
                 ket = np.kron(ketTEMP, ket)
-        if ket == 1:
+        if isinstance(ket, int) and ket == 1:
             return zero_ket
         return ket
+
+    @staticmethod
+    def identity_gate(numQubits: int = 1):
+        """
+        Creates the identity gate using outer products.\n
+        The identity gate is the identity matrix.
+
+        :param numQubits: The number of qubits, defaults to 1
+        :type numQubits: int
+        :return: The identity gate
+        :rtype: np.ndarray
+        """
+        return sum(QuantumCircuitMatrix.identity_gate_helper(numQubits))
+
+    @staticmethod
+    def identity_gate_helper(numQubits: int):
+        """Helper method for identity_gate"""
+        zero_prod = np.kron(QuantumCircuitMatrix.get_ket(0),
+                            QuantumCircuitMatrix.get_bra(0))  # ⟨0|0⟩
+        one_prod = np.kron(QuantumCircuitMatrix.get_ket(1),
+                           QuantumCircuitMatrix.get_bra(1))   # ⟨1|1⟩
+        if numQubits == 1:
+            return [zero_prod, one_prod]
+        identity_gate_list = list()
+        for q in QuantumCircuitMatrix.identity_gate_helper(numQubits-1):
+            identity_gate_list.append(np.kron(q, zero_prod))  # q ⊗ ⟨0|0⟩
+            identity_gate_list.append(np.kron(q, one_prod))   # q ⊗ ⟨1|1⟩
+        return identity_gate_list
 
     ### Identity gates ###
     """The identity gate is the identity matrix"""
     # Identity gate for a single qubit
-    identity_2d_matrix = np.diag([1, 1])
+    one_qubit_identity_gate = np.array([[1, 0],
+                                        [0, 1]])
     """Identity gate for a single qubit"""
     # Identity gate for two qubits
-    identity_3d_matrix = np.diag([1, 1, 1])
+    two_qubit_identity_gate = np.array([[1, 0, 0, 0],
+                                        [0, 1, 0, 0],
+                                        [0, 0, 1, 0],
+                                        [0, 0, 0, 1]])
     """Identity gate for two qubits"""
 
     @staticmethod
     def Pauli_X_Gate():
         """
+        Creates the Pauli-X gate using outer products:
+        :math:`X = ⟨0|1⟩ + ⟨1|0⟩`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -180,12 +249,17 @@ class QuantumCircuitMatrix:
             |1⟩)
         :rtype: np.ndarray
         """
-        return np.array([[0, 1],
-                         [1, 0]])
+        zero_bra = QuantumCircuitMatrix.get_bra(0)
+        one_bra = QuantumCircuitMatrix.get_bra(1)
+        zero_ket = QuantumCircuitMatrix.get_ket(0)
+        one_ket = QuantumCircuitMatrix.get_ket(1)
+        return np.kron(zero_bra, one_ket) + np.kron(one_bra, zero_ket)
 
     @staticmethod
     def Pauli_Y_Gate():
         """
+        Creates the Pauli-Y gate using outer products:
+        :math:`i⟨0|1⟩ - i⟨1|0⟩`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -195,12 +269,17 @@ class QuantumCircuitMatrix:
         :return: Pauli-Y gate for a single qubit
         :rtype: np.ndarray
         """
-        return np.array([[0, -1j],
-                         [1j, 0]])
+        zero_bra = QuantumCircuitMatrix.get_bra(0)
+        one_bra = QuantumCircuitMatrix.get_bra(1)
+        zero_ket = QuantumCircuitMatrix.get_ket(0)
+        one_ket = QuantumCircuitMatrix.get_ket(1)
+        return 1j * (np.kron(zero_bra, one_ket) - np.kron(one_bra, zero_ket))
 
     @staticmethod
     def Pauli_Z_Gate():
         """
+        Creates the Pauli-Z gate using outer products:
+        :math:`⟨0|0⟩ - ⟨1|1⟩`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -210,43 +289,67 @@ class QuantumCircuitMatrix:
         :return: Pauli-Z gate for a single qubit
         :rtype: np.ndarray
         """
-        return np.array([[1, 0],
-                         [0, -1]])
+        zero_bra = QuantumCircuitMatrix.get_bra(0)
+        one_bra = QuantumCircuitMatrix.get_bra(1)
+        zero_ket = QuantumCircuitMatrix.get_ket(0)
+        one_ket = QuantumCircuitMatrix.get_ket(1)
+        return np.kron(zero_bra, zero_ket) - np.kron(one_bra, one_ket)
+
+    @staticmethod
+    def CU_Gate(U: np.ndarray):
+        """
+        Creates the controlled U gate using outer products:
+        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ U`\n
+
+        :param U: A unitary qubit gate
+        :type U: np.ndarray
+        :return: The controlled U gate with the first qubit as the control
+        :rtype: np.ndarray
+        """
+        zero_prod = np.kron(QuantumCircuitMatrix.get_ket(0),
+                            QuantumCircuitMatrix.get_bra(0))  # ⟨0|0⟩
+        one_prod = np.kron(QuantumCircuitMatrix.get_ket(1),
+                           QuantumCircuitMatrix.get_bra(1))   # ⟨1|1⟩
+        return np.kron(zero_prod, zero_prod)\
+               + np.kron(zero_prod, one_prod)\
+               + np.kron(one_prod, U)
 
     @staticmethod
     def CNOT_Gate():
         """
+        Creates the controlled NOT gate using outer products:
+        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ X`\n
         maps the basis states |a,b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
 
         :return: CNOT gate (or controlled Pauli-X gate)
         :rtype: np.ndarray
         """
-        return np.kron(np.diag([1, 0]),
-                       QuantumCircuitMatrix.identity_2d_matrix) + \
-               np.kron(np.diag([0, 1]),
-                       QuantumCircuitMatrix.Pauli_X_gate)
+        Pauli_X_gate = QuantumCircuitMatrix.Pauli_X_Gate()
+        return QuantumCircuitMatrix.CU_Gate(Pauli_X_gate)
 
     @staticmethod
     def CY_Gate():
         """
+        Creates the controlled Y gate using outer products:
+        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ Y`\n
+
         :return: CY gate (or controlled Pauli-Y gate)
         :rtype: np.ndarray
         """
-        return np.kron(np.diag([1, 0]),
-                       QuantumCircuitMatrix.identity_2d_matrix) + \
-               np.kron(np.diag([0, 1]),
-                       QuantumCircuitMatrix.Pauli_Y_gate)
+        Pauli_Y_gate = QuantumCircuitMatrix.Pauli_Y_Gate()
+        return QuantumCircuitMatrix.CU_Gate(Pauli_Y_gate)
 
     @staticmethod
     def CZ_Gate():
         """
+        Creates the controlled Z gate using outer products:
+        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ Z`\n
+
         :return: CZ gate (or controlled Pauli-Z gate)
         :rtype: np.ndarray
         """
-        return np.kron(np.diag([1, 0]),
-                       QuantumCircuitMatrix.identity_2d_matrix) + \
-               np.kron(np.diag([0, 1]),
-                       QuantumCircuitMatrix.Pauli_Z_gate)
+        Pauli_Z_gate = QuantumCircuitMatrix.Pauli_Z_Gate()
+        return QuantumCircuitMatrix.CU_Gate(Pauli_Z_gate)
 
     ### Pauli gates ###
     # Pauli-X gate for a single qubit
@@ -290,7 +393,7 @@ class QuantumCircuitMatrix:
 
     # CNOT gate (or controlled Pauli-X gate)
     # maps the basis states |a,b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
-    CNOT_gate = np.kron(np.diag([1, 0]), identity_2d_matrix) + \
+    CNOT_gate = np.kron(np.diag([1, 0]), one_qubit_identity_gate) + \
                 np.kron(np.diag([0, 1]), Pauli_X_gate)
     """
     CNOT gate (or controlled Pauli-X gate)\n
@@ -298,12 +401,12 @@ class QuantumCircuitMatrix:
     """
 
     # CY gate (or controlled Pauli-Y gate)
-    CY_gate = np.kron(np.diag([1, 0]), identity_2d_matrix) + \
+    CY_gate = np.kron(np.diag([1, 0]), one_qubit_identity_gate) + \
               np.kron(np.diag([0, 1]), Pauli_Y_gate)
     """CY gate (or controlled Pauli-Y gate)"""
 
     # CZ gate (or controlled Pauli-Z gate)
-    CZ_gate = np.kron(np.diag([1, 0]), identity_2d_matrix) + \
+    CZ_gate = np.kron(np.diag([1, 0]), one_qubit_identity_gate) + \
               np.kron(np.diag([0, 1]), Pauli_Z_gate)
     """CZ gate (or controlled Pauli-Z gate)"""
 
@@ -311,6 +414,8 @@ class QuantumCircuitMatrix:
     @staticmethod
     def Hadamard_Gate():
         """
+        Creates the Hadamard gate using outer products:
+        :math:`H = ⟨0|+⟩ + ⟨1|-⟩`\n
         Represents a rotation of :math:`\pi` about the axis
         :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
         Maps the basis states
@@ -321,8 +426,11 @@ class QuantumCircuitMatrix:
         :return: The Hadamard gate for a single qubit
         :rtype: np.ndarray
         """
-        return np.array([[1, 1],
-                         [1, -1]]) / np.sqrt(2)
+        zero_bra = QuantumCircuitMatrix.get_bra("0")
+        one_bra = QuantumCircuitMatrix.get_bra("1")
+        plus_ket = QuantumCircuitMatrix.get_ket("+")
+        minus_ket = QuantumCircuitMatrix.get_ket("-")
+        return np.kron(zero_bra, plus_ket) + np.kron(one_bra, minus_ket)
 
     # Hadamard gate for a single qubit
     Hadamard_gate = np.array([[1, 1],
@@ -338,8 +446,33 @@ class QuantumCircuitMatrix:
     """
 
     # Hadamard transformation for a single qubit (or the Hermitian)
-    H1_gate = np.kron(Hadamard_gate, identity_2d_matrix)
+    H1_gate = np.kron(Hadamard_gate, one_qubit_identity_gate)
     """Hadamard transformation for a single qubit (or the Hermitian)"""
+
+    @staticmethod
+    def Swap_Gate():
+        """
+        Creates the swap gate using outer products:
+        :math:`H = ⟨00|00⟩ + ⟨01|10⟩ + ⟨10|01⟩ + ⟨11|11⟩`\n
+        Swaps two qubits with respect to the basis |00⟩, |01⟩, |10⟩, |11⟩
+
+        :return: The swap gate
+        :rtype: np.ndarray
+        """
+        get_bra = QuantumCircuitMatrix.get_bra
+        get_ket = QuantumCircuitMatrix.get_ket
+        zero_zero_bra = get_bra("00")  # ⟨00|
+        zero_one_bra = get_bra("01")   # ⟨01|
+        one_zero_bra = get_bra("10")   # ⟨10|
+        one_one_bra = get_bra("11")    # ⟨11|
+        zero_zero_ket = get_ket("00")  # |00⟩
+        zero_one_ket = get_ket("01")   # |01⟩
+        one_zero_ket = get_ket("10")   # |10⟩
+        one_one_ket = get_ket("11")    # |11⟩
+        return np.kron(zero_zero_bra, zero_zero_ket)\
+               + np.kron(zero_one_bra, one_zero_ket)\
+               + np.kron(one_zero_bra, zero_one_ket)\
+               + np.kron(one_one_bra, one_one_ket)
 
     ### Swap gate ###
     swap_gate = np.array([[1, 0, 0, 0],
@@ -546,10 +679,10 @@ class QuantumCircuitMatrix:
             return QuantumCircuitMatrix.CNOT_gate
         q_not_gate_matrix = \
             np.kron(
-                np.diag([1,0]),
+                np.diag([1, 0]),
                 QuantumCircuitMatrix.identityGate(numQubits-1)) + \
             np.kron(
-                np.diag([0,1]),
+                np.diag([0, 1]),
                 QuantumCircuitMatrix.quantum_not_gate_matrix(numQubits-1))
         return q_not_gate_matrix
 
