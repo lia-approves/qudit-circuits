@@ -54,6 +54,8 @@ or a linear combination thereof.
 
 * [Quantum computing basic background information](BACKGROUND.md)
 
+* [BitOQSim YouTube](https://www.youtube.com/channel/UCky0mdk2W1a1gBzre_CYowQ)
+
 * [CWI Thesis On Quantum Computation Theory](https://www.illc.uva.nl/Research/Publications/Dissertations/DS-2002-04.text.pdf)
 
 ## BitOQSim Source
@@ -134,3 +136,4 @@ Alex Lim
 
 [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AlexLim-Pro)
 [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alex@virtueware.com)
+[![YouTube Badge](https://img.shields.io/badge/<handle>-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCky0mdk2W1a1gBzre_CYowQ)
