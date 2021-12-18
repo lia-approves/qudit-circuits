@@ -209,6 +209,24 @@ which is the matrix generalization of the vector
 
 </div>
 
+<br />
+
+[comment]: <> (+ bra)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle%2B\right|=\frac{1}{\sqrt{2}}\left\langle0\right|%2B\frac{1}{\sqrt{2}}\left\langle1\right|=\frac{1}{\sqrt{2}}\begin{pmatrix}1%261\end{pmatrix}">
+
+</div>
+
+<br />
+
+[comment]: <> (- bra)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left\langle-\right|=\frac{1}{\sqrt{2}}\left\langle0\right|-\frac{1}{\sqrt{2}}\left\langle1\right|=\frac{1}{\sqrt{2}}\begin{pmatrix}1%26-1\end{pmatrix}">
+
+</div>
+
 </details>
 
 <br />
@@ -347,6 +365,24 @@ which is the matrix generalization of the vector
 <div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
 
 <img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|111\right\rangle=\left|1\right\rangle\otimes\left|1\right\rangle\otimes\left|1\right\rangle=\left|11\right\rangle\otimes\left|1\right\rangle=\begin{pmatrix}0\\%0A0\\%0A0\\%0A1\end{pmatrix}\otimes\begin{pmatrix}0\\%0A1\end{pmatrix}=\begin{pmatrix}0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A0\\%0A1\end{pmatrix}">
+
+</div>
+
+<br />
+
+[comment]: <> (+ ket)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|%2B\right\rangle=\frac{1}{\sqrt{2}}\left|0\right\rangle%2B\frac{1}{\sqrt{2}}\left|1\right\rangle=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}">
+
+</div>
+
+<br />
+
+[comment]: <> (- ket)
+<div style="background-color:rgb(0, 0, 0); text-align:center; vertical-align: middle; padding:10px">
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\left|-\right\rangle=\frac{1}{\sqrt{2}}\left|0\right\rangle-\frac{1}{\sqrt{2}}\left|1\right\rangle=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix}">
 
 </div>
 
