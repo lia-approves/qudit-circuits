@@ -50,10 +50,10 @@ class GroverSearchAlgorithm:
         qubit_0 = np.dot(qcm.CZ_gate, qubit_0)
         qubit_1 = np.dot(qubit_0, qubit_1)
         qubit_0 = np.dot(
-            np.kron(qcm.Pauli_Z_gate, qcm.identity_2d_matrix),
+            np.kron(qcm.Pauli_Z_gate, qcm.one_qubit_identity_gate),
             qubit_0)
         qubit_1 = np.dot(
-            np.kron(qcm.Pauli_Z_gate, qcm.identity_2d_matrix),
+            np.kron(qcm.Pauli_Z_gate, qcm.one_qubit_identity_gate),
             qubit_1)
         return qubit_1
 
