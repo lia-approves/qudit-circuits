@@ -237,7 +237,7 @@ class QuantumCircuitMatrix:
     def Pauli_X_Gate():
         """
         Creates the Pauli-X gate using outer products:
-        :math:`X = ⟨0|1⟩ + ⟨1|0⟩`\n
+        :math:`X = |1⟩⟨0| + |0⟩⟨1|`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -253,13 +253,13 @@ class QuantumCircuitMatrix:
         one_bra = QuantumCircuitMatrix.get_bra(1)
         zero_ket = QuantumCircuitMatrix.get_ket(0)
         one_ket = QuantumCircuitMatrix.get_ket(1)
-        return np.kron(zero_bra, one_ket) + np.kron(one_bra, zero_ket)
+        return np.kron(zero_bra, one_ket) + np.kron(zero_ket, one_bra)
 
     @staticmethod
     def Pauli_Y_Gate():
         """
         Creates the Pauli-Y gate using outer products:
-        :math:`i⟨0|1⟩ - i⟨1|0⟩`\n
+        :math:`i|1⟩⟨0| - i|0⟩⟨1|`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -273,13 +273,13 @@ class QuantumCircuitMatrix:
         one_bra = QuantumCircuitMatrix.get_bra(1)
         zero_ket = QuantumCircuitMatrix.get_ket(0)
         one_ket = QuantumCircuitMatrix.get_ket(1)
-        return 1j * (np.kron(zero_bra, one_ket) - np.kron(one_bra, zero_ket))
+        return 1j * (np.kron(one_ket, zero_bra) - np.kron(zero_ket, one_bra))
 
     @staticmethod
     def Pauli_Z_Gate():
         """
         Creates the Pauli-Z gate using outer products:
-        :math:`⟨0|0⟩ - ⟨1|1⟩`\n
+        :math:`|0⟩⟨0| - |1⟩⟨1|`\n
         The Pauli gates (X, Y, Z) are the three Pauli matrices
         and act on a single qubit.\n
         The Pauli X, Y, and Z equate, respectively,
@@ -293,23 +293,23 @@ class QuantumCircuitMatrix:
         one_bra = QuantumCircuitMatrix.get_bra(1)
         zero_ket = QuantumCircuitMatrix.get_ket(0)
         one_ket = QuantumCircuitMatrix.get_ket(1)
-        return np.kron(zero_bra, zero_ket) - np.kron(one_bra, one_ket)
+        return np.kron(zero_ket, zero_bra) - np.kron(one_ket, one_bra)
 
     @staticmethod
     def CU_Gate(U: np.ndarray):
         """
         Creates the controlled U gate using outer products:
-        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ U`\n
+        :math:`|0⟩⟨0| ⊗ |0⟩⟨0| + |0⟩⟨0| ⊗ |1⟩⟨1| + |1⟩⟨1| ⊗ U`\n
 
         :param U: A unitary qubit gate
         :type U: np.ndarray
         :return: The controlled U gate with the first qubit as the control
         :rtype: np.ndarray
         """
-        zero_prod = np.kron(QuantumCircuitMatrix.get_ket(0),
-                            QuantumCircuitMatrix.get_bra(0))  # ⟨0|0⟩
-        one_prod = np.kron(QuantumCircuitMatrix.get_ket(1),
-                           QuantumCircuitMatrix.get_bra(1))   # ⟨1|1⟩
+        zero_prod = np.kron(QuantumCircuitMatrix.get_bra(0),
+                            QuantumCircuitMatrix.get_ket(0))  # ⟨0|0⟩
+        one_prod = np.kron(QuantumCircuitMatrix.get_bra(1),
+                           QuantumCircuitMatrix.get_ket(1))   # ⟨1|1⟩
         return np.kron(zero_prod, zero_prod)\
                + np.kron(zero_prod, one_prod)\
                + np.kron(one_prod, U)
@@ -318,7 +318,7 @@ class QuantumCircuitMatrix:
     def CNOT_Gate():
         """
         Creates the controlled NOT gate using outer products:
-        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ X`\n
+        :math:`|0⟩⟨0| ⊗ |0⟩⟨0| + |0⟩⟨0| ⊗ |1⟩⟨1| + |1⟩⟨1| ⊗ X`\n
         maps the basis states |a,b⟩ ⟼ |a, a ⊕ b⟩, where ⊕ is XOR.
 
         :return: CNOT gate (or controlled Pauli-X gate)
@@ -331,7 +331,7 @@ class QuantumCircuitMatrix:
     def CY_Gate():
         """
         Creates the controlled Y gate using outer products:
-        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ Y`\n
+        :math:`|0⟩⟨0| ⊗ |0⟩⟨0| + |0⟩⟨0| ⊗ |1⟩⟨1| + |1⟩⟨1| ⊗ Y`\n
 
         :return: CY gate (or controlled Pauli-Y gate)
         :rtype: np.ndarray
@@ -343,7 +343,7 @@ class QuantumCircuitMatrix:
     def CZ_Gate():
         """
         Creates the controlled Z gate using outer products:
-        :math:`⟨0|0⟩ ⊗ ⟨0|0⟩ + ⟨0|0⟩ ⊗ ⟨1|1⟩ + ⟨1|1⟩ ⊗ Z`\n
+        :math:`|0⟩⟨0| ⊗ |0⟩⟨0| + |0⟩⟨0| ⊗ |1⟩⟨1| + |1⟩⟨1| ⊗ Z`\n
 
         :return: CZ gate (or controlled Pauli-Z gate)
         :rtype: np.ndarray
@@ -415,7 +415,7 @@ class QuantumCircuitMatrix:
     def Hadamard_Gate():
         """
         Creates the Hadamard gate using outer products:
-        :math:`H = ⟨0|+⟩ + ⟨1|-⟩`\n
+        :math:`H = |+⟩⟨0| + |-⟩⟨1|`\n
         Represents a rotation of :math:`\pi` about the axis
         :math:`(\\hat{x}+\\hat{z})/\\sqrt{2}` at the Bloch sphere.\n
         Maps the basis states
@@ -430,7 +430,7 @@ class QuantumCircuitMatrix:
         one_bra = QuantumCircuitMatrix.get_bra("1")
         plus_ket = QuantumCircuitMatrix.get_ket("+")
         minus_ket = QuantumCircuitMatrix.get_ket("-")
-        return np.kron(zero_bra, plus_ket) + np.kron(one_bra, minus_ket)
+        return np.kron(plus_ket, zero_bra) + np.kron(minus_ket, one_bra)
 
     # Hadamard gate for a single qubit
     Hadamard_gate = np.array([[1, 1],
@@ -453,7 +453,7 @@ class QuantumCircuitMatrix:
     def Swap_Gate():
         """
         Creates the swap gate using outer products:
-        :math:`H = ⟨00|00⟩ + ⟨01|10⟩ + ⟨10|01⟩ + ⟨11|11⟩`\n
+        :math:`H = |00⟩⟨00| + |10⟩⟨01| + |01⟩⟨10| + |11⟩⟨11|`\n
         Swaps two qubits with respect to the basis |00⟩, |01⟩, |10⟩, |11⟩
 
         :return: The swap gate
@@ -469,10 +469,10 @@ class QuantumCircuitMatrix:
         zero_one_ket = get_ket("01")   # |01⟩
         one_zero_ket = get_ket("10")   # |10⟩
         one_one_ket = get_ket("11")    # |11⟩
-        return np.kron(zero_zero_bra, zero_zero_ket)\
-               + np.kron(zero_one_bra, one_zero_ket)\
-               + np.kron(one_zero_bra, zero_one_ket)\
-               + np.kron(one_one_bra, one_one_ket)
+        return np.kron(zero_zero_ket, zero_zero_bra)\
+               + np.kron(one_zero_ket, zero_one_bra)\
+               + np.kron(zero_one_ket, one_zero_bra)\
+               + np.kron(one_one_ket, one_one_bra)
 
     ### Swap gate ###
     swap_gate = np.array([[1, 0, 0, 0],
