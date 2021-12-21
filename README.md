@@ -1,3 +1,9 @@
+# BitOQutritSim
+
+Check out [BitOQSim on GitHub](https://github.com/AlexLim-Pro/BitOQSim) for the code that this is based on
+
+
+
 # BitOQSim
 
 ## Contents
