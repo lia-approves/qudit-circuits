@@ -10,14 +10,10 @@ Date of Initial Creation: October 19, 2021
 """
 
 import math
-
+from itertools import permutations
 from numbers import Real
 
 import numpy as np
-
-from itertools import permutations
-
-from src.MiscFunctions import MiscFunctions as Misc
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"

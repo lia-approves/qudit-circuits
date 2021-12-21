@@ -9,7 +9,6 @@ Date of Initial Creation: October 21, 2021
 
 """
 
-from random import randint
 from warnings import catch_warnings, simplefilter
 
 import numpy as np
