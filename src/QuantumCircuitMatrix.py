@@ -614,6 +614,28 @@ class QuantumCircuitMatrix:
         return gate
 
     @staticmethod
+    def T_gate():
+        """
+        The qutrit T gate is the Z phase gate defined as\n
+        :math:`T := Z(1/3,-1/3) = diag(1,e^{2πi/9},e^{-2πi/9})`
+
+        :return: The qutrit T gate
+        :rtype: np.ndarray
+        """
+        return QuantumCircuitMatrix.Z_phase_gate(1/3, -1/3)
+
+    @staticmethod
+    def R_gate():
+        """
+        The reflection gate\n
+        :math:`R_{|2⟩} := Z(0,3/2) = diag(1,1,-1)`
+
+        :return: The reflection gate
+        :rtype: np.ndarray
+        """
+        return QuantumCircuitMatrix.Z_phase_gate(0, 3/2)
+
+    @staticmethod
     def qutrits_to_bits(num_qutrits: int):
         """
         Converts the processing power of qutrits to bits
