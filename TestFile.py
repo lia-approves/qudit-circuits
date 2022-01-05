@@ -11,7 +11,7 @@ Date of Initial Creation: October 19, 2021
 
 import numpy as np
 
-from src.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
+from src.QuantumCircuitMatrix import Quantum as qcm
 
 
 __author__      = "Alex Lim"
