@@ -7,8 +7,13 @@ Author: Alex Lim
 
 """
 
-from typing import Iterable, Union
+from itertools import product
+from typing import Iterable
+
 import numpy as np
+import pandas as pd
+
+from src.QuantumCircuitMatrix import QuantumCircuitMatrix as QCM
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
@@ -39,17 +44,6 @@ class Instruction(object):
         self._dim = dim
         self.instructions = instructions
         self.num_qudits = num_qudits
-
-    def __instancecheck__(self, inst):
-        """
-        Checks if inst is an instruction instance or is a numpy.ndarray
-
-        :param inst: The instance
-        :type inst: Any
-        :return: Whether inst is an instruction instance or is a numpy.ndarray
-        :rtype: np.ndarray
-        """
-        return isinstance(inst, Instruction) or isinstance(inst, np.ndarray)
 
     def __str__(self):
         """
@@ -142,9 +136,9 @@ class Instruction(object):
         """
         if instructions is None:
             self._instructions = None
-        elif isinstance(instructions, Instruction):
+        elif self.isinstruction(instructions):
             self._instructions = tuple([instructions])
-        elif all([isinstance(instr, Instruction) for instr in instructions]):
+        elif all([self.isinstruction(instr) for instr in instructions]):
             self._instructions = tuple(instructions)
         else:
             raise ValueError("'%s' objects cannot be used as instructions"
@@ -171,6 +165,96 @@ class Instruction(object):
         :type num_qudits: int
         """
         self._num_qudits = num_qudits
+
+    @classmethod
+    def isinstruction(cls, obj: object):
+        """
+        Checks if obj is a valid instruction instance
+
+        :param obj: An object
+        :type obj: object
+        :return: If obj is a valid instruction instance
+        :rtype: bool
+        """
+        return isinstance(obj, Instruction) or isinstance(obj, np.ndarray)
+
+    # TODO: implement choosing to switch which qudits are controls and targets
+    # TODO: implement truth table to still function if matrix does not include all qudits
+    def truth_table(self):
+        """
+        Displays and returns the truth table for the instruction instances
+
+        :return: The truth table
+        :rtype: pd.DataFrame
+        """
+        matrix_instr = self.to_matrix()
+        tbl_input = list(product(range(self.dim), repeat=self.num_qudits))
+        tbl_input = list(np.concatenate(tbl_input).flat)
+        data = [[inp, QCM.qudit_int(np.dot(matrix_instr, QCM.get_ket(inp)))]
+                for inp in tbl_input]
+        df = pd.DataFrame(data, columns=pd.MultiIndex.from_product(
+            [['Input', 'Output'], list(range(self.num_qudits))],
+            names=['', 'Qudit:']))
+        pd.set_option('display.max_rows', None)
+        pd.set_option('display.max_columns', None)
+        print(df)
+        return df
+
+    def to_matrix(self):
+        """
+        Converts the instructions into matrix form
+
+        :return: The instructions in matrix form
+        :rtype: np.ndarray
+        """
+        if len(self) == 0:
+            raise TypeError("%s.to_matrix() missing 1 required instruction"
+                            % str(self))
+        matrix_instr = 1
+        for instr in self.instructions:
+            if not isinstance(instr, np.ndarray):
+                instr = instr.to_matrix()
+            matrix_instr = np.dot(matrix_instr, instr)
+        return matrix_instr
+
+    # TODO: implement this
+    @staticmethod
+    def extend_gate(gate: 'Gate' or np.ndarray, num_qudits: int, dim: int = 3):
+        """
+        Extends a quantum gate to have identity gates for all qudits that the
+            quantum gate is not interacting with
+
+        :param gate: The quantum gate to be extended
+        :type gate: Gate or np.ndarray
+        :param num_qudits: The total number of qudits to extend the gate to
+        :type num_qudits: int
+        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
+            defaults to 3
+        :type dim: int
+        :return: The extended quantum gate
+        :rtype: Gate or np.ndarray
+        """
+        if isinstance(gate, np.ndarray):
+            return Instruction.extend_matrix(gate, num_qudits, dim)
+
+    # TODO: implement this
+    @staticmethod
+    def extend_matrix(gate_matrix: np.ndarray, num_qudits: int, dim: int = 3):
+        """
+        Extends a quantum gate matrix to have identity gates for all qudits
+        that the quantum gate is not interacting with
+
+        :param gate_matrix: The quantum gate matrix to be extended
+        :type gate_matrix: np.ndarray
+        :param num_qudits: The total number of qudits to extend the gate to
+        :type num_qudits: int
+        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
+            defaults to 3
+        :type dim: int
+        :return: The extended quantum gate
+        :rtype: np.ndarray
+        """
+        pass
 
     # TODO: implement this method to display the quantum instructions like in Qiskit
     def display(self):
