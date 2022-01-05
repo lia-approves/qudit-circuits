@@ -68,7 +68,7 @@ or a linear combination thereof.
 
 * [Source](src)
 
-* [Quantum circuit matrices](src/QuantumCircuitMatrix.py)
+* [Quantum circuit matrices](src/instruction/QuantumCircuitMatrix.py)
 
 * [Miscellaneous functions](src/MiscFunctions.py)
 
