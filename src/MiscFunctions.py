@@ -13,8 +13,6 @@ from warnings import catch_warnings, simplefilter
 
 import numpy as np
 
-from src.instruction.gate import Gate
-
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
 __maintainer__  = "Alex Lim"
@@ -22,61 +20,6 @@ __maintainer__  = "Alex Lim"
 
 class MiscFunctions:
     """Miscellaneous useful functions"""
-    @staticmethod
-    def truth_table(*args: np.ndarray, dim: int = 3):
-        """
-        Displays a truth table for quantum gates
-
-        :param args: Quantum gates
-        :type args: np.ndarray
-        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
-            defaults to 3
-        :type dim: int
-        """
-        highest_num_qudits = 1
-        for argv in args:
-            num_qudits_temp = int(np.log(int(argv.shape[0])) / np.log(dim))
-            if num_qudits_temp > highest_num_qudits:
-                highest_num_qudits = num_qudits_temp
-
-
-    @staticmethod
-    def extend_gate(gate: Gate or np.ndarray, num_qudits: int, dim: int = 3):
-        """
-        Extends a quantum gate to have identity gates for all qudits that the
-            quantum gate is not interacting with
-
-        :param gate: The quantum gate to be extended
-        :type gate: Gate or np.ndarray
-        :param num_qudits: The total number of qudits to extend the gate to
-        :type num_qudits: int
-        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
-            defaults to 3
-        :type dim: int
-        :return: The extended quantum gate
-        :rtype: Gate or np.ndarray
-        """
-        if isinstance(gate, np.ndarray):
-            return MiscFunctions.extend_matrix(gate, num_qudits, dim)
-
-    @staticmethod
-    def extend_matrix(gate_matrix: np.ndarray, num_qudits: int, dim: int = 3):
-        """
-        Extends a quantum gate matrix to have identity gates for all qudits
-        that the quantum gate is not interacting with
-
-        :param gate_matrix: The quantum gate matrix to be extended
-        :type gate_matrix: np.ndarray
-        :param num_qudits: The total number of qudits to extend the gate to
-        :type num_qudits: int
-        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
-            defaults to 3
-        :type dim: int
-        :return: The extended quantum gate
-        :rtype: np.ndarray
-        """
-
-
     @staticmethod
     def ket_basis(dim: int = 3):
         """
