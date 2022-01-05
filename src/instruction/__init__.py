@@ -29,7 +29,8 @@ class Instruction(object):
         :type instructions: Instruction
         :param num_qudits: The number of qudits
         :type num_qudits: int
-        :param dim: The dimensions of the qudits
+        :param dim: The dimension of the qudit (ie: qubit=2 and qutrit=3),
+            defaults to 3
         :type dim: int
         """
         self._name = name
