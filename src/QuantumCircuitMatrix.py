@@ -12,6 +12,7 @@ Date of Initial Creation: October 19, 2021
 import math
 from itertools import permutations
 from numbers import Real
+from typing import Union
 
 import numpy as np
 
@@ -20,10 +21,10 @@ __credits__     = "Alex Lim"
 __maintainer__  = "Alex Lim"
 
 
-class QuantumCircuitMatrix:
+class QuantumCircuitMatrix(object):
     """Creates quantum circuits in the form of matrices."""
     @staticmethod
-    def get_bra(*args: int or np.ndarray or str or bytes,
+    def get_bra(*args: Union[int, np.ndarray, str, bytes],
                 qutrit_string: str = "",
                 show_errors: bool = False):
         """
@@ -57,8 +58,8 @@ class QuantumCircuitMatrix:
                 if isinstance(argv, np.ndarray):
                     bra = np.kron(argv, bra)
                 elif isinstance(argv, str):
-                    braTEMP = QuantumCircuitMatrix.get_bra(qutrit_string=argv)
-                    bra = np.kron(braTEMP, bra)
+                    bra_temp = QuantumCircuitMatrix.get_bra(qutrit_string=argv)
+                    bra = np.kron(bra_temp, bra)
                 elif not isinstance(argv, int):
                     try:
                         argv = int(argv)
@@ -82,7 +83,7 @@ class QuantumCircuitMatrix:
                             QuantumCircuitMatrix.
                                 get_qutrit_vector(num_qutrits, argv), bra)
         if len(qutrit_string) != 0:
-            braTEMP = 1
+            bra_temp = 1
             for i in range(len(qutrit_string)):
                 q = qutrit_string[i]
                 if q == "0":
@@ -105,17 +106,17 @@ class QuantumCircuitMatrix:
                     raise ValueError("get_bra does not support \"%s\". "
                                      "Please try get_qutrit_vector "
                                      "or directly use numpy ndarrays." % q)
-                braTEMP = np.kron(q_bra, braTEMP)
+                bra_temp = np.kron(q_bra, bra_temp)
             if not isinstance(bra, np.ndarray) and bra == 1:
-                bra = braTEMP
+                bra = bra_temp
             else:
-                bra = np.kron(braTEMP, bra)
+                bra = np.kron(bra_temp, bra)
         if not isinstance(bra, np.ndarray) and bra == 1:
             return zero_bra
         return bra
 
     @staticmethod
-    def generalized_bra_basis(dim: int = 3):
+    def bra_basis(dim: int = 3):
         """
         Gets the generalized bra quantum basis for a qudit of dim dimensions
 
@@ -127,13 +128,13 @@ class QuantumCircuitMatrix:
         """
         bra_basis = list()
         for d in range(dim):
-            bra_basisTEMP = np.zeros([1, dim])
-            bra_basisTEMP[0, d] = 1
-            bra_basis.append(bra_basisTEMP)
+            bra_basis_temp = np.zeros([1, dim])
+            bra_basis_temp[0, d] = 1
+            bra_basis.append(bra_basis_temp)
         return bra_basis
 
     @staticmethod
-    def get_ket(*args: int or np.ndarray or str or bytes,
+    def get_ket(*args: Union[int, np.ndarray, str, bytes],
                 qutrit_string: str = "",
                 show_errors: bool = False):
         """
@@ -174,8 +175,8 @@ class QuantumCircuitMatrix:
                 if isinstance(argv, np.ndarray):
                     ket = np.kron(argv, ket)
                 elif isinstance(argv, str):
-                    ketTEMP = QuantumCircuitMatrix.get_ket(qutrit_string=argv)
-                    ket = np.kron(ketTEMP, ket)
+                    ket_temp = QuantumCircuitMatrix.get_ket(qutrit_string=argv)
+                    ket = np.kron(ket_temp, ket)
                 elif not isinstance(argv, int):
                     try:
                         argv = int(argv)
@@ -198,7 +199,7 @@ class QuantumCircuitMatrix:
                         ket = np.kron(QuantumCircuitMatrix.
                                       get_qutrit_vector(num_qutrits, argv), ket)
         if len(qutrit_string) != 0:
-            ketTEMP = 1
+            ket_temp = 1
             for i in range(len(qutrit_string)):
                 q = qutrit_string[i]
                 if q == "0":
@@ -221,11 +222,11 @@ class QuantumCircuitMatrix:
                     raise ValueError("get_ket does not support \"%s\". "
                                      "Please try get_qutrit_vector "
                                      "or directly use numpy ndarrays." % q)
-                ketTEMP = np.kron(q_ket, ketTEMP)
+                ket_temp = np.kron(q_ket, ket_temp)
             if isinstance(ket, int) and ket == 1:
-                ket = ketTEMP
+                ket = ket_temp
             else:
-                ket = np.kron(ketTEMP, ket)
+                ket = np.kron(ket_temp, ket)
         if isinstance(ket, int) and ket == 1:
             return zero_ket
         return ket
@@ -243,14 +244,14 @@ class QuantumCircuitMatrix:
         """
         ket_basis = list()
         for d in range(dim):
-            ket_basisTEMP = np.zeros([dim, 1])
-            ket_basisTEMP[d, 0] = 1
-            ket_basis.append(ket_basisTEMP)
+            ket_basis_temp = np.zeros([dim, 1])
+            ket_basis_temp[d, 0] = 1
+            ket_basis.append(ket_basis_temp)
         return ket_basis
 
     @staticmethod
-    def get_prod(ket: int or np.ndarray or str or bytes,
-                 bra: int or np.ndarray or str or bytes):
+    def get_prod(ket: Union[int, np.ndarray, str, bytes],
+                 bra: Union[int, np.ndarray, str, bytes]):
         """
         Gets the outer product of a specified ket and bra
 
@@ -622,7 +623,7 @@ class QuantumCircuitMatrix:
         :return: The qutrit T gate
         :rtype: np.ndarray
         """
-        return QuantumCircuitMatrix.Z_phase_gate(1/3, -1/3)
+        return QuantumCircuitMatrix.Z_phase_gate(1 / 3, -1 / 3)
 
     @staticmethod
     def R_gate():
@@ -633,7 +634,7 @@ class QuantumCircuitMatrix:
         :return: The reflection gate
         :rtype: np.ndarray
         """
-        return QuantumCircuitMatrix.Z_phase_gate(0, 3/2)
+        return QuantumCircuitMatrix.Z_phase_gate(0, 3 / 2)
 
     @staticmethod
     def qutrits_to_bits(num_qutrits: int):
