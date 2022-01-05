@@ -8,6 +8,7 @@ Author: Alex Lim
 """
 
 from typing import Iterable, Union
+import numpy as np
 
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
@@ -19,6 +20,18 @@ class Instruction(object):
     def __init__(self, name: str = None,
                  instructions: tuple['Instruction'] = None,
                  num_qudits: int = None, dim: int = 3):
+        """
+        Creates a new instruction
+
+        :param name: The name of the instruction
+        :type name: str
+        :param instructions: The instructions of the instruction
+        :type instructions: Instruction
+        :param num_qudits: The number of qudits
+        :type num_qudits: int
+        :param dim: The dimensions of the qudits
+        :type dim: int
+        """
         self._name = name
         self._instructions = None
         self._num_qudits = None
@@ -26,13 +39,45 @@ class Instruction(object):
         self.instructions = instructions
         self.num_qudits = num_qudits
 
+    def __instancecheck__(self, inst):
+        """
+        Checks if inst is an instruction instance or is a numpy.ndarray
+
+        :param inst: The instance
+        :type inst: Any
+        :return: Whether inst is an instruction instance or is a numpy.ndarray
+        :rtype: np.ndarray
+        """
+        return isinstance(inst, Instruction) or isinstance(inst, np.ndarray)
+
     def __str__(self):
-        return self._name
+        """
+        Returns the name of the instruction when converted to a string
+
+        :return: The name of the instruction
+        :rtype: str
+        """
+        return self.name
 
     def __len__(self):
+        """
+        Returns the number of instructions when the length is queried
+
+        :return: The number of instructions
+        :rtype: int
+        """
         return len(self.instructions)
 
     def __getitem__(self, index: int):
+        """
+        Returns the instruction at the given index when the '[]' operator is
+        used on an instruction instance
+
+        :param index: The index of the instruction
+        :type index: int
+        :return: The instruction at the given index
+        :rtype: Instruction
+        """
         return self.instructions[index]
 
     @property

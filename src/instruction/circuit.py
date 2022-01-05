@@ -11,10 +11,6 @@ Date of Initial Creation: January 4, 2022
 
 from typing import Iterable, overload
 
-import numpy as np
-
-from src.instruction.gate import Gate
-
 from src.instruction import Instruction
 
 __author__      = "Alex Lim"
@@ -26,12 +22,30 @@ class Circuit(Instruction):
     """Creates quantum circuit objects"""
     @overload
     def __init__(self, circuit: 'Circuit'):
+        """
+        Creates a new circuit
+
+        :param circuit: A circuit to make a shallow copy of
+        :type circuit: Circuit
+        """
         Instruction.__init__(self, circuit.name, circuit.instructions,
                              circuit.num_qudits, circuit.dim)
 
     def __init__(self, name: str = None,
                  instructions: tuple['Instruction'] = None,
                  num_qudits: int = None, dim: int = 3):
+        """
+        Creates a new circuit
+
+        :param name: The name of the circuit
+        :type name: str
+        :param instructions: The instructions of the circuit
+        :type instructions: Instruction
+        :param num_qudits: The number of qudits
+        :type num_qudits: int
+        :param dim: The dimensions of the qudits
+        :type dim: int
+        """
         Instruction.__init__(self, name, instructions, num_qudits, dim)
 
     def clear(self):

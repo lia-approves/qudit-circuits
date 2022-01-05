@@ -11,20 +11,34 @@ Date of Initial Creation: January 3, 2022
 
 import numpy as np
 
+from src.instruction import Instruction
+
+from typing import overload
+
 __author__      = "Alex Lim"
 __credits__     = "Alex Lim"
 __maintainer__  = "Alex Lim"
 
 
-class Gate(object):
+class Gate(Instruction):
     """Creates quantum gate objects"""
-    def __init__(self, gate_name: str = None, matrix: np.ndarray = None,
+    @overload
+    def __init__(self, gate: 'Gate'):
+        Instruction.__init__(self, gate.name, gate.instructions,
+                             gate.num_qudits, gate.dim)
+
+    def __init__(self, name: str = None,
+                 instructions: np.ndarray = None,
                  num_qudits: int = None, dim: int = 3):
-        self._gate_name = gate_name
-        self._matrix = matrix
-        self._num_qudits = None
-        self._dim = dim
-        self.num_qudits = num_qudits
+        Instruction.__init__(self, name, instructions, num_qudits, dim)
+
+    # def __init__(self, gate_name: str = None, matrix: np.ndarray = None,
+    #              num_qudits: int = None, dim: int = 3):
+    #     self._gate_name = gate_name
+    #     self._matrix = matrix
+    #     self._num_qudits = None
+    #     self._dim = dim
+    #     self.num_qudits = num_qudits
 
     def __str__(self):
         return self._gate_name
