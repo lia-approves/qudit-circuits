@@ -404,7 +404,7 @@ class QuantumCircuitMatrix(object):
 
         Examples
         --------
-        >>> from src.instruction.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
+        >>> from src.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
         >>> qcm.X_gate("+1")
         array([[0, 0, 1],
                [1, 0, 0],
