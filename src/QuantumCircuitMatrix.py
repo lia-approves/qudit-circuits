@@ -12,7 +12,7 @@ Date of Initial Creation: October 19, 2021
 import math
 from itertools import permutations
 from numbers import Real
-from typing import Union
+from typing import Iterable, Union
 
 import numpy as np
 
@@ -267,6 +267,19 @@ class QuantumCircuitMatrix(object):
         return np.kron(ket, bra)
 
     @staticmethod
+    def qudit_int(qudits: Iterable[np.ndarray]):
+        """
+        Converts qudits into shorthand. The reverse of
+        QuantumCircuitMatrix.get_ket()
+
+        :param qudits: The qudits
+        :type qudits: Iterable[np.ndarray]
+        :return: An ordered list of converted qudit shorthands
+        :rtype: list[int]
+        """
+        return [q[0] for q in qudits].index(1)
+
+    @staticmethod
     def identity_gate(num_qutrits: int = 1):
         """
         Creates the identity gate using outer products.\n
@@ -404,24 +417,24 @@ class QuantumCircuitMatrix(object):
 
         Examples
         --------
-        >>> from src.QuantumCircuitMatrix import QuantumCircuitMatrix as qcm
-        >>> qcm.X_gate("+1")
+        >>> from src.QuantumCircuitMatrix import QuantumCircuitMatrix as QCM
+        >>> QCM.X_gate("+1")
         array([[0, 0, 1],
                [1, 0, 0],
                [0, 1, 0]])
-        >>> qcm.X_gate("-1")
+        >>> QCM.X_gate("-1")
         array([[0, 1, 0],
                [0, 0, 1],
                [1, 0, 0]])
-        >>> qcm.X_gate("01")
+        >>> QCM.X_gate("01")
         array([[0, 1, 0],
                [1, 0, 0],
                [0, 0, 1]])
-        >>> qcm.X_gate("12")
+        >>> QCM.X_gate("12")
         array([[1, 0, 0],
                [0, 0, 1],
                [0, 1, 0]])
-        >>> qcm.X_gate("02")
+        >>> QCM.X_gate("02")
         array([[0, 0, 1],
                [0, 1, 0],
                [1, 0, 0]])
