@@ -11,9 +11,9 @@ k0 = I(:,1);    % Z-basis states
 k1 = I(:,2);    % "
 k2 = I(:,3);    % "
 w = exp(2*pi*i/3);      % 3rd root of unity
-kpl = (k0 + k1 + k2)/sqrt(3);               % X-basis states
-kw = (k0 + w * k1 + w^2 * k2)/sqrt(3);      % "
-kwsq = (k0 + w^2 * k1 + w * k2)/sqrt(3);    % "
+kpl = i * (k0 + k1 + k2)/sqrt(3);               % X-basis states
+kw = i * (k0 + w * k1 + w^2 * k2)/sqrt(3);      % "
+kwsq = i * (k0 + w^2 * k1 + w * k2)/sqrt(3);    % "
 
 %% qutrit generalization of Pauli gates
 x = [0 0 1; 1 0 0; 0 1 0];    % X, i.e. tau(0 1 2)
@@ -21,7 +21,7 @@ z = [1 0 0; 0 w 0; 0 0 w^2];  % Z = H * X * H'
 
 %% qutrit S, H, and CX, which generate the Clifford group
 s = [1 0 0; 0 1 0; 0 0 w];  % S
-h = i * (kron(kpl, k0') + kron(kw, k1') + kron(kwsq, k2'));   % H
+h = (kron(kpl, k0') + kron(kw, k1') + kron(kwsq, k2'));   % H
 cx = [I zero zero; zero x zero; zero zero x'];   % CX, i.e. tau(10 11 12)(20 22 21)
 
 %% various other Clifford gates
