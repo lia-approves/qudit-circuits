@@ -22,7 +22,7 @@ z = [1 0 0; 0 w 0; 0 0 w^2];  % Z = H * X * H'
 %% qutrit S, H, and CX, which generate the Clifford group
 s = [1 0 0; 0 1 0; 0 0 w];  % S
 h = i * (kron(kpl, k0') + kron(kw, k1') + kron(kwsq, k2'));   % H
-cx = [I zero zero; zero xp1 zero; zero zero xm1];   % CX, i.e. tau(10 11 12)(20 22 21)
+cx = [I zero zero; zero x zero; zero zero x'];   % CX, i.e. tau(10 11 12)(20 22 21)
 
 %% various other Clifford gates
 tau0_1 = [0 1 0; 1 0 0; 0 0 1]; % tau(0 1)
