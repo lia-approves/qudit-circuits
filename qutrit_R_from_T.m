@@ -45,10 +45,16 @@ tau02_20 = swap * socxs * ocx * socxs * ocx * socxs; % tau(02 20)
 map21_22to02_20 = swap * cx' * swap * kron(I,tau0_1);
 tctau1_2 = map21_22to02_20' * tau02_20 * map21_22to02_20;   % |2>-controlled tau(1 2), i.e. tau(21 22)
 
-%% |2>-controlled zww gate, up to a global phase of w^(1/3)
-tczwwphase = kron(x',x') * cx' * kron(I,x*t*x') * cx' * kron(I,x*t*x') * cx' * kron(x,tau0_2*s'*tau0_1) * tcx' * kron(I,tau0_1*t'*tau0_1) * tcx;
+%% |2>-controlled w^(1/3) * s' gate
+tcsdagphase = kron(I,tau0_1*t*tau0_1) * tcx' * kron(I,tau0_1*t'*tau0_1) * tcx;
+%% |2>-controlled w^(-2/3) * zww gate
+tczwwphase = kron(I,tau0_2) * tcsdagphase * kron(I,tau0_2);
+%% global phases which are Clifford
+globalphaseofw = z'*tau0_2*z'*tau0_2;
+globalphaseofwsq = globalphaseofw';
 %% |2>-controlled -tau(1 2) gate, i.e. tctau1_2 but when the control is |2>, the target gains a -1 phase
-tcmtau1_2 = kron(tau0_2*z*tau0_2*z*s',tau0_2*z*tau0_2*z*zww*h') * tczwwphase * kron(I,h*zww) * tczwwphase * kron(I,h') * tczwwphase * kron(I,h*zww);
+tcmtau1_2 = kron(globalphaseofw*s',globalphaseofwsq*zww*h') * tczwwphase * kron(I,h*zww) * tczwwphase * kron(I,h') * tczwwphase * kron(I,h*zww);
+
 %% the below two-qutrit Clifford+T unitary is the R gate on one qutrit and the identity gate on the other
 rtensorid = tcmtau1_2 * tctau1_2;
 %% to verify: subtracting the R gate tensor the single-qutrit identity from it equals zero
