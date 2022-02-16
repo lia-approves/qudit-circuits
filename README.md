@@ -1,1 +1,1 @@
-# qutrit-fun
+# qudit-circuits
