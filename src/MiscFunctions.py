@@ -113,3 +113,16 @@ class MiscFunctions:
             with catch_warnings():
                 simplefilter("ignore")
                 return np.array(complex_matrix, dtype=np.float_)
+
+    @staticmethod
+    def T(matrix: np.ndarray):
+        """
+        Gets the Hermitian transpose of matrix
+
+        :param matrix: A matrix
+        :type np.ndarray
+        :return: The Hermitian transpose of matrix
+        :rtype: np.ndarray
+        """
+        return matrix.conj().T
+
