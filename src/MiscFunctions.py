@@ -126,3 +126,18 @@ class MiscFunctions:
         """
         return matrix.conj().T
 
+    @staticmethod
+    def dot(*argv: np.ndarray):
+        """
+        Computes the dot product of matrices in order
+
+        :param argv: Matrices
+        :type argv: np.ndarray
+        :return: The dot products of matrices
+        :rtype: np.ndarray
+        """
+        result = 1
+        for args in argv:
+            result = np.dot(result, args)
+        return result
+
