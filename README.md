@@ -1,5 +1,5 @@
 This repository contains code implementations of qudit circuit constructions.
-<br/>It is authored by [Lia Yeh](https://github.com/lia-approves/), [Alex Christopher Lim](https://github.com/AlexLim-Pro), and Anikait Mundhra.
+<br/>It is authored by [Lia Yeh](https://github.com/lia-approves/), [Alex Christopher Lim](https://github.com/AlexLim-Pro), and [Anikait Mundhra](https://github.com/strongani).
 <br/>This code is publicly available and open source under the Apache 2.0 License.
 
 Descriptions of constructions in the following folders and how to cite them are given with their accompanying papers:  
